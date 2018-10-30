@@ -1,9 +1,7 @@
 /* entire income statement page */
 .nestegg {
-  width: 100wv;
+  width: 100vw;
   height: 340vh;
-  /* background-color: #4f7cac; */
-  /* background-color: pink; */
   background-image: linear-gradient(0deg, #0f2027, #2c5364);
 }
 
@@ -28,8 +26,6 @@
   float: right;
   padding-top: 12vh;
   padding-right: 20px;
-  /* margin-top: 10vh; */
-  /* margin-right: 40vw;  */
   display: flex;
 }
 
@@ -37,14 +33,6 @@
 .nestegg-left {
   /* remove when done */
   border: black 1px solid;
-  /* width: 40vw;
-  height: 1400px;
-  margin-top: 10vh;
-  margin-right: 40vw;*/
-
-  /* float: right; */
-  /* display: flex;
-  flex-direction: column; */
 }
 
 .emergencyfund {

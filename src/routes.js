@@ -9,7 +9,6 @@ import Wizard1 from "./components/Wizard1";
 import Wizard2 from "./components/Wizard2";
 import Wizard3 from "./components/Wizard3";
 import Wizard4 from "./components/Wizard4";
-import Wizard5 from "./components/Wizard5";
 import IncomeStatement from "./components/IncomeStatement";
 import LearnMore from "./components/LearnMore";
 import LogIn from "./components/LogIn";
@@ -26,7 +25,6 @@ export default (
     <Route path="/wizardtwo" component={Wizard2} />
     <Route path="/wizardthree" component={Wizard3} />
     <Route path="/wizardfour" component={Wizard4} />
-    <Route path="/wizardfive" component={Wizard5} />
     <Route path="/incomestatement" component={IncomeStatement} />
     <Route path="/learnmore" component={LearnMore} />
     <Route path="/login" component={LogIn} />
