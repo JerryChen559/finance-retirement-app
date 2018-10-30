@@ -1,0 +1,70 @@
+/* entire income statement page */
+.incomestatement {
+  width: 100wv;
+  height: 340vh;
+  /* background-color: #4f7cac; */
+  /* background-color: pink; */
+  background-image: linear-gradient(180deg, #4e54c8, #8f94fb);
+}
+
+/* header - title of the page */
+.statement-header {
+  width: 100%;
+  height: 10vh;
+  color: white;
+  font-family: Arial;
+  font-size: 20px;
+  text-align: center;
+  /* remove when done */
+  border: orange 1px solid;
+  padding-top: 10vh;
+}
+
+/* statement portion */
+.statement-body {
+  /* remove when done */
+  border: black 1px solid;
+  width: 60%;
+  height: 1400px;
+  margin-top: 10vh;
+  /* margin-left: 5px; */
+  float: right;
+  padding-right: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+.update a {
+  padding: 10px 42px;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: orange;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  float: right;
+}
+.update a:hover {
+  border: 1px solid orange;
+  background-color: white;
+  color: black;
+}
+
+.spreadsheet {
+  /* remove when done */
+  border: 1px lime dotted;
+  display: flex;
+  flex-direction: column;
+}
+.spreadsheet p {
+  float: right;
+}
+
+/* graph */
+.graph-body {
+  border: green 1px solid;
+  width: 85%;
+  height: 400px;
+  margin-top: 5vh;
+  float: right;
+}
