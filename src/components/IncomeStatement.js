@@ -28,6 +28,7 @@ class IncomeStatement extends Component {
 
           <div className="statement-header">
             <h1>Welcome to Step 1.</h1>
+            <h5>(calculate net income by updating your info)</h5>
           </div>
 
           <div className="statement-body">
