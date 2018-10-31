@@ -19,14 +19,14 @@ input {
   margin-bottom: 5px;
 }
 .parent-div {
-  border: 1px blueviolet dotted;
+  /* border: 1px blueviolet dotted; */
   background-color: bisque;
-  padding-top: 10vh;
+  padding-top: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 90vh;
+  height: 95vh;
   width: 100%;
   font-family: Roboto, sans-serif;
 }
@@ -38,7 +38,7 @@ button {
   width: 100px;
   background-color: orange;
   border: none;
-  height: 50px;
+  height: 45px;
   border-radius: 30px;
   margin-right: 5px;
   margin-left: 5px;
@@ -60,27 +60,30 @@ button {
   flex-direction: column;
   justify-content: center;
 }
-.wTwo-btn {
+/* remove */
+/* .wTwo-btn {
   margin-top: 3%;
 }
 .wSix-btn {
   margin-top: 4%;
-}
+} */
 .row {
   flex-direction: row;
   display: flex;
   justify-content: center;
 }
-.form {
+/* remove */
+/* .form {
   font-size: 1em;
   text-align: left;
   padding-left: 10px;
-}
+} */
 .p2 {
   font-size: 1em;
   float: right;
   padding-right: 10px;
 }
-.overarching-div:nth-child(2n) {
+/* remove */
+/* .overarching-div:nth-child(2n) {
   background-color: lightgrey;
-}
+} */

@@ -2,6 +2,24 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Nestegg.css";
 
+import cherryblossom from "../Assets/garden/cherryblossom.svg";
+import dogrose from "../Assets/garden/dogrose.svg";
+import flowerblue from "../Assets/garden/flowerblue.svg";
+import flowerorange from "../Assets/garden/flowerorange.svg";
+import flowersix from "../Assets/garden/flowersix.svg";
+import flowerthree from "../Assets/garden/flowerthree.svg";
+import lotusa from "../Assets/garden/lotusa.svg";
+import lotusb from "../Assets/garden/lotusb.svg";
+import roseone from "../Assets/garden/roseone.svg";
+import sakura from "../Assets/garden/sakura.svg";
+import sunflowerone from "../Assets/garden/sunflowerone.svg";
+import sunflowertwo from "../Assets/garden/sunflowertwo.svg";
+import sunflowerthree from "../Assets/garden/sunflowerthree.svg";
+
+// const reqSvgs = require.context("../Assets/garden", true, /\.svg$/);
+// const paths = reqSvgs.keys();
+// const svgs = paths.map(path => reqSvgs(path));
+
 import Sidenav from "./Sidenav";
 import "./Sidenav.css";
 
@@ -10,12 +28,30 @@ class NestEgg extends Component {
     super(props);
 
     this.state = {
-      emergencyfund: [],
-      retirementfund: []
+      emergencyfund: [50, 100, 250],
+      retirementfund: [50, 100, 250],
+      flowers: [
+        cherryblossom,
+        dogrose,
+        flowerblue,
+        flowerorange,
+        flowersix,
+        flowerthree,
+        lotusa,
+        lotusb,
+        roseone,
+        sakura,
+        sunflowerone,
+        sunflowertwo,
+        sunflowerthree
+      ]
     };
   }
 
   render() {
+    // make a for loop which looks through the number of deposits. user randomflower and add delete button.
+    // random number from 0 through 12
+
     return (
       <div className="nestegg">
         <Sidenav />
@@ -58,11 +94,121 @@ class NestEgg extends Component {
           </div>
           <div className="nestegg-right">
             <div className="garden">
-              garden makes a call to the asset garden folder. map thru number of
+              {/* garden makes a call to the asset garden folder. map thru number of
               flowers should equal number of deposits. removing a deposit should
-              remove a flower.
-              <span>x</span>
-              <span>x</span>
+              remove a flower. */}
+              <img
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                width="100px"
+                height="100px"
+                alt="cherryblossom"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                width="100px"
+                height="100px"
+                alt="cherryblossom"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                width="100px"
+                height="100px"
+                alt="cherryblossom"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                width="100px"
+                height="100px"
+                alt="cherryblossom"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                width="100px"
+                height="100px"
+                alt="cherryblossom"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                width="100px"
+                height="100px"
+                alt="cherryblossom"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <img
+                width="100px"
+                height="100px"
+                src={this.state.flowers[Math.floor(Math.random() * 13)]}
+                alt="dogrose"
+              />
+              <span>
+                flower count should equal
+                this.state.emergencyfund.length+this.state.retirementfund.length
+              </span>
               <span>x</span>
               <span>x</span>
             </div>

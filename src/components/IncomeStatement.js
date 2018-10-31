@@ -12,9 +12,16 @@ class IncomeStatement extends Component {
     super(props);
 
     this.state = {
-      // blah,
-      // blah2
+      // pass to RetirementPlan
+      monthlyincome: 0,
+      // pass to RetirementPlan
+      monthlyexpenses: 0
     };
+  }
+
+  componentDidMount() {
+    // TODO: this.state.monthlyincome = (sum up income)
+    // TODO: this.state.monthlyexpenses = (sum up expenses)
   }
 
   render() {
@@ -79,12 +86,12 @@ class IncomeStatement extends Component {
                 </p>
               </div>
               <div>
-                <strong>Net Income: </strong>
-                <p>
-                  state
-                  {}
-                </p>
+                <strong>
+                  Net Income:
+                  <p>{this.state.monthlyincome}</p>
+                </strong>
               </div>
+              <br />
               <div style={{ fontSize: 18, marginLeft: 100 }}>EXPENSES</div>
 
               <div>
@@ -179,12 +186,12 @@ class IncomeStatement extends Component {
                 </p>
               </div>
               <div>
-                <strong>Total Expenses:</strong>
-                <p>
-                  state
-                  {}
-                </p>
+                <strong>
+                  Total Expenses:
+                  <p>{this.state.monthlyexpenses}</p>
+                </strong>
               </div>
+              <br />
               <div style={{ fontSize: 18, marginLeft: 100 }}>
                 MONTHLY NET:
                 <p>
@@ -201,6 +208,7 @@ class IncomeStatement extends Component {
             <span>
               Next step: set up your <Link to="/nestegg"> nest egg. </Link>
             </span>
+            <span>**add nodemailer**</span>
           </div>
           <div className="graph-body">
             <h1>charts js - pi graph provide breakdown of numbers</h1>

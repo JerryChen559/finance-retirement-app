@@ -1,7 +1,7 @@
 /* entire income statement page */
 .retire {
   width: 100vw;
-  height: 340vh;
+  height: 260vh;
   background-image: linear-gradient(70deg, #5433ff, #20bdff);
 }
 
@@ -22,7 +22,7 @@
   /* remove when done */
   border: red 1px solid;
   /* width: 70%; */
-  height: 1000px;
+  height: 800px;
   float: right;
   padding-top: 12vh;
   padding-right: 20px;
@@ -35,7 +35,7 @@
   border: black 1px solid;
 }
 
-.emergencyfund {
+.fire {
   /* remove when done */
   border: 1px lime dotted;
   height: 50%;
@@ -44,7 +44,16 @@
   flex-direction: column;
 }
 
-.retirementfund {
+.fire input {
+  width: 40px;
+  margin-left: 10px;
+}
+input:hover {
+  border: 2px solid orange;
+  /* border-radius: 4px; */
+}
+
+.asset {
   /* remove when done */
   border: 1px green dotted;
   height: 50%;
