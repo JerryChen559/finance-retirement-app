@@ -34,7 +34,7 @@ class IncomeStatement extends Component {
           <Sidenav />
 
           <div className="statement-header">
-            <h1>Welcome to Step 1.</h1>
+            <h1>Welcome to Step 1!</h1>
             <h5>(calculate net income by updating your info)</h5>
           </div>
 
@@ -211,8 +211,8 @@ class IncomeStatement extends Component {
             <span>**add nodemailer**</span>
           </div>
           <div className="graph-body">
-            <h1>charts js - pi graph provide breakdown of numbers</h1>
-            <div>{/* Breakdown of expenses and income */}</div>
+            <h1>charts js - pi graph provide breakdown of expenses </h1>
+            <div>{/* Breakdown of expenses */}</div>
           </div>
         </div>
       </div>
