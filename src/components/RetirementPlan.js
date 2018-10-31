@@ -10,16 +10,25 @@ class RetirementPlan extends Component {
     super(props);
 
     this.state = {
-      // props drill monthlyexpenses.
-      // props drill monthlyincome.
       age: "",
-      fire: 0,
-      asset: ""
+      asset: "",
+      // fire: 0,
+      // monthcount: 0,
+      // yearcount: 0,
+      // pass in using redux or tables: monthlyexpenses.
+      monthlyexpenses: 5,
+      // pass in using redux or tables: monthlyincome.
+      monthlyincome: 100,
+      // pass in using redux or tables: monthlynetincome.
+      monthlynetincome: 10
     };
   }
 
   changeAge(val) {
     this.setState({ age: val });
+  }
+  changeAsset(v) {
+    this.setState({ asset: v });
   }
 
   render() {
@@ -29,6 +38,15 @@ class RetirementPlan extends Component {
     // let mathfire =
     // Math for assets:
     // let mathassets =
+    let monthlynetpercent =
+      this.state.monthlynetincome / this.state.monthlyincome;
+
+    let fire = this.state.monthlyexpenses * 12 * yearsleft * 1.02 ** yearsleft;
+    let monthcount = Math.floor(
+      (fire - this.state.asset) /
+        (this.state.monthlynetincome / this.state.monthlyincome)
+    );
+    let yearcount = Math.floor(monthcount / 12);
 
     return (
       <div className="retire">
@@ -51,11 +69,9 @@ class RetirementPlan extends Component {
                   onChange={e => this.changeAge(e.target.value)}
                 />
               </h4>
-              <h4>
-                Your number to be financially free is: ({this.state.fire}){" "}
-              </h4>
+              <h4>Your number to be financially free is: ({fire})</h4>
               <h6>
-                *Math: (Monthly expenses * 12 * ({yearsleft}
+                *Math: ({this.state.monthlyexpenses} * 12 * ({yearsleft}
                 )) * (1.02**(
                 {yearsleft}
                 ))
@@ -68,17 +84,56 @@ class RetirementPlan extends Component {
             <div className="asset">
               <h3>Current Assets</h3>
 
-              <h4>current cash amount in banks </h4>
+              <h4>
+                Please input your current total assets (cash, stocks, bank
+                valuation of home)
+                <input
+                  value={this.state.asset}
+                  placeholder="total assets"
+                  onChange={e => this.changeAsset(e.target.value)}
+                />
+              </h4>
+
+              {/* <h4>current cash amount in banks </h4>
               <h4>current amount in invested </h4>
-              <h4>valuation of current home</h4>
-              <h4> (fire-current total) / monthlynetincome </h4>
-              <h4> (fire-current total) / monthlynetincome </h4>
+              <h4>valuation of current home</h4> */}
+              <h4>Your current savings percent: ({monthlynetpercent}) </h4>
+              <h4>
+                Number of working MONTHS until you are financially free: (
+                {monthcount}){" "}
+              </h4>
+              <h4>
+                Number of working YEARS until you are financially free: (
+                {yearcount}){" "}
+              </h4>
+              <h6>
+                *Math: ({fire} - {this.state.asset}) / (
+                {this.state.monthlynetincome}/{this.state.monthlyincome}){" "}
+              </h6>
             </div>
           </div>
           <div className="retire-right">
             <div className="chartjs">
               chartsjs here.
-              <span>savings vs </span>
+              <span>goal vs savings bar chart</span>
+              <span>x</span>
+              <span>x</span>
+              <span>x</span>
+              <span>x</span>
+              <span>x</span>
+              <span>x</span>
+              <span>line graph displaying: monthly savings vs time </span>
+              <span>x</span>
+              <span>x</span>
+              <span>x</span>
+              <span>x</span>
+              <span>x</span>
+              <span>x</span>
+              <span>slider that updates the numbers in real time</span>
+              <span>
+                slider shows percentage 30%-70%. start (30% of netincome) and
+                end (70% of netincome)
+              </span>
               <span>x</span>
               <span>x</span>
               <span>x</span>

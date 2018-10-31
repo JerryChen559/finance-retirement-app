@@ -38,25 +38,28 @@
 .fire {
   /* remove when done */
   border: 1px lime dotted;
-  height: 50%;
+  height: 40%;
   width: 40vw;
   display: flex;
   flex-direction: column;
 }
 
+input:hover {
+  border: 2px solid orange;
+}
 .fire input {
   width: 40px;
   margin-left: 10px;
 }
-input:hover {
-  border: 2px solid orange;
-  /* border-radius: 4px; */
+.asset input {
+  width: 120px;
+  margin-left: 10px;
 }
 
 .asset {
   /* remove when done */
   border: 1px green dotted;
-  height: 50%;
+  height: 60%;
   width: 40vw;
   display: flex;
   flex-direction: column;

@@ -12,10 +12,11 @@ class IncomeStatement extends Component {
     super(props);
 
     this.state = {
-      // pass to RetirementPlan
+      // pass to RetirementPlan thru tables
       monthlyincome: 0,
-      // pass to RetirementPlan
-      monthlyexpenses: 0
+      monthlyexpenses: 0,
+      monthlynetincome: 0,
+      monthlynetpercent: 0
     };
   }
 
@@ -203,7 +204,7 @@ class IncomeStatement extends Component {
 
             <span>
               Summary: With all expenses paid, you are left with
-              (monthlynet/netincome)% of your net income.
+              (monthlynetincome/monthlyincome)% of your net income.
             </span>
             <span>
               Next step: set up your <Link to="/nestegg"> nest egg. </Link>
