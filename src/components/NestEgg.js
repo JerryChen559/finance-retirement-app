@@ -126,6 +126,9 @@ class NestEgg extends Component {
             </div>
           </div>
           <div className="nestegg-right">
+            <p>
+              <strong>Garden of Wealth</strong>
+            </p>
             <div className="garden">
               {eflowers}
               {rflowers}
