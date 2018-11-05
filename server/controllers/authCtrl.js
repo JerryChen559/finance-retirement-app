@@ -76,8 +76,9 @@ module.exports = app => {
 
   passport.deserializeUser((user, done) => {
     console.log("deserializeUser", user, done);
-    done(null, user);
+    return done(null, user);
   });
+  // passport.deserializeUser((profile, done) => done(null, profile));
 
   app.get(
     "/login",
@@ -86,11 +87,14 @@ module.exports = app => {
       failureRedirect: "/login"
     })
   );
+  app.get("/success", (req, res) => {
+    res.status(200).json(req.user);
+  });
 
-  // app.get("/login", (req, res) => {
+  // app.get("/success", (req, res) => {
   //   console.log("requser", req.user);
   //   res.redirect(REACT_APP_CLIENT);
-
+  // });
   //     // const db = app.get("db");
   //     // db.get_user(auth_id)
   //     //   .then(response => {
@@ -116,5 +120,5 @@ module.exports = app => {
   //   req.session.destroy(() => {
   //     res.redirect("http://localhost:3000/");
   //   });
-  // };
+  // }
 };

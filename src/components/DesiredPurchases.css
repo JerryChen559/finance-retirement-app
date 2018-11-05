@@ -30,9 +30,9 @@
   /* remove when done */
   border: 2px hotpink dotted;
 
-  width: 80vw;
+  width: 88vw;
   height: 60%;
-  margin-left: 10%;
+  margin-left: 6%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -45,19 +45,19 @@
   padding: 10px 12px;
   border: 2px solid white;
   border-radius: 10px;
-  background-color: green;
+  background-color: #3cb371;
   color: white;
   font-size: 16px;
   font-weight: 600;
 }
 .addcardbtn:hover {
-  border: 2px solid green;
+  border: 2px solid #20b2aa;
   background-color: transparent;
   color: black;
 }
 
 .card {
-  width: 31%;
+  width: 32%;
   height: 23%;
   font-size: 18px;
   border: 3px #53a7ea solid;

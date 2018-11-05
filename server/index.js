@@ -11,6 +11,19 @@ const massive = require("massive");
 const session = require("express-session");
 const authCtrl = require("./controllers/authCtrl");
 
+/*
+// node mailer
+const bodyParser = require("body-parser");
+const exphbs = require("express-handlebars");
+const nodemailer = require("nodemailer");
+const {
+  sendWelcomeEmail,
+  sendConfirmation,
+  sendIncomeStatementInfo,
+  sendRetirementPlanInfo
+} = require("./nodeMailerTests/NodeMailer");
+*/
+
 const { SESSION_SECRET, CONNECTION_STRING, PORT } = process.env;
 const port = PORT || 3001;
 
@@ -33,7 +46,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 10 // nine weeks
+      maxAge: 1000 * 10 * 60 // 1 min
     }
   })
 );
@@ -64,8 +77,10 @@ authCtrl(app);
 
 // profile controls. login, logout
 // app.get("api/userprofile", getProfile);
+
+// get logged in user information
 const authenticated = (req, res, next) => {
-  console.log("sp note", req.session, req.session.user);
+  console.log("sp note", req.user, req.session, req.session.user);
   if (req.session.user) {
     next();
   } else {

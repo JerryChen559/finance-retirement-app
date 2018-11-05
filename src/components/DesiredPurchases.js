@@ -23,7 +23,7 @@ class DesiredPurchases extends Component {
         { id: 2, itemname: "book", price: 23, importance: 9, note: "camera" },
         {
           id: 3,
-          itemname: "phonesafhsiufh",
+          itemname: "pblahsafhsiuf",
           price: 986,
           importance: 2,
           note: "camera"

@@ -17,10 +17,10 @@ function Home() {
       <div className="homedisplay">
         <h1>Welcome to the 'AppName' Finance App</h1>
         <h2>Let us help you retire early.</h2>
-        {/* <span className="getstarted" onClick={() => redirect()}> */}
-        <Link to="/incomestatement">for now</Link>
-        {/* Get Started */}
-        {/* </span> */}
+        <span className="getstarted" onClick={() => redirect()}>
+          Get Started
+        </span>
+        <Link to="/incomestatement">link to app for now</Link>
       </div>
       <div className="aboutdisplay">
         <h1>what the app is -blah blah blah </h1>

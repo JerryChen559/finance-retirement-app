@@ -46,7 +46,27 @@ class IncomeStatement extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log("IS state", this.state);
+    console.log("IS props", this.props);
+
+    /*
+    let myDoughnutChart = new Chart(ctx, {
+      type: "doughnut",
+      data: data,
+      options: options
+    });
+
+    data = {
+      datasets: [
+        {
+          data: [10, 20, 30]
+        }
+      ],
+
+      // These labels appear in the legend and in the tooltips when hovering different arcs
+      labels: ["Red", "Yellow", "Blue"]
+    };
+    */
 
     return (
       <div>
@@ -178,10 +198,18 @@ class IncomeStatement extends Component {
               Next step: set up your <Link to="/nestegg"> nest egg. </Link>
             </span>
             <span>**add nodemailer**</span>
+            <span>**Click here to send an email to yourself**</span>
+            <button>Email Income Statement</button>
           </div>
           <div className="graph-body">
-            <h1>charts js - pi graph provide breakdown of expenses </h1>
+            <h1>charts js - donut chart of expenses </h1>
             <div>{/* Breakdown of expenses */}</div>
+            <div>{/* doughnut */}</div>
+            <div>{/* myDoughnutChart */}</div>
+
+            {/* charts js 2 */}
+            {/* import {Doughnut} from 'react-chartjs-2'; */}
+            {/* <Doughnut data={...} /> */}
           </div>
         </div>
       </div>

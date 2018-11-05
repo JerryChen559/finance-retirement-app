@@ -120,6 +120,11 @@ class RetirementPlan extends Component {
               <span>x</span>
               <span>x</span>
               <span>x</span>
+              <div className="range-field">
+                <input type="range" name="slider" min="3" max="7" />
+                <span className="slider-left">savings at 30%</span>
+                <span className="slider-right">savings at 70%</span>
+              </div>
               <span>x</span>
               <span>x</span>
               <span>line graph displaying: monthly savings vs time </span>
