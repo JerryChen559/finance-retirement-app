@@ -12,7 +12,7 @@ export function getUser() {
   console.log("HIT");
   return {
     type: GET_USER,
-    payload: axios.get(`${process.env.REACT_APP_SERVER}/api/userprofile`)
+    payload: axios.get("/api/userprofile")
   };
 }
 

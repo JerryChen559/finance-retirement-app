@@ -7,7 +7,7 @@ class DesiredPurchaseEdit extends Component {
     super(props);
 
     this.state = {
-      id: "",
+      purchasecardid: "",
       itemname: "",
       price: "",
       importance: "",
@@ -23,14 +23,16 @@ class DesiredPurchaseEdit extends Component {
     console.log(this.props);
     axios
       .get(
-        `${process.env.REACT_APP_SERVER}/api/card/${this.props.match.params.id}`
+        `${process.env.REACT_APP_SERVER}/api/card/${
+          this.props.match.params.purchasecardid
+        }`
       )
       // also works!
-      // .get(`${process.env.REACT_APP_SERVER}/api/card/${this.props.location.state.id}`)
+      // .get(`${process.env.REACT_APP_SERVER}/api/card/${this.props.location.state.purchasecardid}`)
       .then(response => {
         console.log(response);
         this.setState({
-          id: response.data[0].id,
+          purchasecardid: response.data[0].purchasecardid,
           itemname: response.data[0].itemname,
           price: response.data[0].price,
           importance: response.data[0].importance
@@ -41,11 +43,14 @@ class DesiredPurchaseEdit extends Component {
   handleSubmit() {
     console.log(this.state.id);
     axios
-      .put(`${process.env.REACT_APP_SERVER}/api/card/${this.state.id}`, {
-        itemname: this.state.itemname,
-        price: this.state.price,
-        importance: this.state.importance
-      })
+      .put(
+        `${process.env.REACT_APP_SERVER}/api/card/${this.state.purchasecardid}`,
+        {
+          itemname: this.state.itemname,
+          price: this.state.price,
+          importance: this.state.importance
+        }
+      )
       .then(response => {
         console.log(response);
         this.setState({

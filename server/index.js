@@ -80,8 +80,8 @@ authCtrl(app);
 
 // get logged in user information
 const authenticated = (req, res, next) => {
-  console.log("sp note", req.user, req.session, req.session.user);
-  if (req.session.user) {
+  console.log("sp note", req.user, req.session, req.user);
+  if (req.user) {
     next();
   } else {
     res.sendStatus(403);
@@ -89,8 +89,8 @@ const authenticated = (req, res, next) => {
 };
 
 app.get("/api/userprofile", authenticated, (req, res, next) => {
-  console.log("user", req.session.user);
-  res.status(200).send(req.session.user);
+  console.log("user", req.user);
+  res.status(200).send(req.user);
 });
 
 // income statement controls

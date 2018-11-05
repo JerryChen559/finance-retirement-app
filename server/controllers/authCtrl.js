@@ -19,40 +19,7 @@ module.exports = app => {
     )
   );
 
-  // passport.serializeUser((user, done) => {
-  // user object give provides user.id which is the auth ID
-  // console.log(user.id);
-  //   done(null, user);
-  // });
-
-  // matt version
-  // passport.serializeUser((user, done) => {
-  //   app
-  //     .get("db")
-  //     .getuser(user.id)
-  //     .then(response => {
-  //       if (!response[0]) {
-  //         app
-  //           .get("db")
-  //           .adduser([
-  //             user.displayName,
-  //             user.id,
-  //             user.emails[0].value,
-  //             user.picture
-  //           ])
-  //           .then(res => {
-  //             return done(null, res[0]);
-  //           })
-  //           .catch(err => console.log(err));
-  //       } else {
-  //         return done(null, response[0]);
-  //       }
-  //     })
-  //     .catch(err => console.log(err));
-  // });
-
   // users log in. new users get added to the db
-  // my version
   passport.serializeUser((user, done) => {
     // console.log(`"profile:" ${JSON.stringify(user)}`);
     const db = app.get("db");
