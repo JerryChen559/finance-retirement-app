@@ -6,6 +6,9 @@ import Navbar from "./Navbar";
 import "./Navbar.css";
 
 function Home() {
+  const redirect = () => {
+    window.location.href = `${process.env.REACT_APP_SERVER}/login`;
+  };
   return (
     <div>
       <div className="navbar">
@@ -14,9 +17,10 @@ function Home() {
       <div className="homedisplay">
         <h1>Welcome to the 'AppName' Finance App</h1>
         <h2>Let us help you retire early.</h2>
-        <h3>
-          <Link to="/incomestatement">Get Started</Link>
-        </h3>
+        {/* <span className="getstarted" onClick={() => redirect()}> */}
+        <Link to="/incomestatement">for now</Link>
+        {/* Get Started */}
+        {/* </span> */}
       </div>
       <div className="aboutdisplay">
         <h1>what the app is -blah blah blah </h1>

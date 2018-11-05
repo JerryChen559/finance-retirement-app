@@ -1,15 +1,101 @@
-.card-container {
-  margin-top: 80px;
-}
-
 .desiredpurchases {
   width: 100%;
   height: 100vh;
   background-image: url(../Assets/beach.jpg);
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   background-size: cover;
   /* background-size: contain; */
   /* remove when done */
   border: 1px green dotted;
+}
+
+/* top section */
+.step4 {
+  margin-left: 10%;
+}
+.instructions {
+  display: flex;
+}
+.leftside {
+  margin-left: 20px;
+}
+.rightside {
+  margin-left: 30px;
+}
+
+/* middle section: display of the cards  */
+.cardcontainer {
+  margin-top: 10px;
+  /* remove when done */
+  border: 2px hotpink dotted;
+
+  width: 80vw;
+  height: 60%;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.addcardbtn {
+  display: inline-block;
+  width: 160px;
+  padding: 10px 12px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+.addcardbtn:hover {
+  border: 2px solid green;
+  background-color: transparent;
+  color: black;
+}
+
+.card {
+  width: 31%;
+  height: 23%;
+  font-size: 18px;
+  border: 3px #53a7ea solid;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px #777, 2px 2px #777, 3px 3px #777;
+  transform: translateX(-3px);
+}
+.card span {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* fixed bottom-nav */
+.bottom-nav {
+  display: block;
+  width: 80%;
+  height: 30px;
+  position: fixed;
+  bottom: 2%;
+  /* margin-bottom: 10px; */
+  margin-left: 10%;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  /* remove when done */
+  border: 1px solid pink;
+}
+
+.bottom-nav span {
+  color: yellow;
+}
+.bottom-nav a {
+  color: white;
+}
+.bottom-nav:hover a {
+  color: #f0f0f0;
 }

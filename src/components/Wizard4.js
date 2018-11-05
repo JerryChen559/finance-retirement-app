@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 import "./Wizard.css";
 
 class Wizard4 extends Component {
+  handleInput(key, val) {
+    this.setState({ [key]: val });
+  }
+
   render() {
     return (
       <div className="parent-div">

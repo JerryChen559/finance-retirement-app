@@ -48,14 +48,20 @@ class NestEgg extends Component {
     let efund = this.state.emergencyfund.map((e, i) => {
       return (
         <div key={i}>
-          {e} <button className="delButton">Delete</button>
+          {e}
+          <button className="delButton" onClick={this.delButton}>
+            Delete
+          </button>
         </div>
       );
     });
     let rfund = this.state.retirementfund.map((e, i) => {
       return (
         <div key={i}>
-          {e} <button className="delButton">Delete</button>
+          {e}
+          <button className="delButton" onClick={this.delButton}>
+            Delete
+          </button>
         </div>
       );
     });

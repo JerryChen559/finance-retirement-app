@@ -11,8 +11,8 @@ import Wizard3 from "./components/Wizard3";
 import Wizard4 from "./components/Wizard4";
 import IncomeStatement from "./components/IncomeStatement";
 import LearnMore from "./components/LearnMore";
-import LogIn from "./components/LogIn";
-import SignUp from "./components/SignUp";
+// import LogIn from "./components/LogIn";
+// import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 
 export default (
@@ -27,8 +27,8 @@ export default (
     <Route path="/wizardfour" component={Wizard4} />
     <Route path="/incomestatement" component={IncomeStatement} />
     <Route path="/learnmore" component={LearnMore} />
-    <Route path="/login" component={LogIn} />
-    <Route path="/signup" component={SignUp} />
+    {/* <Route path="/login" component={LogIn} /> */}
+    {/* <Route path="/signup" component={SignUp} /> */}
     <Route exact path="/" component={Home} />
     <Route
       path="*"

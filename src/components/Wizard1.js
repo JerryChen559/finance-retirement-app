@@ -1,11 +1,76 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 // import { updateBlah, ___, updateCost, updateDownPayment } from "../../redux/_blah_reducer";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Wizard.css";
 
 class Wizard1 extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      salary: "",
+      federaltax: "",
+      statetax: "",
+      sideincome: ""
+    };
+  }
+
+  componentDidMount() {
+    this.getIncomeStatement();
+  }
+
+  getIncomeStatement = () => {
+    console.log(this.props);
+    axios
+      .get(
+        `http://localhost:4000/api/incomestatement/${
+          this.props.match.params.id
+        }`
+      )
+      // should also work!
+      // .get(`http://localhost:4000/api/house/${this.props.location.state.id}`)
+      .then(response => {
+        console.log(response);
+        this.setState({
+          auth_id: response.data[0].id,
+          salary: response.data[0].salary,
+          federaltax: response.data[0].federaltax,
+          statetax: response.data[0].statetax,
+          sideincome: response.data[0].sideincome
+        });
+      });
+  };
+
+  handleSubmit() {
+    console.log(this.state.id);
+    axios
+      .put(`http://localhost:4000/api/incomestatement/${this.state.id}`, {
+        salary: this.state.salary,
+        federaltax: this.state.federaltax,
+        statetax: this.state.statetax,
+        sideincome: this.state.sideincome
+      })
+      .then(response => {
+        console.log(response);
+        this.setState({
+          salary: this.state.salary,
+          federaltax: this.state.federaltax,
+          statetax: this.state.statetax,
+          sideincome: this.state.sideincome
+          // redirect: !this.state.redirect
+        });
+      });
+  }
+
+  handleInput(key, val) {
+    this.setState({ [key]: val });
+  }
+
   render() {
+    console.log(this.state);
+
     return (
       <div className="parent-div">
         {/*A place for user to input salary, fed, state, FICA, secondary income */}
@@ -14,24 +79,30 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="salary"
-            // onChange={e => updateCost(e.target.value)}
+            value={this.state.salary}
+            onChange={e => this.handleInput("salary", e.target.value)}
           />
           <br />
           <p>
-            Todo: make this a dropdown. Federal Income Tax (10%, 15%, 25%, 28%,
-            33%, 35%, 39.6%)
+            {/* Todo: make this a dropdown.  */}
+            Federal Income Tax (10%, 15%, 25%, 28%, 33%, 35%, 39.6%)
           </p>
           <input
             type="number"
-            placeholder="amount - this will be a dropdown"
-            // onChange={e => updateDownPayment(e.target.value)}
+            placeholder="federal income tax (in %)"
+            value={this.state.federaltax}
+            onChange={e => this.handleInput("federaltax", e.target.value)}
           />
           <br />
-          <p>State Income Tax propsdotuser.statetax</p>
+          <p>
+            {/* Todo: make this a dropdown. tax rate autofills when a state is selected */}
+            State Income Tax
+          </p>
           <input
             type="number"
             placeholder="percentage as decimal {props.user.statetax}"
-            // onChange={e => updateDownPayment(e.target.value)}
+            value={this.state.statetax}
+            onChange={e => this.handleInput("statetax", e.target.value)}
           />
           <br />
           <p>
@@ -40,8 +111,6 @@ class Wizard1 extends Component {
           </p>
           <input
             // no edit = no onchange
-            // type="number"
-            // placeholder="7.65"
             value="7.65"
           />
           <br />
@@ -49,12 +118,18 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="side income"
-            // onChange={e => updateDownPayment(e.target.value)}
+            value={this.state.sideincome}
+            onChange={e => this.handleInput("sideincome", e.target.value)}
           />
           <div>
             <span>Form is 25% complete! </span>
             <Link to="/wizardtwo">
-              <button className="margin-btn"> Next </button>
+              <button
+                className="margin-btn"
+                onClick={() => this.handleSubmit()}
+              >
+                Next
+              </button>
             </Link>
           </div>
         </div>

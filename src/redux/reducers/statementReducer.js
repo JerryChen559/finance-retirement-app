@@ -1,76 +1,76 @@
-
+/*
 // dropdown to access this table after mvp
 let statetaxrate = [
-  
-{Alabama: 5},
-{Alaska : 0},
-{Arizona : 4.54},
-{Arkansas : 6.9},
-{California : 12.3}, 
-{Colorado : 4.63} ,
-{Connecticut : 6.99}, 
-{Delaware : 6.6},
-{Florida : 0},
-{Georgia : 6},
-{Hawaii : 11},
-{Idaho : 7.4},
-{Illinois: 4.95}, 
-{Indiana : 3.23},
-{Iowa : 8.98},
-{Kansas : 5.7}, 
-{Kentucky : 6}, 
-{Louisiana : 6}, 
-{Maine : 7.15},
-{Maryland : 5.75}, 
-{Massachusetts: 5.1},  
-{Michigan : 4.25}, 
-{Minnesota : 9.85},
-{Mississippi : 5},
-{Missouri : 5.9},
-{Montana: 6.9},
-{Nebraska : 6.84}, 
-{Nevada : 0},
-{NewHampshire: 0},
-{NewJersey : 8.97},
-{NewMexico : 4.9},
-{NewYork : 8.82},
-{NorthCarolina: 5.499},
-{NorthDakota : 2.9},
-{Ohio : 4.997},
-{Oklahoma : 5}, 
-{Oregon : 9.9},
-{Pennsylvania: 3.07},
-{RhodeIsland : 5.99},
-{SouthCarolina : 7},
-{SouthDakota : 0},
-{Tennessee : 0},
-{Texas : 0},
-{Utah : 5},
-{Vermont : 8.95}, 
-{Virginia : 5.75} ,
-{Washington : 0} ,
-{WestVirginia : 6.5} ,
-{Wisconsin : 7.65},
-{Wyoming: 0},
-{DistrictOfColumbia: 8.95}
-]
+  { Alabama: 5 },
+  { Alaska: 0 },
+  { Arizona: 4.54 },
+  { Arkansas: 6.9 },
+  { California: 12.3 },
+  { Colorado: 4.63 },
+  { Connecticut: 6.99 },
+  { Delaware: 6.6 },
+  { Florida: 0 },
+  { Georgia: 6 },
+  { Hawaii: 11 },
+  { Idaho: 7.4 },
+  { Illinois: 4.95 },
+  { Indiana: 3.23 },
+  { Iowa: 8.98 },
+  { Kansas: 5.7 },
+  { Kentucky: 6 },
+  { Louisiana: 6 },
+  { Maine: 7.15 },
+  { Maryland: 5.75 },
+  { Massachusetts: 5.1 },
+  { Michigan: 4.25 },
+  { Minnesota: 9.85 },
+  { Mississippi: 5 },
+  { Missouri: 5.9 },
+  { Montana: 6.9 },
+  { Nebraska: 6.84 },
+  { Nevada: 0 },
+  { NewHampshire: 0 },
+  { NewJersey: 8.97 },
+  { NewMexico: 4.9 },
+  { NewYork: 8.82 },
+  { NorthCarolina: 5.499 },
+  { NorthDakota: 2.9 },
+  { Ohio: 4.997 },
+  { Oklahoma: 5 },
+  { Oregon: 9.9 },
+  { Pennsylvania: 3.07 },
+  { RhodeIsland: 5.99 },
+  { SouthCarolina: 7 },
+  { SouthDakota: 0 },
+  { Tennessee: 0 },
+  { Texas: 0 },
+  { Utah: 5 },
+  { Vermont: 8.95 },
+  { Virginia: 5.75 },
+  { Washington: 0 },
+  { WestVirginia: 6.5 },
+  { Wisconsin: 7.65 },
+  { Wyoming: 0 },
+  { DistrictOfColumbia: 8.95 }
+];
+*/
 
 const initialState = {
   salary: 0,
   federaltax: 0,
   statetax: 0,
   sideincome: 0,
-  healthcare: 0,
   rent: 0,
   mortgage: 0,
   car: 0,
   gas: 0,
-  school: 0,
   water: 0,
+  healthcare: 0,
+  school: 0,
   food: 0,
+  restaurants: 0,
   clothes: 0,
   gym: 0,
-  restaurants: 0,
   entertainment: 0,
   travel: 0
 };
@@ -93,6 +93,7 @@ const UPDATE_RESTAURANTS = "UPDATE_RESTAURANTS";
 const UPDATE_ENTERTAINMENT = "UPDATE_ENTERTAINMENT";
 const UPDATE_TRAVEL = "UPDATE_TRAVEL";
 
+//TODO: look for the shorthand to save lines of code.
 function statementReducer(state = initialState, action) {
   console.log("REDUCER HIT: Action ->", action);
 
@@ -232,7 +233,7 @@ export function updateEmail(entertainment) {
     payload: entertainment
   };
 }
-export function updateEmail(travel) {
+export function updateTravel(travel) {
   return {
     type: UPDATE_TRAVEL,
     payload: travel

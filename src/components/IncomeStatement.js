@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+// import axios from "axios";
 import "./IncomeStatement.css";
 
+// import NavbarLogout from "./NavbarLogout";
 import Navbar from "./Navbar";
 import "./Navbar.css";
 import Sidenav from "./Sidenav";
@@ -12,7 +14,23 @@ class IncomeStatement extends Component {
     super(props);
 
     this.state = {
-      // pass to RetirementPlan thru tables
+      salary: 0,
+      federaltax: 0,
+      statetax: 0,
+      sideincome: 0,
+      rent: 0,
+      mortgage: 0,
+      car: 0,
+      gas: 0,
+      water: 0,
+      healthcare: 0,
+      school: 0,
+      food: 0,
+      restaurants: 0,
+      clothes: 0,
+      gym: 0,
+      entertainment: 0,
+      travel: 0,
       monthlyincome: 0,
       monthlyexpenses: 0,
       monthlynetincome: 0,
@@ -21,11 +39,15 @@ class IncomeStatement extends Component {
   }
 
   componentDidMount() {
+    // TODO: get user data after page mounts.
+    // after auto0, set up user object to be in redux and session
     // TODO: this.state.monthlyincome = (sum up income)
     // TODO: this.state.monthlyexpenses = (sum up expenses)
   }
 
   render() {
+    console.log(this.state);
+
     return (
       <div>
         <div className="navbar">
@@ -43,7 +65,7 @@ class IncomeStatement extends Component {
             <h3>
               Monthly Income Statement
               <span className="update">
-                <Link to="/wizardone">Update Info</Link>
+                <Link to="/wizardone/1">Update Info</Link>
               </span>
             </h3>
 
@@ -52,39 +74,24 @@ class IncomeStatement extends Component {
             <div className="spreadsheet">
               <div style={{ fontSize: 18, marginLeft: 100 }}>INCOME</div>
               <div>
-                Salary:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Salary:
+                <p>{this.state.salary}</p>
               </div>
               <div>
-                Federal Income Tax:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Federal Income Tax:
+                <p>{this.state.federaltax}</p>
               </div>
               <div>
-                State Income Tax:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                State Income Tax:
+                <p>{this.state.statetax}</p>
               </div>
               <div>
-                Federal Insurance Contributions Act (FICA):{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Federal Insurance Contributions Act (FICA):
+                <p>7.65</p>
               </div>
               <div>
-                Side Income / Secondary Income:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Side Income / Secondary Income:
+                <p>{this.state.sideincome}</p>
               </div>
               <div>
                 <strong>
@@ -96,95 +103,56 @@ class IncomeStatement extends Component {
               <div style={{ fontSize: 18, marginLeft: 100 }}>EXPENSES</div>
 
               <div>
-                Rent:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Rent:
+                <p>{this.state.rent}</p>
               </div>
               <div>
-                Mortgage / HOA / Home Insurance:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Mortgage / HOA / Home Insurance:
+                <p>{this.state.mortgage}</p>
               </div>
               <div>
-                Car Payment / Car Insurance:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Car Payment / Car Insurance:
+                <p>{this.state.car}</p>
               </div>
               <div>
-                Gasoline / Subway pass:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Gasoline / Subway pass:
+                <p>{this.state.gas}</p>
               </div>
               <div>
-                Water / Electricity / Heating / Internet / Cable:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Water / Electricity / Heating / Internet / Cable:
+                <p>{this.state.water}</p>
               </div>
               <div>
-                Healthcare:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Healthcare:
+                <p>{this.state.healthcare}</p>
               </div>
               <div>
-                School:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                School:
+                <p>{this.state.school}</p>
               </div>
               <div>
-                Food (groceries):{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Food (groceries):
+                <p>{this.state.food}</p>
               </div>
               <div>
-                Restaurants:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Restaurants:
+                <p>{this.state.restaurants}</p>
               </div>
               <div>
-                Entertainment:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Entertainment:
+                <p>{this.state.entertainment}</p>
               </div>
               <div>
-                Clothes:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Clothes:
+                <p>{this.state.clothes}</p>
               </div>
               <div>
-                Gym Membership:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Gym Membership:
+                <p>{this.state.gym}</p>
               </div>
               <div>
-                Travel:{" "}
-                <p>
-                  state
-                  {}
-                </p>
+                Travel:
+                <p>{this.state.travel}</p>
               </div>
               <div>
                 <strong>
