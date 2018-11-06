@@ -63,33 +63,35 @@ const updateIncomeStatement = (req, res) => {
   );
   const dbInstance = req.app.get("db");
 
-  dbInstance.update_incomestatement([
-    salary,
-    federaltax,
-    statetax,
-    sideincome,
-    rent,
-    mortgage,
-    car,
-    gas,
-    water,
-    healthcare,
-    school,
-    food,
-    restaurants,
-    clothes,
-    gym,
-    entertainment,
-    travel,
-    monthlyexpenses,
-    monthlyincome,
-    monthlynetincome
-  ]);
-  // .then(response => {
-  //   console.log(`"newArr:" ${response}`);
-  //   res.status(200).send(response);
-  // })
-  // .catch(e => res.status(500).send(e));
+  dbInstance
+    .update_incomestatement([
+      id,
+      salary,
+      federaltax,
+      statetax,
+      sideincome,
+      rent,
+      mortgage,
+      car,
+      gas,
+      water,
+      healthcare,
+      school,
+      food,
+      restaurants,
+      clothes,
+      gym,
+      entertainment,
+      travel,
+      monthlyexpenses,
+      monthlyincome,
+      monthlynetincome
+    ])
+    .then(response => {
+      console.log(`"newUserArr:" ${response}`);
+      res.status(200).send(response);
+    })
+    .catch(e => res.status(500).send(e));
 };
 
 module.exports = {

@@ -93,9 +93,22 @@ const UPDATE_RESTAURANTS = "UPDATE_RESTAURANTS";
 const UPDATE_ENTERTAINMENT = "UPDATE_ENTERTAINMENT";
 const UPDATE_TRAVEL = "UPDATE_TRAVEL";
 
-//TODO: look for the shorthand to save lines of code.
+// one input to update all
+// input after mvp
+// function statementReducer(state = {}, action) {
+//   console.log("STATEMENT REDUCER HIT: Action ->", action);
+
+//   if (action.type === "ON_CHANGE") {
+//     return {
+//       ...state,
+//       [action.field]: action.value
+//     };
+//   }
+//   return state;
+// }
+
 function statementReducer(state = initialState, action) {
-  console.log("REDUCER HIT: Action ->", action);
+  console.log("STATEMENT REDUCER HIT: Action ->", action);
 
   switch (action.type) {
     case UPDATE_SALARY:
@@ -136,15 +149,6 @@ function statementReducer(state = initialState, action) {
       return state;
   }
 }
-
-// one input to update all
-// need to update function
-// export function handleInput(key, value) {
-//   return {
-//     type: ,
-//     payload: value
-//   }
-// }
 
 export function updateSalary(salary) {
   return {

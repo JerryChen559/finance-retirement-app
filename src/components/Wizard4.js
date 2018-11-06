@@ -7,7 +7,7 @@ import {
   updateTravel
 } from "../redux/reducers/statementReducer";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import "./Wizard.css";
 
 class Wizard4 extends Component {
@@ -75,67 +75,73 @@ class Wizard4 extends Component {
   //   });
   // }
 
-  handleSubmit() {
-    console.log(this.props.profile);
-    axios.put(`/api/incomestatement/${this.props.profile.user.auth_id}`, {
-      salary: this.props.statement.salary,
-      federaltax: this.props.statement.federaltax,
-      statetax: this.props.statement.statetax,
-      sideincome: this.props.statement.sideincome,
-      rent: this.props.statement.rent,
-      mortgage: this.props.statement.mortgage,
-      car: this.props.statement.car,
-      gas: this.props.statement.gas,
-      water: this.props.statement.water,
-      healthcare: this.props.statement.healthcare,
-      school: this.props.statement.school,
-      food: this.props.statement.food,
-      restaurants: this.props.statement.restaurants,
-      clothes: this.props.statement.clothes,
-      gym: this.props.statement.gym,
-      entertainment: this.props.statement.entertainment,
-      travel: this.props.statement.travel,
-      monthlyexpenses:
-        this.props.statement.rent +
-        this.props.statement.mortgage +
-        this.props.statement.car +
-        this.props.statement.gas +
-        this.props.statement.water +
-        this.props.statement.healthcare +
-        this.props.statement.school +
-        this.props.statement.food +
-        this.props.statement.restaurants +
-        this.props.statement.clothes +
-        this.props.statement.gym +
-        this.props.statement.entertainment +
-        this.props.statement.travel,
-      monthlyincome:
-        this.props.statement.salary -
-        this.props.statement.salary * (this.props.statement.federaltax / 100) -
-        this.props.statement.salary * (this.props.statement.statetax / 100) +
-        this.props.statement.sideincome,
-      monthlynetincome:
-        this.props.statement.salary -
-        this.props.statement.salary * (this.props.statement.federaltax / 100) -
-        this.props.statement.salary * (this.props.statement.statetax / 100) +
-        this.props.statement.sideincome -
-        (this.props.statement.rent +
-          this.props.statement.mortgage +
-          this.props.statement.car +
-          this.props.statement.gas +
-          this.props.statement.water +
-          this.props.statement.healthcare +
-          this.props.statement.school +
-          this.props.statement.food +
-          this.props.statement.restaurants +
-          this.props.statement.clothes +
-          this.props.statement.gym +
-          this.props.statement.entertainment +
-          this.props.statement.travel)
-    });
-  }
+  // handleSubmit() {
+  //   console.log(this.props.profile);
+  //   axios.put(`/api/incomestatement/${this.props.profile.user.auth_id}`, {
+  //     salary: this.props.statement.salary,
+  //     federaltax: this.props.statement.federaltax,
+  //     statetax: this.props.statement.statetax,
+  //     sideincome: this.props.statement.sideincome,
+  //     rent: this.props.statement.rent,
+  //     mortgage: this.props.statement.mortgage,
+  //     car: this.props.statement.car,
+  //     gas: this.props.statement.gas,
+  //     water: this.props.statement.water,
+  //     healthcare: this.props.statement.healthcare,
+  //     school: this.props.statement.school,
+  //     food: this.props.statement.food,
+  //     restaurants: this.props.statement.restaurants,
+  //     clothes: this.props.statement.clothes,
+  //     gym: this.props.statement.gym,
+  //     entertainment: this.props.statement.entertainment,
+  //     travel: this.props.statement.travel,
+  //     monthlyexpenses: +(
+  //       this.props.statement.rent * 1 +
+  //       this.props.statement.mortgage * 1 +
+  //       this.props.statement.car * 1 +
+  //       this.props.statement.gas * 1 +
+  //       this.props.statement.water * 1 +
+  //       this.props.statement.healthcare * 1 +
+  //       this.props.statement.school * 1 +
+  //       this.props.statement.food * 1 +
+  //       this.props.statement.restaurants * 1 +
+  //       this.props.statement.clothes * 1 +
+  //       this.props.statement.gym * 1 +
+  //       this.props.statement.entertainment * 1 +
+  //       this.props.statement.travel * 1
+  //     ),
+  //     monthlyincome: +(
+  //       this.props.statement.salary * 1 -
+  //       this.props.statement.salary * (this.props.statement.federaltax / 100) -
+  //       this.props.statement.salary * (this.props.statement.statetax / 100) -
+  //       this.props.statement.salary * 0.0765 +
+  //       this.props.statement.sideincome * 1
+  //     ),
+  //     monthlynetincome: +(
+  //       this.props.statement.salary * 1 -
+  //       this.props.statement.salary * (this.props.statement.federaltax / 100) -
+  //       this.props.statement.salary * (this.props.statement.statetax / 100) +
+  //       this.props.statement.sideincome -
+  //       (this.props.statement.rent * 1 +
+  //         this.props.statement.mortgage * 1 +
+  //         this.props.statement.car * 1 +
+  //         this.props.statement.gas * 1 +
+  //         this.props.statement.water * 1 +
+  //         this.props.statement.healthcare * 1 +
+  //         this.props.statement.school * 1 +
+  //         this.props.statement.food * 1 +
+  //         this.props.statement.restaurants * 1 +
+  //         this.props.statement.clothes * 1 +
+  //         this.props.statement.gym * 1 +
+  //         this.props.statement.entertainment * 1 +
+  //         this.props.statement.travel * 1)
+  //     )
+  //   });
+  // }
 
   render() {
+    console.log(this.props);
+
     const {
       updateClothes,
       updateGym,
@@ -179,10 +185,9 @@ class Wizard4 extends Component {
             <Link to="/incomestatement">
               <button
                 className="margin-btn"
-                onClick={() => this.handleSubmit()}
+                // onClick={() => this.handleSubmit()}
               >
-                {" "}
-                Done{" "}
+                Done
               </button>
             </Link>
           </div>
@@ -192,16 +197,9 @@ class Wizard4 extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { clothes, gym, entertainment, travel } = state;
-
-  return {
-    clothes,
-    gym,
-    entertainment,
-    travel
-  };
-};
+// bringing in auth_id from profile
+// bringing in clothes, gym, entertainment, travel from statement
+const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
