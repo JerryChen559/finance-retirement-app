@@ -21,7 +21,7 @@ function profileReducer(state = initialState, action) {
     case `${GET_USER}_FULFILLED`:
       return {
         ...state,
-        user: action.payload,
+        user: action.payload.data,
         loggedIn: true
       };
     case `${GET_USER}_REJECTED`:

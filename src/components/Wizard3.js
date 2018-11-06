@@ -1,45 +1,57 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { updateBlah, ___, updateCost, updateDownPayment } from "../../redux/_blah_reducer";
+import { connect } from "react-redux";
+import {
+  updateHealthCare,
+  updateSchool,
+  updateFood,
+  updateRestaurants
+} from "../redux/reducers/statementReducer";
 import { Link } from "react-router-dom";
 import "./Wizard.css";
 
 class Wizard3 extends Component {
-  handleInput(key, val) {
-    this.setState({ [key]: val });
-  }
+  // handleInput(key, val) {
+  //   this.setState({ [key]: val });
+  // }
 
   render() {
+    const {
+      updateHealthCare,
+      updateSchool,
+      updateFood,
+      updateRestaurants
+    } = this.props;
+
     return (
       <div className="parent-div">
-        {/* clothes, gym, restaurant, entertainment, travel */}
+        {/* healthcare, school, food, restaurants */}
         <div className="vert-align">
           <p>Amounth per month you spend on healthcare.</p>
           <input
             type="number"
             placeholder="healthcare"
-            // onChange={e => updateCost(e.target.value)}
+            onChange={e => updateHealthCare(e.target.value)}
           />
           <br />
           <p>School Fees / Student Debt Payment </p>
           <input
             type="number"
             placeholder="school fees"
-            // onChange={e => updateCost(e.target.value)}
+            onChange={e => updateSchool(e.target.value)}
           />
           <br />
           <p>Monthly spending on groceries</p>
           <input
             type="number"
             placeholder="groceries"
-            // onChange={e => updateDownPayment(e.target.value)}
+            onChange={e => updateFood(e.target.value)}
           />
           <br />
           <p>Monthly amount spent on restaurants</p>
           <input
             type="number"
             placeholder="restaurants"
-            // onChange={e => updateDownPayment(e.target.value)}
+            onChange={e => updateRestaurants(e.target.value)}
           />
           <br />
           <div>
@@ -54,4 +66,18 @@ class Wizard3 extends Component {
   }
 }
 
-export default Wizard3;
+const mapStateToProps = state => {
+  const { healthcare, school, food, restaurants } = state;
+
+  return {
+    healthcare,
+    school,
+    food,
+    restaurants
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { updateHealthCare, updateSchool, updateFood, updateRestaurants }
+)(Wizard3);

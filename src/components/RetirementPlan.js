@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./RetirementPlan.css";
 
+import Navbar from "./Navbar";
+import "./Navbar.css";
 import Sidenav from "./Sidenav";
 import "./Sidenav.css";
 
@@ -50,6 +52,7 @@ class RetirementPlan extends Component {
 
     return (
       <div className="retire">
+        <Navbar />
         <Sidenav />
         <div className="retire-header">
           <h1>Welcome to Step 3:</h1>

@@ -20,7 +20,7 @@ function Home() {
         <span className="getstarted" onClick={() => redirect()}>
           Get Started
         </span>
-        <Link to="/incomestatement">link to app for now</Link>
+        <Link to="/incomestatement">link to bypass login for now</Link>
       </div>
       <div className="aboutdisplay">
         <h1>what the app is -blah blah blah </h1>

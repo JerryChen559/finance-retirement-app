@@ -1,26 +1,31 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { updateBlah, ___, updateCost, updateDownPayment } from "../../redux/_blah_reducer";
-import axios from "axios";
+import { connect } from "react-redux";
+import {
+  updateSalary,
+  updateFederalTax,
+  updateStateTax,
+  updateSideIncome
+} from "../redux/reducers/statementReducer";
 import { Link } from "react-router-dom";
 import "./Wizard.css";
 
 class Wizard1 extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      salary: "",
-      federaltax: "",
-      statetax: "",
-      sideincome: ""
-    };
-  }
+  // this.state = {
+  //   salary: "",
+  //   federaltax: "",
+  //   statetax: "",
+  //   sideincome: ""
+  // };
+  // }
 
-  componentDidMount() {
-    this.getIncomeStatement();
-  }
+  // componentDidMount() {
+  //   this.getIncomeStatement();
+  // }
 
+  /*
   getIncomeStatement = () => {
     console.log(this.props);
     axios
@@ -42,45 +47,52 @@ class Wizard1 extends Component {
         });
       });
   };
+  */
 
+  /*
   handleSubmit() {
-    console.log(this.state.id);
-    axios
-      .put(`http://localhost:4000/api/incomestatement/${this.state.id}`, {
-        salary: this.state.salary,
-        federaltax: this.state.federaltax,
-        statetax: this.state.statetax,
-        sideincome: this.state.sideincome
-      })
-      .then(response => {
-        console.log(response);
-        this.setState({
-          salary: this.state.salary,
-          federaltax: this.state.federaltax,
-          statetax: this.state.statetax,
-          sideincome: this.state.sideincome
-          // redirect: !this.state.redirect
-        });
-      });
-  }
+    console.log(this.props.profile.user.auth_id);
+    axios.put(`/api/incomestatement/${this.props.user.auth_id}`, {
+      salary: this.state.salary,
+      federaltax: this.state.federaltax,
+      statetax: this.state.statetax,
+      sideincome: this.state.sideincome
+    }); */
+  // .then(response => {
+  //   console.log(response);
+  //   this.setState({
+  //     salary: this.state.salary,
+  //     federaltax: this.state.federaltax,
+  //     statetax: this.state.statetax,
+  //     sideincome: this.state.sideincome
+  //     // redirect: !this.state.redirect
+  //   });
+  // });
+  // }
 
-  handleInput(key, val) {
-    this.setState({ [key]: val });
-  }
+  // handleInput(key, val) {
+  //   this.setState({ [key]: val });
+  // }
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
+    const {
+      updateSalary,
+      updateFederalTax,
+      updateStateTax,
+      updateSideIncome
+    } = this.props;
 
     return (
       <div className="parent-div">
-        {/*A place for user to input salary, fed, state, FICA, secondary income */}
+        {/* salary, fed, state, FICA, secondary income */}
         <div className="vert-align">
           <p>Monthly salary before taxes.</p>
           <input
             type="number"
             placeholder="salary"
-            value={this.state.salary}
-            onChange={e => this.handleInput("salary", e.target.value)}
+            // value={this.state.salary}
+            onChange={e => updateSalary(e.target.value)}
           />
           <br />
           <p>
@@ -90,8 +102,8 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="federal income tax (in %)"
-            value={this.state.federaltax}
-            onChange={e => this.handleInput("federaltax", e.target.value)}
+            // value={this.state.federaltax}
+            onChange={e => updateFederalTax(e.target.value)}
           />
           <br />
           <p>
@@ -101,8 +113,8 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="percentage as decimal {props.user.statetax}"
-            value={this.state.statetax}
-            onChange={e => this.handleInput("statetax", e.target.value)}
+            // value={this.state.statetax}
+            onChange={e => updateStateTax(e.target.value)}
           />
           <br />
           <p>
@@ -118,15 +130,15 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="side income"
-            value={this.state.sideincome}
-            onChange={e => this.handleInput("sideincome", e.target.value)}
+            // value={this.state.sideincome}
+            onChange={e => updateSideIncome(e.target.value)}
           />
           <div>
             <span>Form is 25% complete! </span>
             <Link to="/wizardtwo">
               <button
                 className="margin-btn"
-                onClick={() => this.handleSubmit()}
+                // onClick={() => this.handleSubmit()}
               >
                 Next
               </button>
@@ -138,4 +150,23 @@ class Wizard1 extends Component {
   }
 }
 
-export default Wizard1;
+const mapStateToProps = state => {
+  const { salary, federaltax, statetax, sideincome } = state;
+
+  return {
+    salary,
+    federaltax,
+    statetax,
+    sideincome
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    updateSalary,
+    updateFederalTax,
+    updateStateTax,
+    updateSideIncome
+  }
+)(Wizard1);

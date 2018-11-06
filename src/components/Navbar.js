@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { getUser } from "../redux/reducers/profileReducer";
 
 import "./Navbar.css";
-// import axios from "./axios";
 
 class Navbar extends Component {
   constructor(props) {
@@ -15,80 +14,32 @@ class Navbar extends Component {
       // user: {}
     };
   }
-  // test: req.user on the front end after logging in.
-  // axios.get('/api/getuser')
-  // server.get('/user', )
 
   componentDidMount() {
     this.props.getUser();
   }
 
-  // checkLogged = () => {
-  //   axios
-  //     .get("/login")
-  //     .then(response => {
-  //       console.log(response);
-  //       // if (response === auth_id) {
-  //       //   this.setState({ loggedIn: true });
-  //       // }
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
-  // mapStateToPropsconditionally render example
-  // {this.props.user.user.user_name ? (
-  //   <div>
-  //     <a href={REACT_APP_LOGOUT}>Logout</a>
-  //     <p>Welcome, {this.props.user.user.user_name}</p>
-  //   </div>
-  // ) : (
-  //   <div>
-  //     <a href={REACT_APP_LOGIN}>Login</a>
-  //   </div>
-
   render() {
-    // console.log(req.user);
     console.log(this.props);
 
     const redirect = () => {
       window.location.href = `${process.env.REACT_APP_SERVER}/login`;
     };
 
-    // use this to conditionally render navbar based on loggedin state. req.user
+    // use this to conditionally render navbar based on loggedin state
+    let appname = this.props.profile.loggedIn ? (
+      <Link to="/incomestatement">Application Name</Link>
+    ) : (
+      <Link to="/">Application Name</Link>
+    );
 
-    let navlook = this.props.loggedIn ? (
-      <div className="nav-wrapper">
-        <div className="navbar-name">
-          <Link to="/incomestatement">Application Name</Link>
-        </div>
-
-        <ul className="nav-items">
-          <li className="has-divider learnmore">
-            <Link to="/learnmore">
-              <div>Learn More </div>
-            </Link>
-          </li>
-          <li className="has-divider signup">
-            <div onClick={() => redirect()}>Log Out</div>
-          </li>
-        </ul>
+    let logtoggle = this.props.profile.loggedIn ? (
+      <div onClick={() => redirect()} style={{ color: "white" }}>
+        Log Out
       </div>
     ) : (
-      <div className="nav-wrapper">
-        <div className="navbar-name">
-          <Link to="/">Application Name</Link>
-        </div>
-
-        <ul className="nav-items">
-          <li className="has-divider learnmore">
-            <Link to="/learnmore">
-              <div>Learn More </div>
-            </Link>
-          </li>
-          <li className="has-divider signup">
-            <div onClick={() => redirect()}>Log In / Sign Up</div>
-          </li>
-        </ul>
+      <div onClick={() => redirect()} style={{ color: "white" }}>
+        Log In / Sign Up
       </div>
     );
 
@@ -97,9 +48,7 @@ class Navbar extends Component {
       // still need to make the nav bar background turn grey on scroll
 
       <div className="nav-wrapper">
-        {/* <div className="navbar-name">
-          <Link to="/">Application Name</Link>
-        </div>
+        <div className="navbar-name">{appname}</div>
 
         <ul className="nav-items">
           <li className="has-divider learnmore">
@@ -108,11 +57,8 @@ class Navbar extends Component {
             </Link>
           </li>
 
-          <li className="has-divider signup">
-            <div onClick={() => redirect()}>Log In / Sign Up</div>
-          </li>
-        </ul> */}
-        {navlook}
+          <li className="has-divider signup">{logtoggle}</li>
+        </ul>
       </div>
 
       // </div>

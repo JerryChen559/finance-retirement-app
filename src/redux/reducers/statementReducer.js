@@ -137,97 +137,106 @@ function statementReducer(state = initialState, action) {
   }
 }
 
-export function updateLoanType(salary) {
+// one input to update all
+// need to update function
+// export function handleInput(key, value) {
+//   return {
+//     type: ,
+//     payload: value
+//   }
+// }
+
+export function updateSalary(salary) {
   return {
     type: UPDATE_SALARY,
     payload: salary
   };
 }
-export function updatePropertyType(federaltax) {
+export function updateFederalTax(federaltax) {
   return {
     type: UPDATE_FEDERALTAX,
     payload: federaltax
   };
 }
-export function updateCity(statetax) {
+export function updateStateTax(statetax) {
   return {
     type: UPDATE_STATETAX,
     payload: statetax
   };
 }
-export function updateProp(sideincome) {
+export function updateSideIncome(sideincome) {
   return {
     type: UPDATE_SIDEINCOME,
     payload: sideincome
   };
 }
-export function updateFound(healthcare) {
-  return {
-    type: UPDATE_HEALTHCARE,
-    payload: healthcare
-  };
-}
-export function updateRealEstateAgent(rent) {
+export function updateRent(rent) {
   return {
     type: UPDATE_RENT,
     payload: rent
   };
 }
-export function updateCost(mortgage) {
+export function updateMortgage(mortgage) {
   return {
     type: UPDATE_MORTGAGE,
     payload: mortgage
   };
 }
-export function updateDownPayment(car) {
+export function updateCar(car) {
   return {
     type: UPDATE_CAR,
     payload: car
   };
 }
-export function updateCredit(gas) {
+export function updateGas(gas) {
   return {
     type: UPDATE_GAS,
     payload: gas
   };
 }
-export function updateHistory(school) {
-  return {
-    type: UPDATE_SCHOOL,
-    payload: school
-  };
-}
-export function updateAddLineOne(water) {
+export function updateWater(water) {
   return {
     type: UPDATE_WATER,
     payload: water
   };
 }
-export function updateAddLineTwo(food) {
+export function updateHealthCare(healthcare) {
+  return {
+    type: UPDATE_HEALTHCARE,
+    payload: healthcare
+  };
+}
+export function updateSchool(school) {
+  return {
+    type: UPDATE_SCHOOL,
+    payload: school
+  };
+}
+export function updateFood(food) {
   return {
     type: UPDATE_FOOD,
     payload: food
   };
 }
-export function updateAddLineThree(clothes) {
-  return {
-    type: UPDATE_CLOTHES,
-    payload: clothes
-  };
-}
-export function updateFirstName(gym) {
-  return {
-    type: UPDATE_GYM,
-    payload: gym
-  };
-}
-export function updateLastName(restaurants) {
+export function updateRestaurants(restaurants) {
   return {
     type: UPDATE_RESTAURANTS,
     payload: restaurants
   };
 }
-export function updateEmail(entertainment) {
+export function updateClothes(clothes) {
+  return {
+    type: UPDATE_CLOTHES,
+    payload: clothes
+  };
+}
+export function updateGym(gym) {
+  return {
+    type: UPDATE_GYM,
+    payload: gym
+  };
+}
+export function updateEntertainment(entertainment) {
   return {
     type: UPDATE_ENTERTAINMENT,
     payload: entertainment

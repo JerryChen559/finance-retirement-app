@@ -16,6 +16,8 @@ import sunflowerone from "../Assets/garden/sunflowerone.svg";
 import sunflowertwo from "../Assets/garden/sunflowertwo.svg";
 import sunflowerthree from "../Assets/garden/sunflowerthree.svg";
 
+import Navbar from "./Navbar";
+import "./Navbar.css";
 import Sidenav from "./Sidenav";
 import "./Sidenav.css";
 
@@ -98,6 +100,7 @@ class NestEgg extends Component {
 
     return (
       <div className="nestegg">
+        <Navbar />
         <Sidenav />
         <div className="nestegg-header">
           <h1>Step 2: Build a Nest Egg</h1>

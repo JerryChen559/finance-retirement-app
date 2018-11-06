@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 // import axios from "axios";
 import "./IncomeStatement.css";
 
-// import NavbarLogout from "./NavbarLogout";
 import Navbar from "./Navbar";
 import "./Navbar.css";
 import Sidenav from "./Sidenav";
@@ -159,16 +158,16 @@ class IncomeStatement extends Component {
                 <p>{this.state.restaurants}</p>
               </div>
               <div>
-                Entertainment:
-                <p>{this.state.entertainment}</p>
-              </div>
-              <div>
                 Clothes:
                 <p>{this.state.clothes}</p>
               </div>
               <div>
                 Gym Membership:
                 <p>{this.state.gym}</p>
+              </div>
+              <div>
+                Entertainment:
+                <p>{this.state.entertainment}</p>
               </div>
               <div>
                 Travel:
