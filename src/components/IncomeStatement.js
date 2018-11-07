@@ -9,6 +9,7 @@ import "./Navbar.css";
 import Sidenav from "./Sidenav";
 import "./Sidenav.css";
 
+//TODO update $ figures. toLocalString()
 class IncomeStatement extends Component {
   constructor(props) {
     super(props);
@@ -220,8 +221,10 @@ class IncomeStatement extends Component {
                 <strong>
                   Net Income:
                   <p>
-                    {this.state.monthlyincome ||
-                      this.props.profile.user.monthlyincome}
+                    {this.state.monthlyincome.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2
+                    }) || this.props.profile.user.monthlyincome}
                   </p>
                 </strong>
               </div>
@@ -301,21 +304,25 @@ class IncomeStatement extends Component {
               <div style={{ fontSize: 18, marginLeft: 100 }}>
                 MONTHLY NET:
                 <p>
-                  {this.state.monthlynetincome ||
-                    this.props.profile.user.monthlynetincome}
+                  {this.state.monthlynetincome.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                  }) || this.props.profile.user.monthlynetincome}
                 </p>
               </div>
             </div>
 
             <span>
               Summary: With all expenses paid, you are left with{" "}
-              {Math.ceil(
-                this.state.monthlynetincome / this.state.monthlyincome
-              ) ||
-                Math.ceil(
-                  this.props.profile.user.monthlynetincome /
-                    this.props.profile.user.monthlyincome
-                )}
+              {(
+                (this.state.monthlynetincome / this.state.monthlyincome) *
+                100
+              ).toFixed(2) ||
+                (
+                  (this.props.profile.user.monthlynetincome /
+                    this.props.profile.user.monthlyincome) *
+                  100
+                ).toFixed(2)}
               % of your net income.
             </span>
             <span>

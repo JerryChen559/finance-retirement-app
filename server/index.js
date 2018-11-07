@@ -29,10 +29,16 @@ const port = PORT || 3001;
 
 // const { getProfile } = require("./controllers/profileCtrl");
 const {
-  getIncomeStatement,
+  // getIncomeStatement,
   updateIncomeStatement
 } = require("./controllers/incomestatementCtrl");
-// const { functionname } = require('./controllers/nestEggCtrl')
+const {
+  getUserEDeposits,
+  getUserRDeposits,
+  addEmergencyDeposit,
+  addRetirementDeposit,
+  deleteDeposit
+} = require("./controllers/nestEggCtrl");
 // const { functionname } = require('./controllers/retirementPlanCtrl')
 // const { functionname } = require('./controllers/purchaseCardsCtrl')
 
@@ -78,7 +84,7 @@ authCtrl(app);
 // profile controls. login, logout
 // app.get("api/userprofile", getProfile);
 
-// get logged in user information
+// get logged in user information - auth controls
 const authenticated = (req, res, next) => {
   console.log("sp note", req.user, req.session, req.user);
   if (req.user) {
@@ -94,14 +100,15 @@ app.get("/api/userprofile", authenticated, (req, res, next) => {
 });
 
 // income statement controls
-app.get("/api/incomestatement/:id", getIncomeStatement);
+// app.get("/api/incomestatement/:id", getIncomeStatement);
 app.put("/api/incomestatement/:id", updateIncomeStatement);
 
 // nest egg controls
-// app.get("api/userdeposits", getUserDeposits);
-// app.post("api/addemergencydeposit", addEmergencyDeposit);
-// app.post("api/addretirementdeposit");
-// app.delete("api/");
+app.get("/api/useredeposits/:userid", getUserEDeposits);
+app.get("/api/userrdeposits/:userid", getUserRDeposits);
+app.post("/api/addemergencydeposit", addEmergencyDeposit);
+app.post("/api/addretirementdeposit", addRetirementDeposit);
+app.delete("/api/deletedeposit/:depositidbydate", deleteDeposit);
 
 // retirement plan controls
 // chartsJS will update retirement plan page

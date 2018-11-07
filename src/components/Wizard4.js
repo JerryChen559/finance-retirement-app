@@ -7,14 +7,9 @@ import {
   updateTravel
 } from "../redux/reducers/statementReducer";
 import { Link } from "react-router-dom";
-// import axios from "axios";
 import "./Wizard.css";
 
 class Wizard4 extends Component {
-  // handleInput(key, val) {
-  //   this.setState({ [key]: val });
-  // }
-
   // handleSubmit() {
   //   console.log(this.props.profile.user.auth_id);
   //   axios.put(`/api/incomestatement/${this.props.profile.user.auth_id}`, {
@@ -183,12 +178,7 @@ class Wizard4 extends Component {
           <div>
             <span>Form is 100% complete! </span>
             <Link to="/incomestatement">
-              <button
-                className="margin-btn"
-                // onClick={() => this.handleSubmit()}
-              >
-                Done
-              </button>
+              <button className="margin-btn">Done</button>
             </Link>
           </div>
         </div>
@@ -197,7 +187,6 @@ class Wizard4 extends Component {
   }
 }
 
-// bringing in auth_id from profile
 // bringing in clothes, gym, entertainment, travel from statement
 const mapStateToProps = state => state;
 

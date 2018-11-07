@@ -10,17 +10,6 @@ import { Link } from "react-router-dom";
 import "./Wizard.css";
 
 class Wizard1 extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  // this.state = {
-  //   salary: "",
-  //   federaltax: "",
-  //   statetax: "",
-  //   sideincome: ""
-  // };
-  // }
-
   // componentDidMount() {
   //   this.getIncomeStatement();
   // }
@@ -70,10 +59,6 @@ class Wizard1 extends Component {
   // });
   // }
 
-  // handleInput(key, val) {
-  //   this.setState({ [key]: val });
-  // }
-
   render() {
     console.log(this.props);
     const {
@@ -91,7 +76,6 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="salary"
-            // value={this.state.salary}
             onChange={e => updateSalary(e.target.value)}
           />
           <br />
@@ -102,7 +86,6 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="federal income tax (in %)"
-            // value={this.state.federaltax}
             onChange={e => updateFederalTax(e.target.value)}
           />
           <br />
@@ -113,7 +96,6 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="percentage as decimal {props.user.statetax}"
-            // value={this.state.statetax}
             onChange={e => updateStateTax(e.target.value)}
           />
           <br />
@@ -130,18 +112,12 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="side income"
-            // value={this.state.sideincome}
             onChange={e => updateSideIncome(e.target.value)}
           />
           <div>
             <span>Form is 25% complete! </span>
             <Link to="/wizardtwo">
-              <button
-                className="margin-btn"
-                // onClick={() => this.handleSubmit()}
-              >
-                Next
-              </button>
+              <button className="margin-btn">Next</button>
             </Link>
           </div>
         </div>

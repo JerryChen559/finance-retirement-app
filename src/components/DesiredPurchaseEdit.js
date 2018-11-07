@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import "./DesiredPurchaseEdit.css";
 
 class DesiredPurchaseEdit extends Component {
   constructor(props) {
@@ -16,17 +17,17 @@ class DesiredPurchaseEdit extends Component {
   }
 
   componentDidMount() {
-    this.getHouse();
+    this.getCard();
   }
 
-  getHouse = () => {
+  getCard = () => {
     console.log(this.props);
     axios
-      .get(
-        `${process.env.REACT_APP_SERVER}/api/card/${
-          this.props.match.params.purchasecardid
-        }`
-      )
+      .get
+      // `${process.env.REACT_APP_SERVER}/api/card/${
+      //   this.props.match.params.purchasecardid
+      // }`
+      ()
       // also works!
       // .get(`${process.env.REACT_APP_SERVER}/api/card/${this.props.location.state.purchasecardid}`)
       .then(response => {

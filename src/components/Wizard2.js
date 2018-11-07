@@ -11,22 +11,6 @@ import { Link } from "react-router-dom";
 import "./Wizard.css";
 
 class Wizard2 extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  // this.state = {
-  //   rent: "",
-  //   mortgage: "",
-  //   car: "",
-  //   gas: "",
-  //   water: ""
-  // };
-  // }
-
-  // handleInput(key, val) {
-  //   this.setState({ [key]: val });
-  // }
-
   render() {
     console.log(this.props);
     const {
