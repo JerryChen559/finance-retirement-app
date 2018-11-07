@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
+import moment from "moment";
 import "./Nestegg.css";
 
 import cherryblossom from "../Assets/garden/cherryblossom.svg";
@@ -23,6 +24,9 @@ import "./Navbar.css";
 import Sidenav from "./Sidenav";
 import "./Sidenav.css";
 
+//TODO: flowers are updating on input change.
+// stop it from updating on every key stroke.
+
 class NestEgg extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +37,7 @@ class NestEgg extends Component {
       emergencyfund: [],
       retirementfund: [],
       funds: [],
+      alldeposits: [],
       flowers: [
         cherryblossom,
         dogrose,
@@ -50,40 +55,26 @@ class NestEgg extends Component {
       ]
     };
 
-    this.drill = this.drill.bind(this);
+    // this.drill = this.drill.bind(this);
   }
 
   componentDidMount() {
-    this.getUserEDeposits();
-    // this.getUserRDeposits();
+    this.getUserDeposits();
   }
 
-  // TODO: get users list of deposits and display
-  getUserEDeposits() {
+  // get all deposits by user id
+  // set state so that it can be displayed across the page
+  getUserDeposits() {
     console.log("User", this.props.profile.user.user_id);
     axios
-      .get(`/api/useredeposits/${this.props.profile.user.user_id}`)
+      .get(`/api/userdeposits/${this.props.profile.user.user_id}`)
       .then(response => {
         console.log("response.data", response.data);
-        // this.setState({
-        //   emergencyfund: response.data
-        // });
+        this.setState({
+          alldeposits: response.data
+        });
       });
   }
-  // getUserRDeposits() {
-  //   console.log("User", this.props.profile.user.user_id);
-  //   axios
-  //     .get(`/api/useredeposits/${this.props.profile.user.user_id}`)
-  //     .then(response => {
-  //       console.log("response.data", response.data);
-  //       this.setState(
-  //         {
-  //           retirementfund: response.data
-  //         },
-  //         () => this.drill()
-  //       );
-  //     });
-  // }
 
   handleInput(key, val) {
     this.setState({ [key]: val });
@@ -99,27 +90,29 @@ class NestEgg extends Component {
       })
       .then(response => {
         console.log("efund", response);
-        // this.setState({
-        //   emergencyfund: response.data
-        // });
-        this.setState(
-          {
-            emergencyfund: response.data
-          },
-          () => this.drill()
-        );
-        console.log("drilled efund", response);
+        this.setState({
+          alldeposits: response.data,
+          depositemergency: ""
+        });
+        // this.setState(
+        //   {
+        //     alldeposits: response.data,
+        //     depositemergency: ""
+        //   },
+        //   () => this.drill()
+        // );
+        // console.log("drilled efund", response.data);
       });
   }
   // drilling through an array of objects
   // done on the front end for Emergency fund.
-  drill() {
-    let funds = this.state.emergencyfund.map((e, i) => {
-      return e.depositemergency !== typeof null ? e.depositemergency : null;
-    });
-    this.setState({ funds: funds });
-    console.log(this.state.funds);
-  }
+  // drill() {
+  //   let funds = this.state.emergencyfund.map((e, i) => {
+  //     return e.depositemergency !== typeof null ? e.depositemergency : null;
+  //   });
+  // this.setState({ funds: funds });
+  // console.log(this.state.funds);
+  // }
 
   // Add a deposit to the retirement fund.
   // Retirement fund drilling through an array of
@@ -131,98 +124,81 @@ class NestEgg extends Component {
         user_id: this.props.profile.user.user_id,
         depositretirement
       })
-      .then(
-        response => console.log(response)
-        // response =>
-        //   {
-        //   this.setState({
-        //     retirementfund: response.data
-        //   });
-        // }
-      );
+      .then(response => {
+        console.log(response);
+        this.setState({
+          alldeposits: response.data,
+          depositretirement: ""
+        });
+      });
   }
 
-  delButton(id) {
+  delButton(depositid) {
+    console.log(depositid);
     axios
-      .delete(`/api/deletedeposit/${id}`)
-      // .then(response => {
-      // this.setState({
-      //   emergencyfund: response.data,
-      //   retirementfund: response.data
-      // });
-      // })
+      .delete(
+        `/api/deletedeposit/${this.props.profile.user.user_id}/${depositid}`
+      )
+      .then(response => {
+        this.setState({
+          alldeposits: response.data
+        });
+      })
       .catch(error => console.log(error));
   }
 
   render() {
     console.log(this.state);
 
-    let efund =
-      this.state.emergencyfund.length &&
-      this.state.emergencyfund.map((e, i) => {
+    let efund = this.state.alldeposits
+      .filter(e => e.depositemergency !== null)
+      .map((e, i) => {
         console.log(e);
         return (
           <div key={i}>
-            {e.datecreated}
-            {/* moment().format('LL'); */}
-            {e.depositemergency}
+            {moment(e.datecreated).format("LL")}{" "}
+            <strong>{e.depositemergency}</strong>
             <button
               className="delButton"
-              onClick={() => this.delButton(e.datecreated)}
+              onClick={() => this.delButton(e.depositid)}
             >
               Delete
             </button>
           </div>
         );
       });
-    let rfund =
-      this.state.retirementfund.length > 0
-        ? this.state.retirementfund.map((e, i) => {
-            return (
-              <div key={i}>
-                {e.datecreated}
-                {e.depositretirement}
-                <button className="delButton" onClick={this.delButton}>
-                  Delete
-                </button>
-              </div>
-            );
-          })
-        : "";
+    let rfund = this.state.alldeposits
+      .filter(e => e.depositretirement !== null)
+      .map((e, i) => {
+        return (
+          <div key={i}>
+            {moment(e.datecreated).format("LL")}{" "}
+            <strong>{e.depositretirement}</strong>
+            <button
+              className="delButton"
+              onClick={() => this.delButton(e.depositid)}
+            >
+              Delete
+            </button>
+          </div>
+        );
+      });
 
     // TODO: Come back to this
     // flowers should equal number of deposits.
     // removing a deposit should remove a flower.
 
-    // TODO: (post mvp)
-    // Deposits need to be contained within their own containers
-
-    let eflowers =
-      this.state.emergencyfund.length &&
-      this.state.emergencyfund.map(() => {
-        return (
-          <img
-            // random number from 0 through 12
-            src={this.state.flowers[Math.floor(Math.random() * 13)]}
-            width="100px"
-            height="100px"
-            alt=""
-          />
-        );
-      });
-    let rflowers =
-      this.state.retirementfund.length &&
-      this.state.retirementfund.map(() => {
-        return (
-          <img
-            // random number from 0 through 12
-            src={this.state.flowers[Math.floor(Math.random() * 13)]}
-            width="100px"
-            height="100px"
-            alt=""
-          />
-        );
-      });
+    let garden = this.state.alldeposits.map(() => {
+      return (
+        <img
+          // random number from 0 through 12
+          src={this.state.flowers[Math.floor(Math.random() * 13)]}
+          width="100px"
+          height="100px"
+          alt=""
+        />
+      );
+    });
 
     return (
       <div className="nestegg">
@@ -244,6 +220,7 @@ class NestEgg extends Component {
                 <input
                   type="number"
                   placeholder="amount"
+                  value={this.state.depositemergency}
                   onChange={e =>
                     this.handleInput("depositemergency", e.target.value)
                   }
@@ -255,8 +232,7 @@ class NestEgg extends Component {
                   Add on click
                 </button>
               </span>
-              <h4>date(time stamp included with onclick)(post mvp) </h4>
-              <h4>deposit amount</h4>
+              <h4>deposit amounts</h4>
               {efund}
             </div>
 
@@ -266,6 +242,7 @@ class NestEgg extends Component {
                 <input
                   type="number"
                   placeholder="amount"
+                  value={this.state.depositretirement}
                   onChange={e =>
                     this.handleInput("depositretirement", e.target.value)
                   }
@@ -277,8 +254,7 @@ class NestEgg extends Component {
                   Add on click
                 </button>
               </span>
-              <h4>date(time stamp included with onclick)(post mvp)</h4>
-              <h4>deposit amount</h4>
+              <h4>deposit amounts</h4>
               {rfund}
             </div>
           </div>
@@ -286,10 +262,7 @@ class NestEgg extends Component {
             <p>
               <strong>Garden of Wealth</strong>
             </p>
-            <div className="garden">
-              {eflowers}
-              {rflowers}
-            </div>
+            <div className="garden">{garden}</div>
             <h3>
               Onto step 3. Plan your{" "}
               <Link to="/retirementplan"> retirement!</Link>.

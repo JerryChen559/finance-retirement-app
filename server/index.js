@@ -33,8 +33,9 @@ const {
   updateIncomeStatement
 } = require("./controllers/incomestatementCtrl");
 const {
-  getUserEDeposits,
-  getUserRDeposits,
+  getUserDeposits,
+  // getUserEDeposits,
+  // getUserRDeposits,
   addEmergencyDeposit,
   addRetirementDeposit,
   deleteDeposit
@@ -104,11 +105,10 @@ app.get("/api/userprofile", authenticated, (req, res, next) => {
 app.put("/api/incomestatement/:id", updateIncomeStatement);
 
 // nest egg controls
-app.get("/api/useredeposits/:userid", getUserEDeposits);
-app.get("/api/userrdeposits/:userid", getUserRDeposits);
+app.get("/api/userdeposits/:userid", getUserDeposits);
 app.post("/api/addemergencydeposit", addEmergencyDeposit);
 app.post("/api/addretirementdeposit", addRetirementDeposit);
-app.delete("/api/deletedeposit/:depositidbydate", deleteDeposit);
+app.delete("/api/deletedeposit/:userid/:depositid", deleteDeposit);
 
 // retirement plan controls
 // chartsJS will update retirement plan page

@@ -20,6 +20,7 @@
     "passport": "^0.4.0",
     "passport-auth0": "^1.1.0",
     "react": "^16.6.0",
+    "react-chartjs-2": "^2.7.4",
     "react-dnd": "^5.0.0",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",

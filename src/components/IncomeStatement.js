@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import axios from "axios";
 import "./IncomeStatement.css";
 
+// import DoughnutChart from './DoughnutChart'
+// import { Doughnut } from 'react-chartjs-2'
 import Navbar from "./Navbar";
-import "./Navbar.css";
 import Sidenav from "./Sidenav";
-import "./Sidenav.css";
 
 //TODO update $ figures. toLocalString()
 class IncomeStatement extends Component {
@@ -325,9 +325,9 @@ class IncomeStatement extends Component {
                 ).toFixed(2)}
               % of your net income.
             </span>
-            <span>
+            <h3>
               Next step: set up your <Link to="/nestegg"> nest egg. </Link>
-            </span>
+            </h3>
             <span>**add nodemailer**</span>
             <span>**Click here to send an email to yourself**</span>
             <button>Email Income Statement</button>

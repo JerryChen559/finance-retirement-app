@@ -1,26 +1,9 @@
-// GET emergency deposits
-const getUserEDeposits = (req, res) => {
-  // console.log("req.body");
+// GET all deposits by user id
+const getUserDeposits = (req, res) => {
   const db = req.app.get("db");
-
-  db.get_useremergencydeposits(req.params.id)
-    // .then(console.log("get request worked!"))
+  db.get_userdeposits(req.params.userid)
     .then(response => {
-      console.log("get e", response);
-      res.status(200).send(response);
-    })
-    .catch(err => res.status(500).send(err));
-};
-
-// GET retirement deposits
-const getUserRDeposits = (req, res) => {
-  // console.log("req.body");
-  const db = req.app.get("db");
-
-  db.get_userretirementdeposits(req.params.id)
-    // .then(console.log("get request worked!"))
-    .then(response => {
-      console.log("get r", response);
+      console.log("get all Deposits", response);
       res.status(200).send(response);
     })
     .catch(err => res.status(500).send(err));
@@ -47,35 +30,29 @@ const addRetirementDeposit = (req, res) => {
   db.add_retirementdeposit([user_id, depositretirement])
     .then(response => {
       console.log("add retirementdeposit:", response);
-      // response.map((e, i) => {
-      //   return e.depositretirement;
-      // });
-      // console.log("mapped depositretirement:", response);
       res.status(200).send(response);
     })
     .catch(e => res.status(500).send(e));
 };
 
-// DELETE an emergency or retirement deposit by id and type of deposit.
+// DELETE a deposit by depositid.
 // Return all emergency deposits.
 const deleteDeposit = (req, res) => {
-  const { datecreated } = req.params;
+  const { userid, depositid } = req.params;
   const db = req.app.get("db");
+  console.log("params", req.params);
 
-  db.delete_deposit(datecreated)
-    // .then(console.log(datecreated))
-    // .then(response => {
-    //   console.log(`"newArr:" ${response}`);
-    //   res.status(200).send(response);
-    // })
+  db.delete_deposit([userid, depositid])
+    .then(response => {
+      console.log("removed:", depositid);
+      console.log("newDeposits:", response);
+      res.status(200).send(response);
+    })
     .catch(e => res.status(500).send(e));
 };
 
-// DELETE an emergency deposit by id. Return all emergency deposits.
-
 module.exports = {
-  getUserEDeposits,
-  getUserRDeposits,
+  getUserDeposits,
   addEmergencyDeposit,
   addRetirementDeposit,
   deleteDeposit

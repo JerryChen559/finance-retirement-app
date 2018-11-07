@@ -1,5 +1,6 @@
 DELETE FROM nestegg
-WHERE datecreated = $1;
+WHERE depositid = $2;
 
--- SELECT *
--- FROM nestegg;
+SELECT *
+FROM nestegg
+WHERE user_id = $1;

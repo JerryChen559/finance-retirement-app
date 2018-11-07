@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./RetirementPlan.css";
 
+// import BarGraph from './Bargraph'
+// import LineGraph from './Linegraph'
+// import { Bar, Line } from 'react-chartjs-2'
 import Navbar from "./Navbar";
-import "./Navbar.css";
 import Sidenav from "./Sidenav";
-import "./Sidenav.css";
 
 class RetirementPlan extends Component {
   constructor(props) {
@@ -120,7 +121,7 @@ class RetirementPlan extends Component {
               chartsjs here.
               <span>goal vs savings bar chart</span>
               <span>x</span>
-              <span>x</span>
+              <span>{/* <BarGraph /> */}</span>
               <span>x</span>
               <span>x</span>
               <div className="range-field">
@@ -134,7 +135,7 @@ class RetirementPlan extends Component {
               <span>x</span>
               <span>x</span>
               <span>x</span>
-              <span>x</span>
+              <span>{/* <LineGraph /> */}</span>
               <span>x</span>
               <span>x</span>
               <span>slider that updates the numbers in real time</span>
