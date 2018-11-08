@@ -22,16 +22,10 @@ class DesiredPurchaseEdit extends Component {
     this.getCard();
   }
 
-  // get all cards by user id
-  // set state so that it can be displayed across the page
   getCard() {
     console.log(this.props);
     axios
-      .get
-      // `${process.env.REACT_APP_SERVER}/api/card/${
-      //   this.props.match.params.purchasecardid
-      // }`
-      ()
+      .get(`/api/card/${this.props.match.params.purchasecardid}`)
       // also works!
       // .get(`${process.env.REACT_APP_SERVER}/api/card/${this.props.location.state.purchasecardid}`)
       .then(response => {
@@ -48,14 +42,11 @@ class DesiredPurchaseEdit extends Component {
   handleSubmit() {
     console.log(this.state.id);
     axios
-      .put(
-        `${process.env.REACT_APP_SERVER}/api/card/${this.state.purchasecardid}`,
-        {
-          itemname: this.state.itemname,
-          price: this.state.price,
-          importance: this.state.importance
-        }
-      )
+      .put(`/api/card/${this.state.purchasecardid}`, {
+        itemname: this.state.itemname,
+        price: this.state.price,
+        importance: this.state.importance
+      })
       .then(response => {
         console.log(response);
         this.setState({
@@ -76,7 +67,8 @@ class DesiredPurchaseEdit extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log("editcard state:", this.state);
+    console.log("editcard props:", this.props);
 
     if (this.state.redirect) {
       return <Redirect to="/desiredpurchases" />;

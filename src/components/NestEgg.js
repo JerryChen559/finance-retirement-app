@@ -134,7 +134,7 @@ class NestEgg extends Component {
   }
 
   delButton(depositid) {
-    console.log(depositid);
+    // console.log(depositid);
     axios
       .delete(
         `/api/deletedeposit/${this.props.profile.user.user_id}/${depositid}`

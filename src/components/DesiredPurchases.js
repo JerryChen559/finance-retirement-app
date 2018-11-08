@@ -10,14 +10,7 @@ class DesiredPurchases extends Component {
     super(props);
 
     this.state = {
-      blah: "",
-      bla: "",
-      cards: [
-        { id: 1, itemname: "camera", price: 10, importance: 3 },
-        { id: 2, itemname: "book", price: 23, importance: 9 },
-        { id: 4, itemname: "laptop", price: 59, importance: 4 },
-        { itemname: "camera", price: 1965, importance: 10 }
-      ]
+      cards: []
     };
   }
 
@@ -25,45 +18,39 @@ class DesiredPurchases extends Component {
     this.getAllCards();
   }
 
+  // get all cards by user id
+  // set state so that it can be displayed across the page
   getAllCards() {
     axios
       .get(`/api/cards/${this.props.profile.user.user_id}`)
       .then(response => {
         console.log(response.data);
-        // this.setState({cards: response.data})
+        this.setState({ cards: response.data });
       });
   }
 
-  delButton() {
-    axios.delete("/api/cards").then(response => {
-      console.log(response.data);
-      // this.setState({cards: response.data})
-    });
+  // add an empty card
+  addCard() {
+    axios
+      .post(`/api/card/${this.props.profile.user.user_id}`)
+      .then(response => {
+        console.log(response.data);
+        this.setState({ cards: response.data });
+      });
   }
 
-  // PUT: updating the card.importance should rearrange the cards.
+  delButton(cardid) {
+    axios
+      .delete(`/api/card/${this.props.profile.user.user_id}/${cardid}`)
+      .then(response => {
+        console.log(response.data);
+        this.setState({ cards: response.data });
+      });
+  }
 
   render() {
     console.log("cardstate", this.state);
     console.log("cardprops", this.props);
-    // test. Remove after card components are made.
-    // let ccccards = this.state.cards.map((el, i) => (
-    //   <div className="card" key={i}>
-    //     <span onClick={this.updateButton}>
-    //       <span>item: {el.itemname}</span>
-    //       <span>price: {el.price}</span>
-    //       <span>
-    //         <strong style={{ float: "right" }}>#{el.importance}</strong>
-    //       </span>
-    //     </span>
-    //     <span>
-    //       <button className="updateButton">Update</button>
-    //       <button className="delButton" onClick={this.delButton}>
-    //         Delete
-    //       </button>
-    //     </span>
-    //   </div>
-    // ));
 
     // sort and display all cards in order of importance.
     // TODO: sort and map needs to be updated.
@@ -72,17 +59,25 @@ class DesiredPurchases extends Component {
     // orderedCards.sort((a, b) => a.importance - b.importance);
     let orderedCards = this.state.cards.map((card, i) => (
       <div className="card" key={i}>
-        {/* real  */}
-        <span onClick={() => this.updateButton()}>
+        <span>
           <span>item: {card.itemname}</span>
           <span>price: {card.price}</span>
           <span>
             <strong style={{ float: "right" }}>#{card.importance}</strong>
           </span>
         </span>
-        {/* {card.note} */}
         <span>
-          <button className="updateButton">Update</button>
+          <Link
+            to={{
+              pathname: `/desiredPurchase/${card.purchasecardid}`
+              // Only need to pass in a state with the item's id
+              // if I need it in the editing page.
+              // Should be available on this.props.match.params.purchasecardid
+              // state: { cardid: card.purchasecardid }
+            }}
+          >
+            <button className="updateButton">Update</button>
+          </Link>
           <button
             className="delButton"
             onClick={() => this.delButton(card.purchasecardid)}
@@ -95,7 +90,6 @@ class DesiredPurchases extends Component {
 
     return (
       <div className="desiredpurchases">
-        {/* <Sidenav /> */}
         <h2 className="step4">Step 4: Desired Purchanses</h2>
         <div className="instructions">
           <span className="rightside">
@@ -103,14 +97,12 @@ class DesiredPurchases extends Component {
             <p>Managing your expenses can lead to conscious spending.</p>
           </span>
           <span className="leftside">
-            <button className="addcardbtn">add new card</button>
+            <button className="addcardbtn" onClick={() => this.addCard()}>
+              add new card
+            </button>
           </span>
         </div>
-        <div className="cardcontainer">
-          {orderedCards}
-
-          {/* {ccccards} */}
-        </div>
+        <div className="cardcontainer">{orderedCards}</div>
         <h3>
           <Link to="/incomestatement">home</Link>.
         </h3>

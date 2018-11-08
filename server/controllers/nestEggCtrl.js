@@ -36,7 +36,7 @@ const addRetirementDeposit = (req, res) => {
 };
 
 // DELETE a deposit by depositid.
-// Return all emergency deposits.
+// Return all users deposits.
 const deleteDeposit = (req, res) => {
   const { userid, depositid } = req.params;
   const db = req.app.get("db");

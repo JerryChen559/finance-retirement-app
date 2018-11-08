@@ -119,11 +119,11 @@ app.delete("/api/deletedeposit/:userid/:depositid", deleteDeposit);
 // app.put("/api/retirementplan", )
 
 // cards for desired purchases page
-app.get("/api/cards:userid", getAllCards);
+app.get("/api/cards/:userid", getAllCards);
 app.get("/api/card/:id", getCard);
-app.post("/api/card", addCard);
+app.post("/api/card/:userid", addCard);
 app.put("/api/card/:id", updateCard);
-app.delete("/api/card/:id", deleteCard);
+app.delete("/api/card/:userid/:cardid", deleteCard);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

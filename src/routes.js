@@ -17,7 +17,7 @@ import Home from "./components/Home";
 
 export default (
   <Switch>
-    <Route path="/desiredpurchase/:id" component={DesiredPurchaseEdit} />
+    <Route path="/desiredPurchase/:cardid" component={DesiredPurchaseEdit} />
     <Route path="/desiredpurchases" component={DesiredPurchases} />
     <Route path="/retirementplan" component={RetirementPlan} />
     <Route path="/nestegg" component={NestEgg} />

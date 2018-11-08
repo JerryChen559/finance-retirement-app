@@ -65,7 +65,6 @@
   flex-direction: column;
 }
 .card:hover {
-  cursor: pointer;
   box-shadow: 1px 1px #777, 2px 2px #777, 3px 3px #777;
   transform: translateX(-3px);
 }

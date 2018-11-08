@@ -9,6 +9,7 @@ const getAllCards = (req, res) => {
     .catch(err => res.status(500).send(err));
 };
 
+// -------------TODO: GET one ------------------
 // GET one card
 const getCard = (req, res) => {
   const { id } = req.params;
@@ -26,41 +27,42 @@ const getCard = (req, res) => {
 
 // POST (add) a card
 const addCard = (req, res) => {
-  const { itemname, price, importance, note } = req.body;
   const db = req.app.get("db");
-
-  db.add_card([itemname, price, importance, note])
+  db.add_card(req.params.userid)
     .then(response => {
-      console.log("add:", response);
+      console.log("added blank card");
       res.status(200).send(response);
     })
     .catch(e => res.status(500).send(e));
 };
 
+// TODO: PUT ---------------------
 // PUT (update) a card by id
 const updateCard = (req, res) => {
-  const { id } = req.params;
-  const { itemname, price, importance, note } = req.body;
-  console.log(id, itemname, price, importance, note);
+  const { userid } = req.params;
+  const { itemname, price, importance } = req.body;
+  console.log(userid, itemname, price, importance);
   const db = req.app.get("db");
 
-  db.update_card([id, itemname, price, importance, note])
+  db.update_card([userid, itemname, price, importance])
     .then(response => {
-      console.log(`"newArr:" ${response}`);
+      console.log("newCards:", response);
       res.status(200).send(response);
     })
     .catch(e => res.status(500).send(e));
 };
 
-// DELETE a card by id
+// DELETE a card by cardid.
+// Return all emergency deposits.
 const deleteCard = (req, res) => {
-  const { id } = req.params;
+  const { userid, cardid } = req.params;
   const db = req.app.get("db");
+  console.log("params", req.params);
 
-  db.delete_card(id)
-    .then(console.log(id))
+  db.delete_card([userid, cardid])
     .then(response => {
-      // console.log(`"newArr:" ${response}`);
+      console.log("removed:", cardid);
+      console.log("newCards:", response);
       res.status(200).send(response);
     })
     .catch(e => res.status(500).send(e));
