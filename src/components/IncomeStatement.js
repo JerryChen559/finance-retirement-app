@@ -5,9 +5,76 @@ import axios from "axios";
 import "./IncomeStatement.css";
 
 // import DoughnutChart from './DoughnutChart'
-// import { Doughnut } from 'react-chartjs-2'
+import { Doughnut } from "react-chartjs-2";
 import Navbar from "./Navbar";
 import Sidenav from "./Sidenav";
+
+// class DoughnutChart extends Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {};
+//   }
+
+//   render() {
+//     return <div>...</div>;
+//   }
+// }
+
+// // data for Doughnut
+// const data = {
+//   labels: [
+//     "rent",
+//     "mortgage",
+//     "car",
+//     "gas",
+//     "water",
+//     "healthcare",
+//     "school",
+//     "food",
+//     "restaurants",
+//     "clothes",
+//     "gym",
+//     "entertainment",
+//     "travel"
+//   ],
+
+//   datasets: [
+//     {
+//       data: [200, 50, 100, 31, 15, 26, 76, 26, 15, 90, 61, 78, 62],
+//       backgroundColor: [
+//         "#00C590",
+//         "#65A8C4",
+//         "#AACEE2",
+//         "#8C65D3",
+//         "#81CBF8",
+//         "#CAB9F1",
+//         "#0052A5",
+//         "#413BF7",
+//         "#00ADCE",
+//         "#59DBF1",
+//         "#004159",
+//         "#73EBAE",
+//         "#B5F9D3"
+//       ],
+//       hoverBackgroundColor: [
+//         "#00C590",
+//         "#65A8C4",
+//         "#AACEE2",
+//         "#8C65D3",
+//         "#81CBF8",
+//         "#CAB9F1",
+//         "#0052A5",
+//         "#413BF7",
+//         "#00ADCE",
+//         "#59DBF1",
+//         "#004159",
+//         "#73EBAE",
+//         "#B5F9D3"
+//       ]
+//     }
+//   ]
+// };
 
 //TODO update $ figures. toLocalString()
 class IncomeStatement extends Component {
@@ -41,10 +108,6 @@ class IncomeStatement extends Component {
 
   componentDidMount() {
     this.handleSubmit();
-    // TODO: get user data after page mounts.
-    // after auto0, set up user object to be in redux and session
-    // TODO: this.state.monthlyincome = (sum up income)
-    // TODO: this.state.monthlyexpenses = (sum up expenses)
   }
 
   handleSubmit() {
@@ -149,24 +212,74 @@ class IncomeStatement extends Component {
     console.log("IS state", this.state);
     console.log("IS props", this.props);
 
-    /*
-    let myDoughnutChart = new Chart(ctx, {
-      type: "doughnut",
-      data: data,
-      options: options
-    });
-
-    data = {
-      datasets: [
-        {
-          data: [10, 20, 30]
-        }
+    // data for Doughnut
+    const data = {
+      labels: [
+        "rent",
+        "mortgage",
+        "car",
+        "gas",
+        "water",
+        "healthcare",
+        "school",
+        "food",
+        "restaurants",
+        "clothes",
+        "gym",
+        "entertainment",
+        "travel"
       ],
 
-      // These labels appear in the legend and in the tooltips when hovering different arcs
-      labels: ["Red", "Yellow", "Blue"]
+      datasets: [
+        {
+          data: [
+            this.state.rent || this.props.profile.user.rent,
+            this.state.mortgage || this.props.profile.user.mortgage,
+            this.state.car || this.props.profile.user.car,
+            this.state.gas || this.props.profile.user.gas,
+            this.state.water || this.props.profile.user.water,
+            this.state.healthcare || this.props.profile.user.healthcare,
+            this.state.school || this.props.profile.user.school,
+            this.state.food || this.props.profile.user.food,
+            this.state.restaurants || this.props.profile.user.restaurants,
+            this.state.clothes || this.props.profile.user.clothes,
+            this.state.gym || this.props.profile.user.gym,
+            this.state.entertainment || this.props.profile.user.entertainment,
+            this.state.travel || this.props.profile.user.travel
+          ],
+          backgroundColor: [
+            "#00C590",
+            "#65A8C4",
+            "#AACEE2",
+            "#8C65D3",
+            "#81CBF8",
+            "#CAB9F1",
+            "#0052A5",
+            "#413BF7",
+            "#00ADCE",
+            "#59DBF1",
+            "#004159",
+            "#73EBAE",
+            "#B5F9D3"
+          ],
+          hoverBackgroundColor: [
+            "#00C590",
+            "#65A8C4",
+            "#AACEE2",
+            "#8C65D3",
+            "#81CBF8",
+            "#CAB9F1",
+            "#0052A5",
+            "#413BF7",
+            "#00ADCE",
+            "#59DBF1",
+            "#004159",
+            "#73EBAE",
+            "#B5F9D3"
+          ]
+        }
+      ]
     };
-    */
 
     return (
       <div>
@@ -333,14 +446,10 @@ class IncomeStatement extends Component {
             <button>Email Income Statement</button>
           </div>
           <div className="graph-body">
-            <h1>charts js - donut chart of expenses </h1>
-            <div>{/* Breakdown of expenses */}</div>
-            <div>{/* doughnut */}</div>
-            <div>{/* myDoughnutChart */}</div>
-
-            {/* charts js 2 */}
-            {/* import {Doughnut} from 'react-chartjs-2'; */}
-            {/* <Doughnut data={...} /> */}
+            <div>
+              <h2>Breakdown of expenses</h2>
+              <Doughnut data={data} />
+            </div>
           </div>
         </div>
       </div>

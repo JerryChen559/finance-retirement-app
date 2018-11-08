@@ -8,6 +8,29 @@ import "./RetirementPlan.css";
 import Navbar from "./Navbar";
 import Sidenav from "./Sidenav";
 
+// class BarGraph extends Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {};
+//   }
+
+//   render() {
+//     return <div>...</div>;
+//   }
+// }
+// class LineGraph extends Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {};
+//   }
+
+//   render() {
+//     return <div>...</div>;
+//   }
+// }
+
 class RetirementPlan extends Component {
   constructor(props) {
     super(props);
