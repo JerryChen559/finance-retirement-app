@@ -120,9 +120,9 @@ app.delete("/api/deletedeposit/:userid/:depositid", deleteDeposit);
 
 // cards for desired purchases page
 app.get("/api/cards/:userid", getAllCards);
-app.get("/api/card/:id", getCard);
+app.get("/api/card/:cardid", getCard);
 app.post("/api/card/:userid", addCard);
-app.put("/api/card/:id", updateCard);
+app.put("/api/card/:cardid", updateCard);
 app.delete("/api/card/:userid/:cardid", deleteCard);
 
 app.listen(port, () => {

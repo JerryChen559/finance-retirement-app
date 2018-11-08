@@ -1,6 +1,7 @@
 // GET all cards
 const getAllCards = (req, res) => {
   const db = req.app.get("db");
+
   db.get_allcards(req.params.userid)
     .then(response => {
       console.log("get all Cards", response);
@@ -9,15 +10,13 @@ const getAllCards = (req, res) => {
     .catch(err => res.status(500).send(err));
 };
 
-// -------------TODO: GET one ------------------
 // GET one card
 const getCard = (req, res) => {
-  const { id } = req.params;
+  const { cardid } = req.params;
   const db = req.app.get("db");
 
-  db.get_card(id)
-    // .then(console.log(id))
-    // .then(console.log("get request worked!"))
+  db.get_card(cardid)
+    // .then(console.log(cardid))
     .then(response => {
       console.log(response);
       res.status(200).send(response);
@@ -31,22 +30,22 @@ const addCard = (req, res) => {
   db.add_card(req.params.userid)
     .then(response => {
       console.log("added blank card");
+      // let sortedResponse = response.sort((a, b) => a.importance - b.importance);
       res.status(200).send(response);
     })
     .catch(e => res.status(500).send(e));
 };
 
-// TODO: PUT ---------------------
 // PUT (update) a card by id
 const updateCard = (req, res) => {
-  const { userid } = req.params;
+  const { cardid } = req.params;
   const { itemname, price, importance } = req.body;
-  console.log(userid, itemname, price, importance);
+  console.log(cardid, itemname, price, importance);
   const db = req.app.get("db");
 
-  db.update_card([userid, itemname, price, importance])
+  db.update_card([cardid, itemname, price, importance])
     .then(response => {
-      console.log("newCards:", response);
+      console.log("newCard:", response);
       res.status(200).send(response);
     })
     .catch(e => res.status(500).send(e));

@@ -5,4 +5,5 @@ importance = $4
 WHERE purchasecardid = $1;
 
 SELECT *
-FROM purchasecards;
+FROM purchasecards
+WHERE purchasecardid = $1;

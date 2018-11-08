@@ -24,7 +24,7 @@ class DesiredPurchases extends Component {
     axios
       .get(`/api/cards/${this.props.profile.user.user_id}`)
       .then(response => {
-        console.log(response.data);
+        console.log("getAllCards:", response.data);
         this.setState({ cards: response.data });
       });
   }
@@ -57,6 +57,7 @@ class DesiredPurchases extends Component {
     // Post CRUD: get cards to render in order with .sort
     // let orderedCards = [...this.state.cards];
     // orderedCards.sort((a, b) => a.importance - b.importance);
+
     let orderedCards = this.state.cards.map((card, i) => (
       <div className="card" key={i}>
         <span>
@@ -73,7 +74,7 @@ class DesiredPurchases extends Component {
               // Only need to pass in a state with the item's id
               // if I need it in the editing page.
               // Should be available on this.props.match.params.purchasecardid
-              // state: { cardid: card.purchasecardid }
+              // state: { purchasecardid: card.purchasecardid }
             }}
           >
             <button className="updateButton">Update</button>
@@ -87,6 +88,7 @@ class DesiredPurchases extends Component {
         </span>
       </div>
     ));
+    // .sort((a, b) => a.importance - b.importance);
 
     return (
       <div className="desiredpurchases">
