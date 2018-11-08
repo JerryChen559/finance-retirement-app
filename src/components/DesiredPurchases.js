@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
-// import Sidenav from "./Sidenav";
-// import "./Sidenav.css";
+import { connect } from "react-redux";
+import axios from "axios";
 
 import "./DesiredPurchases.css";
 
@@ -14,60 +13,83 @@ class DesiredPurchases extends Component {
       blah: "",
       bla: "",
       cards: [
-        { id: 1, itemname: "camera", price: 10, importance: 3, note: "camera" },
-        { id: 2, itemname: "book", price: 23, importance: 9, note: "camera" },
-        { id: 3, itemname: "phone", price: 43, importance: 2, note: "camera" },
-        { id: 4, itemname: "laptop", price: 59, importance: 4, note: "camera" },
-        { itemname: "camera", price: 1965, importance: 10, note: "camera" },
-        { id: 1, itemname: "camera", price: 10, importance: 3, note: "camera" },
-        { id: 2, itemname: "book", price: 23, importance: 9, note: "camera" },
-        {
-          id: 3,
-          itemname: "pblahsafhsiuf",
-          price: 986,
-          importance: 2,
-          note: "camera"
-        },
-        { id: 4, itemname: "laptop", price: 59, importance: 4, note: "camera" },
-        { itemname: "camera", price: 1965, importance: 10, note: "camera" }
+        { id: 1, itemname: "camera", price: 10, importance: 3 },
+        { id: 2, itemname: "book", price: 23, importance: 9 },
+        { id: 4, itemname: "laptop", price: 59, importance: 4 },
+        { itemname: "camera", price: 1965, importance: 10 }
       ]
     };
+  }
+
+  componentDidMount() {
+    this.getAllCards();
+  }
+
+  getAllCards() {
+    axios
+      .get(`/api/cards/${this.props.profile.user.user_id}`)
+      .then(response => {
+        console.log(response.data);
+        // this.setState({cards: response.data})
+      });
+  }
+
+  delButton() {
+    axios.delete("/api/cards").then(response => {
+      console.log(response.data);
+      // this.setState({cards: response.data})
+    });
   }
 
   // PUT: updating the card.importance should rearrange the cards.
 
   render() {
+    console.log("cardstate", this.state);
+    console.log("cardprops", this.props);
     // test. Remove after card components are made.
-    let ccccards = this.state.cards.map((el, i) => (
+    // let ccccards = this.state.cards.map((el, i) => (
+    //   <div className="card" key={i}>
+    //     <span onClick={this.updateButton}>
+    //       <span>item: {el.itemname}</span>
+    //       <span>price: {el.price}</span>
+    //       <span>
+    //         <strong style={{ float: "right" }}>#{el.importance}</strong>
+    //       </span>
+    //     </span>
+    //     <span>
+    //       <button className="updateButton">Update</button>
+    //       <button className="delButton" onClick={this.delButton}>
+    //         Delete
+    //       </button>
+    //     </span>
+    //   </div>
+    // ));
+
+    // sort and display all cards in order of importance.
+    // TODO: sort and map needs to be updated.
+    // Post CRUD: get cards to render in order with .sort
+    // let orderedCards = [...this.state.cards];
+    // orderedCards.sort((a, b) => a.importance - b.importance);
+    let orderedCards = this.state.cards.map((card, i) => (
       <div className="card" key={i}>
-        <span onClick={this.updateButton}>
-          <span>item: {el.itemname}</span>
-          <span>price: {el.price}</span>
+        {/* real  */}
+        <span onClick={() => this.updateButton()}>
+          <span>item: {card.itemname}</span>
+          <span>price: {card.price}</span>
           <span>
-            <strong style={{ float: "right" }}>#{el.importance}</strong>
+            <strong style={{ float: "right" }}>#{card.importance}</strong>
           </span>
         </span>
+        {/* {card.note} */}
         <span>
           <button className="updateButton">Update</button>
-          <button className="delButton" onClick={this.delButton}>
+          <button
+            className="delButton"
+            onClick={() => this.delButton(card.purchasecardid)}
+          >
             Delete
           </button>
         </span>
-      </div>
-    ));
-
-    // sort and display all cards in order of importance.
-    let orderedCards = [...this.state.cards];
-    orderedCards.sort((a, b) => a.importance - b.importance);
-    orderedCards.map((card, i) => (
-      <div className="card" key={i}>
-        {/* real 
-        {card.itemname}
-        {card.price}
-        {card.importance}
-        {card.note}*/}
-        <button className="updateButton">Update</button>
-        <button className="delButton">Delete</button>
       </div>
     ));
 
@@ -85,9 +107,9 @@ class DesiredPurchases extends Component {
           </span>
         </div>
         <div className="cardcontainer">
-          {/* {orderedCards} */}
+          {orderedCards}
 
-          {ccccards}
+          {/* {ccccards} */}
         </div>
         <h3>
           <Link to="/incomestatement">home</Link>.
@@ -112,4 +134,6 @@ class DesiredPurchases extends Component {
   }
 }
 
-export default DesiredPurchases;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(DesiredPurchases);

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+// import { Link } from "react-router-dom";
+// import { connect } from "react-redux";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import "./DesiredPurchaseEdit.css";
@@ -20,7 +22,9 @@ class DesiredPurchaseEdit extends Component {
     this.getCard();
   }
 
-  getCard = () => {
+  // get all cards by user id
+  // set state so that it can be displayed across the page
+  getCard() {
     console.log(this.props);
     axios
       .get
@@ -39,7 +43,7 @@ class DesiredPurchaseEdit extends Component {
           importance: response.data[0].importance
         });
       });
-  };
+  }
 
   handleSubmit() {
     console.log(this.state.id);
@@ -112,5 +116,7 @@ class DesiredPurchaseEdit extends Component {
     );
   }
 }
+
+// const mapStateToProps = state => state;
 
 export default DesiredPurchaseEdit;

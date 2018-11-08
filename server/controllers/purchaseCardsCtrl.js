@@ -1,11 +1,9 @@
 // GET all cards
 const getAllCards = (req, res) => {
   const db = req.app.get("db");
-
-  db.get_allcards()
-    // .then(console.log("get request worked!"))
+  db.get_allcards(req.params.userid)
     .then(response => {
-      console.log(response);
+      console.log("get all Cards", response);
       res.status(200).send(response);
     })
     .catch(err => res.status(500).send(err));

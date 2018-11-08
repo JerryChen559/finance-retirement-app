@@ -4,77 +4,9 @@ import { connect } from "react-redux";
 import axios from "axios";
 import "./IncomeStatement.css";
 
-// import DoughnutChart from './DoughnutChart'
 import { Doughnut } from "react-chartjs-2";
 import Navbar from "./Navbar";
 import Sidenav from "./Sidenav";
-
-// class DoughnutChart extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {};
-//   }
-
-//   render() {
-//     return <div>...</div>;
-//   }
-// }
-
-// // data for Doughnut
-// const data = {
-//   labels: [
-//     "rent",
-//     "mortgage",
-//     "car",
-//     "gas",
-//     "water",
-//     "healthcare",
-//     "school",
-//     "food",
-//     "restaurants",
-//     "clothes",
-//     "gym",
-//     "entertainment",
-//     "travel"
-//   ],
-
-//   datasets: [
-//     {
-//       data: [200, 50, 100, 31, 15, 26, 76, 26, 15, 90, 61, 78, 62],
-//       backgroundColor: [
-//         "#00C590",
-//         "#65A8C4",
-//         "#AACEE2",
-//         "#8C65D3",
-//         "#81CBF8",
-//         "#CAB9F1",
-//         "#0052A5",
-//         "#413BF7",
-//         "#00ADCE",
-//         "#59DBF1",
-//         "#004159",
-//         "#73EBAE",
-//         "#B5F9D3"
-//       ],
-//       hoverBackgroundColor: [
-//         "#00C590",
-//         "#65A8C4",
-//         "#AACEE2",
-//         "#8C65D3",
-//         "#81CBF8",
-//         "#CAB9F1",
-//         "#0052A5",
-//         "#413BF7",
-//         "#00ADCE",
-//         "#59DBF1",
-//         "#004159",
-//         "#73EBAE",
-//         "#B5F9D3"
-//       ]
-//     }
-//   ]
-// };
 
 //TODO update $ figures. toLocalString()
 class IncomeStatement extends Component {
@@ -204,7 +136,6 @@ class IncomeStatement extends Component {
           monthlyincome: response.data[0].monthlyincome,
           monthlynetincome: response.data[0].monthlynetincome
         });
-        // return response.data;
       });
   }
 
@@ -302,12 +233,11 @@ class IncomeStatement extends Component {
               </span>
             </h3>
 
-            {/* this link should take user to the first wizard */}
-
             <div className="spreadsheet">
               <div style={{ fontSize: 18, marginLeft: 100 }}>INCOME</div>
               <div>
                 Salary:
+                {/* OR statement. Load this.props when landing. Load this.state after running through the wizards */}
                 <p>{this.state.salary || this.props.profile.user.salary}</p>
               </div>
               <div>

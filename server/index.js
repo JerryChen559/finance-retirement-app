@@ -34,14 +34,18 @@ const {
 } = require("./controllers/incomestatementCtrl");
 const {
   getUserDeposits,
-  // getUserEDeposits,
-  // getUserRDeposits,
   addEmergencyDeposit,
   addRetirementDeposit,
   deleteDeposit
 } = require("./controllers/nestEggCtrl");
 // const { functionname } = require('./controllers/retirementPlanCtrl')
-// const { functionname } = require('./controllers/purchaseCardsCtrl')
+const {
+  getAllCards,
+  getCard,
+  addCard,
+  updateCard,
+  deleteCard
+} = require("./controllers/purchaseCardsCtrl");
 
 const app = express();
 app.use(json());
@@ -114,12 +118,12 @@ app.delete("/api/deletedeposit/:userid/:depositid", deleteDeposit);
 // chartsJS will update retirement plan page
 // app.put("/api/retirementplan", )
 
-// purchase cards for desired purchases page
-// app.get("/api/cards", getAllCards);
-// app.get("/api/card/:id", getCard);
-// app.post("/api/card", addCard);
-// app.put("/api/card/:id", updateCard);
-// app.delete("/api/card/:id", deleteCard);
+// cards for desired purchases page
+app.get("/api/cards:userid", getAllCards);
+app.get("/api/card/:id", getCard);
+app.post("/api/card", addCard);
+app.put("/api/card/:id", updateCard);
+app.delete("/api/card/:id", deleteCard);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
