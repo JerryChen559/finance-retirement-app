@@ -29,7 +29,7 @@ const port = PORT || 3001;
 
 // const { getProfile } = require("./controllers/profileCtrl");
 const {
-  // getIncomeStatement,
+  getIncomeStatement,
   updateIncomeStatement
 } = require("./controllers/incomestatementCtrl");
 const {
@@ -86,10 +86,7 @@ authCtrl(app);
 //   res.status(200).json("Test Route Works!!!");
 // });
 
-// profile controls. login, logout
-// app.get("api/userprofile", getProfile);
-
-// get logged in user information - auth controls
+// get logged in user information, from auth controls, and authenticate.
 const authenticated = (req, res, next) => {
   console.log("sp note", req.user, req.session, req.user);
   if (req.user) {
@@ -105,7 +102,7 @@ app.get("/api/userprofile", authenticated, (req, res, next) => {
 });
 
 // income statement controls
-// app.get("/api/incomestatement/:id", getIncomeStatement);
+app.get("/api/incomestatement/:id", getIncomeStatement);
 app.put("/api/incomestatement/:id", updateIncomeStatement);
 
 // nest egg controls

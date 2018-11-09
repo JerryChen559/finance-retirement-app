@@ -22,8 +22,11 @@ class Navbar extends Component {
   render() {
     console.log(this.props);
 
-    const redirect = () => {
+    const redirectLogin = () => {
       window.location.href = `${process.env.REACT_APP_SERVER}/login`;
+    };
+    const redirectLogout = () => {
+      window.location.href = `${process.env.REACT_APP_SERVER}/logout`;
     };
 
     // use this to conditionally render navbar based on loggedin state
@@ -34,11 +37,11 @@ class Navbar extends Component {
     );
 
     let logtoggle = this.props.profile.loggedIn ? (
-      <div onClick={() => redirect()} style={{ color: "white" }}>
+      <div onClick={() => redirectLogout()} style={{ color: "white" }}>
         Log Out
       </div>
     ) : (
-      <div onClick={() => redirect()} style={{ color: "white" }}>
+      <div onClick={() => redirectLogin()} style={{ color: "white" }}>
         Log In / Sign Up
       </div>
     );

@@ -188,15 +188,17 @@ class NestEgg extends Component {
     // flowers should equal number of deposits.
     // removing a deposit should remove a flower.
 
-    let garden = this.state.alldeposits.map(() => {
+    let garden = this.state.alldeposits.map((e, i) => {
       return (
-        <img
-          // random number from 0 through 12
-          src={this.state.flowers[Math.floor(Math.random() * 13)]}
-          width="100px"
-          height="100px"
-          alt=""
-        />
+        <div key={i}>
+          <img
+            // random number from 0 through 12
+            src={this.state.flowers[Math.floor(Math.random() * 13)]}
+            width="100px"
+            height="100px"
+            alt=""
+          />
+        </div>
       );
     });
 

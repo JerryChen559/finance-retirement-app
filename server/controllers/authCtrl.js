@@ -58,6 +58,13 @@ module.exports = app => {
     res.status(200).json(req.user);
   });
 
+  const logout = (req, res) => {
+    req.session.destroy(() => {
+      res.redirect(REACT_APP_CLIENT);
+    });
+  };
+  app.get("/logout", logout);
+
   // app.get("/success", (req, res) => {
   //   console.log("requser", req.user);
   //   res.redirect(REACT_APP_CLIENT);
@@ -80,12 +87,4 @@ module.exports = app => {
   //       })
   //   .catch(err => res.status(500).send(err));
   // })
-
-  // app.get("/logout", logout);
-  // Logout user - nogoyet
-  // const logout = (req, res) => {
-  //   req.session.destroy(() => {
-  //     res.redirect("http://localhost:3000/");
-  //   });
-  // }
 };

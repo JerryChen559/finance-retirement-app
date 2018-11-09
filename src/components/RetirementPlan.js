@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import axios from "axios";
 import "./RetirementPlan.css";
 
 import { Bar, Line } from "react-chartjs-2";
@@ -17,18 +18,33 @@ class RetirementPlan extends Component {
       totalAssetsFiveYears: 12000,
       fire: 250000,
       monthcount: 0,
-      yearcount: 0,
+      yearcount: 0
+      /*
       monthlynetpercent: 13,
       // pass in using redux or tables: monthlyexpenses.
-      monthlyexpenses: 2250,
+      monthlyexpenses: "",
       // pass in using redux or tables: monthlyincome.
       monthlyincome: 2753,
       // pass in using redux or tables: monthlynetincome.
       monthlynetincome: 400
+      */
     };
   }
 
-  //componentDidMount(){}?
+  componentDidMount() {
+    // this.getIncomeStatement();
+  }
+  getIncomeStatement() {
+    axios
+      .get(`/api/incomestatement/${this.props.profile.user.auth_id}`)
+      .then(response => {
+        console.log("getuser", response.data);
+        this.setState({
+          //***...***fix this after I take care of login issue.
+        });
+      });
+  }
+
   // I might have to get this.props to store onto local state, so that I can work with the data.
   //componentDidUpdate(){}?
 
@@ -40,11 +56,16 @@ class RetirementPlan extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log("RP state:", this.state);
+    console.log("RP props:", this.props);
 
     // MATH for FIRE: (Monthly expenses * 12 months * ({yearsleft})) * (1.02**({yearsleft}))
     let yearsleft = 78 - this.state.age;
-    let fire = this.state.monthlyexpenses * 12 * yearsleft * 1.02 ** yearsleft;
+    let fire =
+      this.props.profile.user.monthlyexpenses *
+      12 *
+      yearsleft *
+      1.02 ** yearsleft;
 
     // monthly net percent
     // monthlynetpercent = monthlynetincome/monthlyincome
@@ -181,9 +202,12 @@ class RetirementPlan extends Component {
                   onChange={e => this.changeAge(e.target.value)}
                 />
               </h4>
-              <h4>Your number to be financially free is: ({fire})</h4>
+              <h4>
+                Your number to be financially free is: ({fire.toFixed(2)})
+              </h4>
               <h6>
-                *Math: ({this.state.monthlyexpenses} * 12 * ({yearsleft}
+                *Math: ({this.props.profile.user.monthlyexpenses} * 12 * (
+                {yearsleft}
                 )) * (1.02**(
                 {yearsleft}
                 ))

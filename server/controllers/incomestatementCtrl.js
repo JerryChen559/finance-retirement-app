@@ -5,10 +5,9 @@ const getIncomeStatement = (req, res) => {
 
   dbInstance
     .get_user(id)
-    // .then(console.log(id))
     // .then(console.log("get request worked!"))
     .then(response => {
-      console.log(response);
+      console.log("get user:", response);
       res.status(200).send(response);
     })
     .catch(err => res.status(500).send(err));

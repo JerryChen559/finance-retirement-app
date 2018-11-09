@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { getUser } from "../redux/reducers/profileReducer";
 import axios from "axios";
 import "./IncomeStatement.css";
 
@@ -38,121 +39,15 @@ class IncomeStatement extends Component {
     };
   }
 
-  componentDidMount() {
-    this.handleSubmit();
+  async componentDidMount() {
+    await this.props.getUser();
+    await this.getIncomeStatement();
   }
 
-  handleSubmit() {
-    console.log(this.props.profile);
+  getIncomeStatement() {
+    console.log(this.props);
     axios
-      .put(`/api/incomestatement/${this.props.profile.user.auth_id}`, {
-        salary: this.props.statement.salary,
-        federaltax: this.props.statement.federaltax,
-        statetax: this.props.statement.statetax,
-        sideincome: this.props.statement.sideincome,
-        rent: this.props.statement.rent,
-        mortgage: this.props.statement.mortgage,
-        car: this.props.statement.car,
-        gas: this.props.statement.gas,
-        water: this.props.statement.water,
-        healthcare: this.props.statement.healthcare,
-        school: this.props.statement.school,
-        food: this.props.statement.food,
-        restaurants: this.props.statement.restaurants,
-        clothes: this.props.statement.clothes,
-        gym: this.props.statement.gym,
-        entertainment: this.props.statement.entertainment,
-        travel: this.props.statement.travel,
-        monthlyexpenses:
-          // monthlyexpenses: all expenses added up
-          +(
-            this.props.statement.rent * 1 +
-            this.props.statement.mortgage * 1 +
-            this.props.statement.car * 1 +
-            this.props.statement.gas * 1 +
-            this.props.statement.water * 1 +
-            this.props.statement.healthcare * 1 +
-            this.props.statement.school * 1 +
-            this.props.statement.food * 1 +
-            this.props.statement.restaurants * 1 +
-            this.props.statement.clothes * 1 +
-            this.props.statement.gym * 1 +
-            this.props.statement.entertainment * 1 +
-            this.props.statement.travel * 1
-          ),
-        monthlyincome:
-          // monthlyincome: salary-governmentfees+sideincome
-          +(
-            this.props.statement.salary * 1 -
-            this.props.statement.salary *
-              (this.props.statement.federaltax / 100) -
-            this.props.statement.salary *
-              (this.props.statement.statetax / 100) -
-            this.props.statement.salary * 0.0765 +
-            this.props.statement.sideincome * 1
-          ),
-        monthlynetincome:
-          // monthlynetincome: monthlyincome - monthlyexpenses
-          +(
-            this.props.statement.salary * 1 -
-            this.props.statement.salary *
-              (this.props.statement.federaltax / 100) -
-            this.props.statement.salary *
-              (this.props.statement.statetax / 100) -
-            this.props.statement.salary * 0.0765 +
-            this.props.statement.sideincome * 1
-          ) -
-          +(
-            this.props.statement.rent * 1 +
-            this.props.statement.mortgage * 1 +
-            this.props.statement.car * 1 +
-            this.props.statement.gas * 1 +
-            this.props.statement.water * 1 +
-            this.props.statement.healthcare * 1 +
-            this.props.statement.school * 1 +
-            this.props.statement.food * 1 +
-            this.props.statement.restaurants * 1 +
-            this.props.statement.clothes * 1 +
-            this.props.statement.gym * 1 +
-            this.props.statement.entertainment * 1 +
-            this.props.statement.travel * 1
-          ),
-        monthlynetpercent:
-          //monthlynetpercent: monthlynetincome / monthlyincome
-          (+(
-            this.props.statement.salary * 1 -
-            this.props.statement.salary *
-              (this.props.statement.federaltax / 100) -
-            this.props.statement.salary *
-              (this.props.statement.statetax / 100) -
-            this.props.statement.salary * 0.0765 +
-            this.props.statement.sideincome * 1
-          ) -
-            +(
-              this.props.statement.rent * 1 +
-              this.props.statement.mortgage * 1 +
-              this.props.statement.car * 1 +
-              this.props.statement.gas * 1 +
-              this.props.statement.water * 1 +
-              this.props.statement.healthcare * 1 +
-              this.props.statement.school * 1 +
-              this.props.statement.food * 1 +
-              this.props.statement.restaurants * 1 +
-              this.props.statement.clothes * 1 +
-              this.props.statement.gym * 1 +
-              this.props.statement.entertainment * 1 +
-              this.props.statement.travel * 1
-            )) /
-          +(
-            this.props.statement.salary * 1 -
-            this.props.statement.salary *
-              (this.props.statement.federaltax / 100) -
-            this.props.statement.salary *
-              (this.props.statement.statetax / 100) -
-            this.props.statement.salary * 0.0765 +
-            this.props.statement.sideincome * 1
-          )
-      })
+      .get(`/api/incomestatement/${this.props.profile.user.auth_id}`)
       .then(response => {
         console.log(response.data);
         this.setState({
@@ -206,19 +101,19 @@ class IncomeStatement extends Component {
       datasets: [
         {
           data: [
-            this.state.rent || this.props.profile.user.rent,
-            this.state.mortgage || this.props.profile.user.mortgage,
-            this.state.car || this.props.profile.user.car,
-            this.state.gas || this.props.profile.user.gas,
-            this.state.water || this.props.profile.user.water,
-            this.state.healthcare || this.props.profile.user.healthcare,
-            this.state.school || this.props.profile.user.school,
-            this.state.food || this.props.profile.user.food,
-            this.state.restaurants || this.props.profile.user.restaurants,
-            this.state.clothes || this.props.profile.user.clothes,
-            this.state.gym || this.props.profile.user.gym,
-            this.state.entertainment || this.props.profile.user.entertainment,
-            this.state.travel || this.props.profile.user.travel
+            this.state.rent,
+            this.state.mortgage,
+            this.state.car,
+            this.state.gas,
+            this.state.water,
+            this.state.healthcare,
+            this.state.school,
+            this.state.food,
+            this.state.restaurants,
+            this.state.clothes,
+            this.state.gym,
+            this.state.entertainment,
+            this.state.travel
           ],
           backgroundColor: [
             "#00C590",
@@ -280,17 +175,15 @@ class IncomeStatement extends Component {
               <div>
                 Salary:
                 {/* OR statement. Load this.props when landing. Load this.state after running through the wizards */}
-                <p>{this.state.salary || this.props.profile.user.salary}</p>
+                <p>{this.state.salary}</p>
               </div>
               <div>
                 Federal Income Tax:
-                <p>
-                  {this.state.federaltax || this.props.profile.user.federaltax}
-                </p>
+                <p>{this.state.federaltax}</p>
               </div>
               <div>
                 State Income Tax:
-                <p>{this.state.statetax || this.props.profile.user.statetax}</p>
+                <p>{this.state.statetax}</p>
               </div>
               <div>
                 Federal Insurance Contributions Act (FICA):
@@ -298,19 +191,12 @@ class IncomeStatement extends Component {
               </div>
               <div>
                 Side Income / Secondary Income:
-                <p>
-                  {this.state.sideincome || this.props.profile.user.sideincome}
-                </p>
+                <p>{this.state.sideincome}</p>
               </div>
               <div>
                 <strong>
                   Net Income:
-                  <p>
-                    {this.state.monthlyincome.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2
-                    }) || this.props.profile.user.monthlyincome}
-                  </p>
+                  <p>{this.state.monthlyincome.toLocaleString()}</p>
                 </strong>
               </div>
               <br />
@@ -318,91 +204,72 @@ class IncomeStatement extends Component {
 
               <div>
                 Rent:
-                <p>{this.state.rent || this.props.profile.user.rent}</p>
+                <p>{this.state.rent}</p>
               </div>
               <div>
                 Mortgage / HOA / Home Insurance:
-                <p>{this.state.mortgage || this.props.profile.user.mortgage}</p>
+                <p>{this.state.mortgage}</p>
               </div>
               <div>
                 Car Payment / Car Insurance:
-                <p>{this.state.car || this.props.profile.user.car}</p>
+                <p>{this.state.car}</p>
               </div>
               <div>
                 Gasoline / Subway pass:
-                <p>{this.state.gas || this.props.profile.user.gas}</p>
+                <p>{this.state.gas}</p>
               </div>
               <div>
                 Water / Electricity / Heating / Internet / Cable:
-                <p>{this.state.water || this.props.profile.user.water}</p>
+                <p>{this.state.water}</p>
               </div>
               <div>
                 Healthcare:
-                <p>
-                  {this.state.healthcare || this.props.profile.user.healthcare}
-                </p>
+                <p>{this.state.healthcare}</p>
               </div>
               <div>
                 School:
-                <p>{this.state.school || this.props.profile.user.school}</p>
+                <p>{this.state.school}</p>
               </div>
               <div>
                 Food (groceries):
-                <p>{this.state.food || this.props.profile.user.food}</p>
+                <p>{this.state.food}</p>
               </div>
               <div>
                 Restaurants:
-                <p>
-                  {this.state.restaurants ||
-                    this.props.profile.user.restaurants}
-                </p>
+                <p>{this.state.restaurants}</p>
               </div>
               <div>
                 Clothes:
-                <p>{this.state.clothes || this.props.profile.user.clothes}</p>
+                <p>{this.state.clothes}</p>
               </div>
               <div>
                 Gym Membership:
-                <p>{this.state.gym || this.props.profile.user.gym}</p>
+                <p>{this.state.gym}</p>
               </div>
               <div>
                 Entertainment:
-                <p>
-                  {this.state.entertainment ||
-                    this.props.profile.user.entertainment}
-                </p>
+                <p>{this.state.entertainment}</p>
               </div>
               <div>
                 Travel:
-                <p>{this.state.travel || this.props.profile.user.travel}</p>
+                <p>{this.state.travel}</p>
               </div>
               <div>
                 <strong>
                   Total Expenses:
-                  <p>
-                    {this.state.monthlyexpenses ||
-                      this.props.profile.user.monthlyexpenses}
-                  </p>
+                  <p>{this.state.monthlyexpenses}</p>
                 </strong>
               </div>
               <br />
               <div style={{ fontSize: 18, marginLeft: 100 }}>
                 MONTHLY NET:
-                <p>
-                  {this.state.monthlynetincome.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  }) || this.props.profile.user.monthlynetincome}
-                </p>
+                <p>{this.state.monthlynetincome.toLocaleString()}</p>
               </div>
             </div>
 
             <span>
               Summary: With all expenses paid, you are left with{" "}
-              <strong>
-                {(this.state.monthlynetpercent * 100).toFixed(2) ||
-                  (this.props.profile.user.monthlynetpercent * 100).toFixed(2)}
-              </strong>
+              <strong>{(this.state.monthlynetpercent * 100).toFixed(2)}</strong>
               % of your net income.
             </span>
             <h3>
@@ -432,4 +299,7 @@ class IncomeStatement extends Component {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps)(IncomeStatement);
+export default connect(
+  mapStateToProps,
+  { getUser }
+)(IncomeStatement);
