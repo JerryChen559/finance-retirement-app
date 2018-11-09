@@ -21,10 +21,10 @@
 .retire-body {
   /* remove when done */
   border: red 1px solid;
-  /* width: 70%; */
-  height: 800px;
+  width: 76%;
+  height: 900px;
   float: right;
-  padding-top: 12vh;
+  padding-top: 11vh;
   padding-right: 20px;
   display: flex;
 }
@@ -65,14 +65,42 @@ input:hover {
   flex-direction: column;
 }
 
+/* // container for charts */
 .chartjs {
   /* remove when done */
   border: 1px lightskyblue dotted;
-  width: 30vw;
+  width: 36vw;
   height: 80%;
   float: right;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-start;
+}
+
+/* // bar chart */
+.bar-chart-container {
+  width: 94%;
+}
+
+/* // input field */
+.range-field {
+  min-height: 91px;
+  width: 85%;
+  border: 3px solid orange;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.range-field input {
+  margin-left: 0;
+  width: 75%;
+}
+.slider-num {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* // line graph */
+.line-graph-container {
+  width: 94%;
 }

@@ -37,7 +37,8 @@ const updateIncomeStatement = (req, res) => {
     travel,
     monthlyexpenses,
     monthlyincome,
-    monthlynetincome
+    monthlynetincome,
+    monthlynetpercent
   } = req.body;
   console.log(
     salary,
@@ -59,7 +60,8 @@ const updateIncomeStatement = (req, res) => {
     travel,
     monthlyexpenses,
     monthlyincome,
-    monthlynetincome
+    monthlynetincome,
+    monthlynetpercent
   );
   const dbInstance = req.app.get("db");
 
@@ -85,7 +87,8 @@ const updateIncomeStatement = (req, res) => {
       travel,
       monthlyexpenses,
       monthlyincome,
-      monthlynetincome
+      monthlynetincome,
+      monthlynetpercent
     ])
     .then(response => {
       console.log(`"newUserArr:" ${response}`);

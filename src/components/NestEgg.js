@@ -202,7 +202,9 @@ class NestEgg extends Component {
 
     return (
       <div className="nestegg">
-        <Navbar />
+        <div className="navbar">
+          <Navbar />
+        </div>
         <Sidenav />
         <div className="nestegg-header">
           <h1>Step 2: Build a Nest Egg</h1>
@@ -264,8 +266,8 @@ class NestEgg extends Component {
             </p>
             <div className="garden">{garden}</div>
             <h3>
-              Onto step 3. Plan your{" "}
-              <Link to="/retirementplan"> retirement!</Link>.
+              Onto step 3: Plan your{" "}
+              <Link to="/retirementplan"> retirement!</Link>
             </h3>
           </div>
         </div>

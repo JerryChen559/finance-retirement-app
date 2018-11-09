@@ -63,30 +63,36 @@ class IncomeStatement extends Component {
         gym: this.props.statement.gym,
         entertainment: this.props.statement.entertainment,
         travel: this.props.statement.travel,
-        monthlyexpenses: +(
-          this.props.statement.rent * 1 +
-          this.props.statement.mortgage * 1 +
-          this.props.statement.car * 1 +
-          this.props.statement.gas * 1 +
-          this.props.statement.water * 1 +
-          this.props.statement.healthcare * 1 +
-          this.props.statement.school * 1 +
-          this.props.statement.food * 1 +
-          this.props.statement.restaurants * 1 +
-          this.props.statement.clothes * 1 +
-          this.props.statement.gym * 1 +
-          this.props.statement.entertainment * 1 +
-          this.props.statement.travel * 1
-        ),
-        monthlyincome: +(
-          this.props.statement.salary * 1 -
-          this.props.statement.salary *
-            (this.props.statement.federaltax / 100) -
-          this.props.statement.salary * (this.props.statement.statetax / 100) -
-          this.props.statement.salary * 0.0765 +
-          this.props.statement.sideincome * 1
-        ),
+        monthlyexpenses:
+          // monthlyexpenses: all expenses added up
+          +(
+            this.props.statement.rent * 1 +
+            this.props.statement.mortgage * 1 +
+            this.props.statement.car * 1 +
+            this.props.statement.gas * 1 +
+            this.props.statement.water * 1 +
+            this.props.statement.healthcare * 1 +
+            this.props.statement.school * 1 +
+            this.props.statement.food * 1 +
+            this.props.statement.restaurants * 1 +
+            this.props.statement.clothes * 1 +
+            this.props.statement.gym * 1 +
+            this.props.statement.entertainment * 1 +
+            this.props.statement.travel * 1
+          ),
+        monthlyincome:
+          // monthlyincome: salary-governmentfees+sideincome
+          +(
+            this.props.statement.salary * 1 -
+            this.props.statement.salary *
+              (this.props.statement.federaltax / 100) -
+            this.props.statement.salary *
+              (this.props.statement.statetax / 100) -
+            this.props.statement.salary * 0.0765 +
+            this.props.statement.sideincome * 1
+          ),
         monthlynetincome:
+          // monthlynetincome: monthlyincome - monthlyexpenses
           +(
             this.props.statement.salary * 1 -
             this.props.statement.salary *
@@ -110,6 +116,41 @@ class IncomeStatement extends Component {
             this.props.statement.gym * 1 +
             this.props.statement.entertainment * 1 +
             this.props.statement.travel * 1
+          ),
+        monthlynetpercent:
+          //monthlynetpercent: monthlynetincome / monthlyincome
+          (+(
+            this.props.statement.salary * 1 -
+            this.props.statement.salary *
+              (this.props.statement.federaltax / 100) -
+            this.props.statement.salary *
+              (this.props.statement.statetax / 100) -
+            this.props.statement.salary * 0.0765 +
+            this.props.statement.sideincome * 1
+          ) -
+            +(
+              this.props.statement.rent * 1 +
+              this.props.statement.mortgage * 1 +
+              this.props.statement.car * 1 +
+              this.props.statement.gas * 1 +
+              this.props.statement.water * 1 +
+              this.props.statement.healthcare * 1 +
+              this.props.statement.school * 1 +
+              this.props.statement.food * 1 +
+              this.props.statement.restaurants * 1 +
+              this.props.statement.clothes * 1 +
+              this.props.statement.gym * 1 +
+              this.props.statement.entertainment * 1 +
+              this.props.statement.travel * 1
+            )) /
+          +(
+            this.props.statement.salary * 1 -
+            this.props.statement.salary *
+              (this.props.statement.federaltax / 100) -
+            this.props.statement.salary *
+              (this.props.statement.statetax / 100) -
+            this.props.statement.salary * 0.0765 +
+            this.props.statement.sideincome * 1
           )
       })
       .then(response => {
@@ -134,7 +175,8 @@ class IncomeStatement extends Component {
           travel: response.data[0].travel,
           monthlyexpenses: response.data[0].monthlyexpenses,
           monthlyincome: response.data[0].monthlyincome,
-          monthlynetincome: response.data[0].monthlynetincome
+          monthlynetincome: response.data[0].monthlynetincome,
+          monthlynetpercent: response.data[0].monthlynetpercent
         });
       });
   }
@@ -357,23 +399,24 @@ class IncomeStatement extends Component {
 
             <span>
               Summary: With all expenses paid, you are left with{" "}
-              {(
-                (this.state.monthlynetincome / this.state.monthlyincome) *
-                100
-              ).toFixed(2) ||
-                (
-                  (this.props.profile.user.monthlynetincome /
-                    this.props.profile.user.monthlyincome) *
-                  100
-                ).toFixed(2)}
+              <strong>
+                {(this.state.monthlynetpercent * 100).toFixed(2) ||
+                  (this.props.profile.user.monthlynetpercent * 100).toFixed(2)}
+              </strong>
               % of your net income.
             </span>
             <h3>
-              Next step: set up your <Link to="/nestegg"> nest egg. </Link>
+              Next step: Set up your{" "}
+              <Link to="/nestegg" style={{ color: "orange" }}>
+                {" "}
+                nest egg.{" "}
+              </Link>
             </h3>
             <span>**add nodemailer**</span>
-            <span>**Click here to send an email to yourself**</span>
-            <button>Email Income Statement</button>
+            <span>
+              **Click here to send an email to yourself**{" "}
+              <button>Email Income Statement</button>
+            </span>
           </div>
           <div className="graph-body">
             <div>

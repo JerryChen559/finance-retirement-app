@@ -18,7 +18,8 @@ entertainment = $17,
 travel = $18,
 monthlyexpenses = $19,
 monthlyincome = $20,
-monthlynetincome = $21
+monthlynetincome = $21,
+monthlynetpercent = $22
 WHERE auth_id = $1;
 
 SELECT *
