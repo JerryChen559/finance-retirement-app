@@ -15,10 +15,14 @@ class RetirementPlan extends Component {
     this.state = {
       age: "",
       asset: "",
-      totalAssetsFiveYears: 12000,
-      fire: 250000,
+      totalAssetsFiveYears: 0,
+      fire: 0,
       monthcount: 0,
-      yearcount: 0
+      yearcount: 0,
+      monthlyexpenses: 0,
+      monthlyincome: 0,
+      monthlynetincome: 0,
+      monthlynetpercent: 0
       /*
       monthlynetpercent: 13,
       // pass in using redux or tables: monthlyexpenses.
@@ -32,15 +36,19 @@ class RetirementPlan extends Component {
   }
 
   componentDidMount() {
-    // this.getIncomeStatement();
+    this.getIncomeStatement();
   }
   getIncomeStatement() {
+    console.log(this.props);
     axios
       .get(`/api/incomestatement/${this.props.profile.user.auth_id}`)
       .then(response => {
         console.log("getuser", response.data);
         this.setState({
-          //***...***fix this after I take care of login issue.
+          monthlyexpenses: response.data[0].monthlyexpenses,
+          monthlyincome: response.data[0].monthlyincome,
+          monthlynetincome: response.data[0].monthlynetincome,
+          monthlynetpercent: response.data[0].monthlynetpercent
         });
       });
   }
@@ -90,9 +98,8 @@ class RetirementPlan extends Component {
     // MATH for TOTAL ASSETS in 5 year plan:
     // totalAssets = assets + monthlynetincome * 60 months * (1.02^5)
     let totalAssetsFiveYears =
-      (this.state.assets +
-        this.props.monthlynetpercent * this.props.monthlyincome * 60) *
-      1.104;
+      this.state.monthlynetpercent * this.state.monthlyincome * 60 * 1.104 +
+      this.state.asset;
 
     // --- data for Bar Graph ---
     const data_bar = {
@@ -105,8 +112,8 @@ class RetirementPlan extends Component {
           borderWidth: 1,
           hoverBackgroundColor: "rgba(255,99,132,0.8)",
           hoverBorderColor: "rgba(255, 20, 147,1)",
-          data: [this.state.fire /*, this.state.seconddataset*/]
-          // data: [{fire}]
+          //data: [this.state.fire /*, this.state.seconddataset*/]
+          data: [fire]
         },
         {
           label: "Assets/Savings",
@@ -115,8 +122,7 @@ class RetirementPlan extends Component {
           borderWidth: 1,
           hoverBackgroundColor: "rgba(123, 104, 238,0.8)",
           hoverBorderColor: "rgba(0, 0, 205,1)",
-          data: [this.state.totalAssetsFiveYears]
-          // data: [{totalAssets}]
+          data: [totalAssetsFiveYears]
         }
       ]
     };
@@ -124,26 +130,26 @@ class RetirementPlan extends Component {
     // --- math for Line Graph ---
     // FV = PV * (1+r)^n
     // interest rate of 2%
-    let PV = this.state.assets;
+    let PV = this.state.asset;
     let FV1 =
-      (this.state.assets +
-        this.props.monthlynetpercent * this.props.monthlyincome * 12) *
+      (this.state.asset +
+        this.state.monthlynetpercent * this.state.monthlyincome * 12) *
       1.02;
     let FV2 =
-      (this.state.assets +
-        this.props.monthlynetpercent * this.props.monthlyincome * 24) *
+      (this.state.asset +
+        this.state.monthlynetpercent * this.state.monthlyincome * 24) *
       1.04;
     let FV3 =
-      (this.state.assets +
-        this.props.monthlynetpercent * this.props.monthlyincome * 36) *
+      (this.state.asset +
+        this.state.monthlynetpercent * this.state.monthlyincome * 36) *
       1.061;
     let FV4 =
-      (this.state.assets +
-        this.props.monthlynetpercent * this.props.monthlyincome * 48) *
+      (this.state.asset +
+        this.state.monthlynetpercent * this.state.monthlyincome * 48) *
       1.082;
     let FV5 =
-      (this.state.assets +
-        this.props.monthlynetpercent * this.props.monthlyincome * 60) *
+      (this.state.asset +
+        this.state.monthlynetpercent * this.state.monthlyincome * 60) *
       1.104;
 
     // -- data for Line Graph --
@@ -169,8 +175,7 @@ class RetirementPlan extends Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: [45, 80, 170, 330, 580, 950]
-          // data: [{PV}, {FV1}, {FV2}, {FV3}, {FV4}, {FV5}]
+          data: [PV, FV1, FV2, FV3, FV4, FV5]
         }
       ]
     };
@@ -202,15 +207,9 @@ class RetirementPlan extends Component {
                   onChange={e => this.changeAge(e.target.value)}
                 />
               </h4>
-              <h4>
-                Your number to be financially free is: ({fire.toFixed(2)})
-              </h4>
+              <h4>Your number to be financially free is: ({fire})</h4>
               <h6>
-                *Math: ({this.props.profile.user.monthlyexpenses} * 12 * (
-                {yearsleft}
-                )) * (1.02**(
-                {yearsleft}
-                ))
+                *Math: (monthly expenses * 12 * (78 - age)) * (1.02**(78 - age))
               </h6>
 
               {/* <h4>years left = 78 - current age</h4>
@@ -230,24 +229,23 @@ class RetirementPlan extends Component {
                 />
               </h4>
 
-              {/* <h4>current cash amount in banks </h4>
-              <h4>current amount in invested </h4>
-              <h4>valuation of current home</h4> */}
               <h4>
-                Your current savings percent: (
-                {this.props.profile.user.monthlynetpercent}){" "}
+                Your current savings percent: ({this.state.monthlynetpercent}){" "}
               </h4>
+              {/* Remove Months of work left. People don't care about this. */}
+              {/* 
               <h4>
                 Number of working MONTHS until you are financially free: (
-                {monthcount}){" "}
+                {monthcount})
               </h4>
+              */}
               <h4>
                 Number of working YEARS until you are financially free: (
-                {yearcount}){" "}
+                {yearcount})
               </h4>
               <h6>
-                *Math: ({fire} - {this.state.asset}) / (
-                {this.state.monthlynetpercent} * {this.state.monthlyincome}){" "}
+                *Math: Square root (Log((fire - asset) / (monthly net income)) /
+                Log(1.02))
               </h6>
             </div>
           </div>
@@ -277,10 +275,14 @@ class RetirementPlan extends Component {
                   <input
                     type="range"
                     name="slider"
-                    min="2"
-                    max="7"
-                    // need to make slider link up with monthlynetpercent
-                    // value={this.state.monthlynetpercent}
+                    min="20"
+                    max="70"
+                    defaultValue="20"
+                    onChange={e =>
+                      this.setState({
+                        monthlynetincome: e.target.value
+                      })
+                    }
                   />
                 </span>
                 <span className="slider-num">

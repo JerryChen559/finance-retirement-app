@@ -105,6 +105,10 @@ app.get("/api/userprofile", authenticated, (req, res, next) => {
 app.get("/api/incomestatement/:id", getIncomeStatement);
 app.put("/api/incomestatement/:id", updateIncomeStatement);
 
+// nodemailer // TODO: add 5 html css to look of the email
+app.post("/api/email", sendIncomeStatement);
+app.post("/api/email", sendRetirementPlan);
+
 // nest egg controls
 app.get("/api/userdeposits/:userid", getUserDeposits);
 app.post("/api/addemergencydeposit", addEmergencyDeposit);

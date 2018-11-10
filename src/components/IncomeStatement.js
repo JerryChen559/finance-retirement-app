@@ -174,7 +174,6 @@ class IncomeStatement extends Component {
               <div style={{ fontSize: 18, marginLeft: 100 }}>INCOME</div>
               <div>
                 Salary:
-                {/* OR statement. Load this.props when landing. Load this.state after running through the wizards */}
                 <p>{this.state.salary}</p>
               </div>
               <div>
