@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import "./LearnMore.css";
 
 class LearnMore extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class LearnMore extends Component {
     console.log(this.props);
 
     return (
-      <div>
+      <div className="LearnMore-body">
         <h1>More to Learn</h1>
         <h1>Work on this page if I have extra time.</h1>
         <h3>Learn More Page. Add Links for user to visit.</h3>

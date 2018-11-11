@@ -14,13 +14,14 @@ function Home() {
         <Navbar />
       </div>
       <div className="homedisplay">
-        <h1>Welcome to the 'AppName' Finance App</h1>
+        <h1>Welcome to the Ridley Finance App</h1>
         <h2>Let us help you retire early.</h2>
         <span className="getstarted" onClick={() => redirect()}>
           Get Started
         </span>
         <Link to="/incomestatement">link to bypass login for now</Link>
       </div>
+      <div className="aboutimage" />
       <div className="aboutdisplay">
         <h1>what the app is -blah blah blah </h1>
         <p>

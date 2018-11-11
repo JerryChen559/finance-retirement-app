@@ -1,0 +1,12 @@
+.LearnMore-body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  /* background-image: url(../Assets/erin-simmons-382348-unsplash.jpg); */
+  background-image: url(../Assets/randall-ruiz-272502-unsplash.jpg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center;
+  background-size: cover;
+}

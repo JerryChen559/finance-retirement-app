@@ -3,6 +3,10 @@
   width: 100vw;
   height: 260vh;
   background-image: linear-gradient(70deg, #5433ff, #20bdff);
+  /* background-image: url(../Assets/erin-simmons-382348-unsplash.jpg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center;
+  background-size: cover; */
 }
 
 /* header - title of the page */
@@ -65,27 +69,35 @@ input:hover {
   flex-direction: column;
 }
 
-/* // container for charts */
-.chartjs {
+.retire-right {
   /* remove when done */
-  border: 1px lightskyblue dotted;
+  border: pink 1px solid;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* // container for charts */
+/* .chartjs { */
+/* remove when done */
+/* border: 1px lightskyblue dotted;
   width: 36vw;
   height: 80%;
   float: right;
   display: flex;
   flex-direction: column;
-}
+} */
 
 /* // bar chart */
-.bar-chart-container {
+/* .bar-chart-container {
   width: 94%;
-}
+} */
 
 /* // input field */
 .range-field {
   min-height: 91px;
   width: 85%;
-  border: 3px solid orange;
+  border: 5px solid orange;
   border-radius: 10px;
   text-align: center;
   display: flex;
@@ -101,6 +113,14 @@ input:hover {
 }
 
 /* // line graph */
-.line-graph-container {
+/* .line-graph-container {
   width: 94%;
+} */
+
+/* link to next page */
+.step4 {
+  margin-top: 45px;
+  /* position: relative;
+  bottom: 0;
+  border: 1px greenyellow solid; */
 }

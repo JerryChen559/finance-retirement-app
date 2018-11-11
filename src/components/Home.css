@@ -49,7 +49,14 @@
 .aboutdisplay {
   width: 100%;
   height: 510px;
-  background-color: #f0f0f0;
+  color: orange;
+  font-weight: 600;
+  text-shadow: 0 0 1em #363f41, 0 0 1em #363f41, 0 0 1em #363f41;
+  background-image: url(../Assets/OliveRidleyHatch.jpg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
 }
 
 .aboutdisplay h1 {
@@ -57,5 +64,10 @@
 }
 
 .aboutdisplay a {
-  color: #f37335;
+  color: #f9ff00;
 }
+
+/* image for the about section */
+/* .aboutimage {
+  background-image: url(../Assets/OliveRidleyHatch.jpg);
+} */

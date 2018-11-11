@@ -31,9 +31,9 @@ class Navbar extends Component {
 
     // use this to conditionally render navbar based on loggedin state
     let appname = this.props.profile.loggedIn ? (
-      <Link to="/incomestatement">Application Name</Link>
+      <Link to="/incomestatement">Ridley</Link>
     ) : (
-      <Link to="/">Application Name</Link>
+      <Link to="/">Ridley</Link>
     );
 
     let logtoggle = this.props.profile.loggedIn ? (

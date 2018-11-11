@@ -63,9 +63,15 @@ class RetirementPlan extends Component {
     let yearsleft = 78 - this.state.age;
     let fire =
       (1 - this.state.monthlynetpercent) *
-      this.state.monthlyincome *
-      12 *
-      yearsleft;
+        this.state.monthlyincome *
+        12 *
+        yearsleft >
+      0
+        ? (1 - this.state.monthlynetpercent) *
+          this.state.monthlyincome *
+          12 *
+          yearsleft
+        : 0;
     //  *1.02 ** yearsleft;
 
     // monthly net percent
@@ -105,15 +111,19 @@ class RetirementPlan extends Component {
     console.log("savingsyears:", savingsyears);
     console.log("fire:", fire);
 
-    let yearcount = yearsleft - assetyears - savingsyears;
+    let yearcount =
+      yearsleft - assetyears - savingsyears > 0
+        ? yearsleft - assetyears - savingsyears
+        : 0;
     ////--------
 
     // --- math for Bar Graph ---
     // MATH for TOTAL ASSETS in 5 year plan:
     // totalAssets = assets + monthlynetincome * 60 months * (1.02^5)
     let totalAssetsFiveYears =
-      this.state.monthlynetpercent * this.state.monthlyincome * 60 * 1.104 +
-      this.state.asset;
+      (this.state.monthlynetpercent * this.state.monthlyincome * 60 +
+        +this.state.asset) *
+      1.104;
 
     // --- data for Bar Graph ---
     const data_bar = {
@@ -144,29 +154,35 @@ class RetirementPlan extends Component {
     // --- math for Line Graph ---
     // FV = PV * (1+r)^n
     // interest rate of 2%
-    let PV = this.state.asset;
+
+    console.log("asset:", this.state.asset);
+    console.log("monthly net %:", this.state.monthlynetpercent);
+    console.log("monthly income:", this.state.monthlyincome);
+    // console.log("fire:", fire);
+    let PV = +this.state.asset;
+
     let FV1 =
-      (this.state.asset +
-        this.state.monthlynetpercent * this.state.monthlyincome * 12) *
+      (this.state.monthlynetpercent * this.state.monthlyincome * 12 +
+        +this.state.asset) *
       1.02;
     let FV2 =
-      (this.state.asset +
-        this.state.monthlynetpercent * this.state.monthlyincome * 24) *
+      (this.state.monthlynetpercent * this.state.monthlyincome * 24 +
+        +this.state.asset) *
       1.04;
     let FV3 =
-      (this.state.asset +
-        this.state.monthlynetpercent * this.state.monthlyincome * 36) *
+      (this.state.monthlynetpercent * this.state.monthlyincome * 36 +
+        +this.state.asset) *
       1.061;
     let FV4 =
-      (this.state.asset +
-        this.state.monthlynetpercent * this.state.monthlyincome * 48) *
+      (this.state.monthlynetpercent * this.state.monthlyincome * 48 +
+        +this.state.asset) *
       1.082;
     let FV5 =
-      (this.state.asset +
-        this.state.monthlynetpercent * this.state.monthlyincome * 60) *
+      (this.state.monthlynetpercent * this.state.monthlyincome * 60 +
+        +this.state.asset) *
       1.104;
 
-    // -- data for Line Graph --
+    // --- data for Line Graph ---
     const data_line = {
       labels: ["Now", "Year1", "Year2", "Year3", "Year4", "Year5"],
       datasets: [
@@ -203,7 +219,7 @@ class RetirementPlan extends Component {
         <Sidenav />
         <div className="retire-header">
           <h1>Welcome to Step 3:</h1>
-          <h5>(Move the slider! Increase savings for early retirement.)</h5>
+          <h5>(Move the slider! Increase savings for early retirement)</h5>
         </div>
 
         <div className="retire-body">
@@ -221,7 +237,14 @@ class RetirementPlan extends Component {
                   onChange={e => this.changeAge(e.target.value)}
                 />
               </h4>
-              <h4>Your number to be financially free is: ({fire})</h4>
+              <h4>
+                Your number to be financially free is: ($
+                {fire.toLocaleString()})
+              </h4>
+              <h6>
+                * This number represents how much you need in the bank to go the
+                rest of your life without any additional income.{" "}
+              </h6>
               {/* <h6>
                 *Math: (monthly expenses * 12 * (78 - age)) * (1.02**(78 - age))
               </h6> */}
@@ -263,73 +286,73 @@ class RetirementPlan extends Component {
             </div>
           </div>
           <div className="retire-right">
-            <div className="chartjs">
-              <div className="bar-chart-container">
-                {/* <h2>Bar Example (custom size)</h2> */}
-                <h4>Five Year Projection</h4>
+            {/* <div className="chartjs"> */}
+            <div className="bar-chart-container">
+              {/* <h2>Bar Example (custom size)</h2> */}
+              <h4>Five Year Projection</h4>
 
-                {/* --- <BarGraph /> --- */}
-                <h6>*Financially free when the bar graphs equal</h6>
-                <Bar
-                  style={{ display: "block" }}
-                  data={data_bar}
-                  // width={30}
-                  // height={10}
-                  // options={{
-                  //   maintainAspectRatio: false
-                  // }}
-                />
-              </div>
-              <br />
-              <div className="range-field">
-                <span>
-                  <strong>Savings of Net Income:</strong>{" "}
-                </span>
-                <span>
-                  <input
-                    type="range"
-                    name="slider"
-                    min="20"
-                    max="70"
-                    defaultValue="20"
-                    onChange={e =>
-                      this.setState({
-                        monthlynetpercent: e.target.value / 100
-                      })
-                    }
-                  />
-                </span>
-                <span className="slider-num">
-                  <span>20%</span>
-                  <span>30%</span>
-                  <span>40%</span>
-                  <span>50%</span>
-                  <span>60%</span>
-                  <span>70%</span>
-                </span>
-              </div>
-
-              {/* --- <LineGraph /> --- */}
-              <div className="line-graph-container">
-                <h4>Rate of savings to Time until retirement </h4>
-                <Line data={data_line} />
-              </div>
+              {/* --- <BarGraph /> --- */}
+              <h6>*Financially free when the bar graphs equal</h6>
+              <Bar
+                style={{ display: "block" }}
+                data={data_bar}
+                // width={30}
+                // height={10}
+                // options={{
+                //   maintainAspectRatio: false
+                // }}
+              />
             </div>
-            <h3>Onto step 4, the bonus section:</h3>
-            <h3>
-              {" "}
-              Plan your
-              <Link to="/desiredpurchases" style={{ color: "orange" }}>
-                {" "}
-                purchases!
-              </Link>
-            </h3>
-            {/* Post MVP
+            <br />
+            <div className="range-field">
+              <span>
+                <strong>Savings of Net Income:</strong>{" "}
+              </span>
+              <span>
+                <input
+                  type="range"
+                  name="slider"
+                  min="20"
+                  max="70"
+                  defaultValue="20"
+                  onChange={e =>
+                    this.setState({
+                      monthlynetpercent: e.target.value / 100
+                    })
+                  }
+                />
+              </span>
+              <span className="slider-num">
+                <span>20%</span>
+                <span>30%</span>
+                <span>40%</span>
+                <span>50%</span>
+                <span>60%</span>
+                <span>70%</span>
+              </span>
+            </div>
+
+            {/* --- <LineGraph /> --- */}
+            <div className="line-graph-container">
+              <h4>Rate of savings to Time until retirement </h4>
+              <Line data={data_line} />
+            </div>
+            <div className="step4">
+              <h3>
+                Onto step 4, the bonus section: Plan your
+                <Link to="/desiredpurchases" style={{ color: "orange" }}>
+                  {" "}
+                  purchases!
+                </Link>
+              </h3>
+              {/* Post MVP
             <span>**add nodemailer**</span>
             <button>nodemailer</button> */}
+            </div>
           </div>
         </div>
       </div>
+      // </div>
     );
   }
 }

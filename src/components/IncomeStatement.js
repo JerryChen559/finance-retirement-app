@@ -285,7 +285,7 @@ class IncomeStatement extends Component {
               <div>
                 <strong>
                   Total Expenses:
-                  <p>{this.state.monthlyexpenses}</p>
+                  <p>{this.state.monthlyexpenses.toLocaleString()}</p>
                 </strong>
               </div>
               <br />
