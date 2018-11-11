@@ -11,18 +11,16 @@ const massive = require("massive");
 const session = require("express-session");
 const authCtrl = require("./controllers/authCtrl");
 
-/*
 // node mailer
-const bodyParser = require("body-parser");
-const exphbs = require("express-handlebars");
-const nodemailer = require("nodemailer");
+// const bodyParser = require("body-parser");
+// const exphbs = require("express-handlebars");
+// const nodemailer = require("nodemailer");
 const {
-  sendWelcomeEmail,
-  sendConfirmation,
-  sendIncomeStatementInfo,
-  sendRetirementPlanInfo
-} = require("./nodeMailerTests/NodeMailer");
-*/
+  // sendWelcomeEmail,
+  // sendConfirmation,
+  sendIncomeStatement
+  // sendRetirementPlan
+} = require("./controllers/NodeMailerCtrl");
 
 const { SESSION_SECRET, CONNECTION_STRING, PORT } = process.env;
 const port = PORT || 3001;
@@ -106,8 +104,8 @@ app.get("/api/incomestatement/:id", getIncomeStatement);
 app.put("/api/incomestatement/:id", updateIncomeStatement);
 
 // nodemailer // TODO: add 5 html css to look of the email
-app.post("/api/email", sendIncomeStatement);
-app.post("/api/email", sendRetirementPlan);
+app.post("/api/sendIncomeStatement/:id", sendIncomeStatement);
+// app.post("/api/sendRetirementPlan", sendRetirementPlan);
 
 // nest egg controls
 app.get("/api/userdeposits/:userid", getUserDeposits);

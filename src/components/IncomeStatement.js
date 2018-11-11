@@ -76,6 +76,35 @@ class IncomeStatement extends Component {
       });
   }
 
+  sendIncomeStatement() {
+    axios
+      .post(`/api/incomestatement/${this.props.profile.user.auth_id}`, {
+        email: this.props.profile.user.email,
+        salary: this.state.salary,
+        federaltax: this.state.federaltax,
+        statetax: this.state.statetax,
+        sideincome: this.state.sideincome,
+        rent: this.state.rent,
+        mortgage: this.state.mortgage,
+        car: this.state.car,
+        gas: this.state.gas,
+        water: this.state.water,
+        healthcare: this.state.healthcare,
+        school: this.state.school,
+        food: this.state.food,
+        restaurants: this.state.restaurants,
+        clothes: this.state.clothes,
+        gym: this.state.gym,
+        entertainment: this.state.entertainment,
+        travel: this.state.travel,
+        monthlyincome: this.state.monthlyincome,
+        monthlyexpenses: this.state.monthlyexpenses,
+        monthlynetincome: this.state.monthlynetincome,
+        monthlynetpercent: this.state.monthlynetpercent
+      })
+      .then(response => console.log(response));
+  }
+
   render() {
     console.log("IS state", this.state);
     console.log("IS props", this.props);
@@ -278,10 +307,10 @@ class IncomeStatement extends Component {
                 nest egg.{" "}
               </Link>
             </h3>
-            <span>**add nodemailer**</span>
+
             <span>
-              **Click here to send an email to yourself**{" "}
-              <button>Email Income Statement</button>
+              **Send yourself a summary of your income statement**{" "}
+              <button onClick={() => this.sendIncomeStatement()}>Email</button>
             </span>
           </div>
           <div className="graph-body">

@@ -21,6 +21,7 @@ module.exports = app => {
 
   // users log in. new users get added to the db
   passport.serializeUser((user, done) => {
+    console.log("session user:", user);
     // console.log(`"profile:" ${JSON.stringify(user)}`);
     const db = app.get("db");
 
@@ -28,6 +29,9 @@ module.exports = app => {
       .then(user2 => {
         if (!user2[0]) {
           db.add_user(user.id)
+            // need to add email for nodemailer. get from session.
+            // update db add_user
+            // db.add_user(user.id, user.email)
             .then(response => {
               console.log(`added profile: ${response}`);
               return done(null, response[0]);

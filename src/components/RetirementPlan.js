@@ -19,19 +19,11 @@ class RetirementPlan extends Component {
       fire: 0,
       monthcount: 0,
       yearcount: 0,
+      // pass in using redux props
       monthlyexpenses: 0,
       monthlyincome: 0,
       monthlynetincome: 0,
       monthlynetpercent: 0
-      /*
-      monthlynetpercent: 13,
-      // pass in using redux or tables: monthlyexpenses.
-      monthlyexpenses: "",
-      // pass in using redux or tables: monthlyincome.
-      monthlyincome: 2753,
-      // pass in using redux or tables: monthlynetincome.
-      monthlynetincome: 400
-      */
     };
   }
 
@@ -70,10 +62,11 @@ class RetirementPlan extends Component {
     // MATH for FIRE: (Monthly expenses * 12 months * ({yearsleft})) * (1.02**({yearsleft}))
     let yearsleft = 78 - this.state.age;
     let fire =
-      this.props.profile.user.monthlyexpenses *
+      (1 - this.state.monthlynetpercent) *
+      this.state.monthlyincome *
       12 *
-      yearsleft *
-      1.02 ** yearsleft;
+      yearsleft;
+    //  *1.02 ** yearsleft;
 
     // monthly net percent
     // monthlynetpercent = monthlynetincome/monthlyincome
@@ -82,17 +75,38 @@ class RetirementPlan extends Component {
     // Alternatively written for this page:
     // monthlynetincome = monthlynetpercent * monthlyincome
 
+    // Removed
     // MATH for MONTHS of WORK LEFT:
     // monthcount = (fire - total assets) / monthlynetincome
+    // let monthcount = Math.floor(
+    //   (fire - this.state.asset) /
+    //     (this.state.monthlynetpercent * this.state.monthlyincome*12)
+    // );
 
     // MATH for YEARS of WORK LEFT:
     // yearcount = monthcount / 12
+    // let yearcount =
+    // Math.sqrt(
+    //   Math.log10(
+    // (fire - this.state.asset) -
+    // (this.state.monthlynetpercent * this.state.monthlyincome * 12);
+    // ) / Math.log10(1.02)
+    // );
 
-    let monthcount = Math.floor(
-      (fire - this.state.asset) /
-        (this.state.monthlynetpercent * this.state.monthlyincome)
-    );
-    let yearcount = Math.floor(monthcount / 12);
+    ////-----------
+    let assetyears = (this.state.asset / fire) * yearsleft;
+    let savings =
+      this.state.monthlynetpercent * this.state.monthlyincome * 12 * yearsleft;
+    let savingsyears =
+      (savings / (this.state.monthlyincome * 12 * yearsleft)) * yearsleft;
+
+    console.log("assetyears:", assetyears);
+    console.log("savings:", savings);
+    console.log("savingsyears:", savingsyears);
+    console.log("fire:", fire);
+
+    let yearcount = yearsleft - assetyears - savingsyears;
+    ////--------
 
     // --- math for Bar Graph ---
     // MATH for TOTAL ASSETS in 5 year plan:
@@ -208,12 +222,9 @@ class RetirementPlan extends Component {
                 />
               </h4>
               <h4>Your number to be financially free is: ({fire})</h4>
-              <h6>
+              {/* <h6>
                 *Math: (monthly expenses * 12 * (78 - age)) * (1.02**(78 - age))
-              </h6>
-
-              {/* <h4>years left = 78 - current age</h4>
-              <h4>maybe: FV = PV (1 + r)^n</h4> */}
+              </h6> */}
             </div>
 
             <div className="asset">
@@ -230,7 +241,8 @@ class RetirementPlan extends Component {
               </h4>
 
               <h4>
-                Your current savings percent: ({this.state.monthlynetpercent}){" "}
+                Your current savings percent: (
+                {(this.state.monthlynetpercent * 100).toFixed(2)}%){" "}
               </h4>
               {/* Remove Months of work left. People don't care about this. */}
               {/* 
@@ -241,20 +253,22 @@ class RetirementPlan extends Component {
               */}
               <h4>
                 Number of working YEARS until you are financially free: (
-                {yearcount})
+                {yearcount.toFixed(2)})
               </h4>
-              <h6>
+
+              {/* <h6>
                 *Math: Square root (Log((fire - asset) / (monthly net income)) /
                 Log(1.02))
-              </h6>
+              </h6> */}
             </div>
           </div>
           <div className="retire-right">
             <div className="chartjs">
-              <span>{/* <BarGraph /> */}</span>
               <div className="bar-chart-container">
                 {/* <h2>Bar Example (custom size)</h2> */}
                 <h4>Five Year Projection</h4>
+
+                {/* --- <BarGraph /> --- */}
                 <h6>*Financially free when the bar graphs equal</h6>
                 <Bar
                   style={{ display: "block" }}
@@ -280,7 +294,7 @@ class RetirementPlan extends Component {
                     defaultValue="20"
                     onChange={e =>
                       this.setState({
-                        monthlynetincome: e.target.value
+                        monthlynetpercent: e.target.value / 100
                       })
                     }
                   />
@@ -295,7 +309,7 @@ class RetirementPlan extends Component {
                 </span>
               </div>
 
-              {/* <LineGraph /> */}
+              {/* --- <LineGraph /> --- */}
               <div className="line-graph-container">
                 <h4>Rate of savings to Time until retirement </h4>
                 <Line data={data_line} />
@@ -310,8 +324,9 @@ class RetirementPlan extends Component {
                 purchases!
               </Link>
             </h3>
+            {/* Post MVP
             <span>**add nodemailer**</span>
-            <button>nodemailer</button>
+            <button>nodemailer</button> */}
           </div>
         </div>
       </div>
