@@ -219,7 +219,7 @@ class NestEgg extends Component {
         <div className="nestegg-body">
           <div className="nestegg-left">
             <div className="emergencyfund">
-              <h2>Emergency Fund</h2>
+              <h2 style={{ color: "khaki" }}>Emergency Fund</h2>
               <span>
                 <input
                   type="number"
@@ -241,7 +241,7 @@ class NestEgg extends Component {
             </div>
 
             <div className="retirementfund">
-              <h2>Retirement Fund</h2>
+              <h2 style={{ color: "khaki" }}>Retirement Fund</h2>
               <span>
                 <input
                   type="number"
@@ -263,7 +263,7 @@ class NestEgg extends Component {
             </div>
           </div>
           <div className="nestegg-right">
-            <p>
+            <p style={{ color: "khaki" }}>
               <strong>Garden of Wealth</strong>
             </p>
             <div className="garden">{garden}</div>

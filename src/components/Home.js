@@ -19,7 +19,8 @@ function Home() {
         <span className="getstarted" onClick={() => redirect()}>
           Get Started
         </span>
-        <Link to="/incomestatement">link to bypass login for now</Link>
+        {/* Comment out when done: Link to enter app without signing in */}
+        {/* <Link to="/incomestatement">link to bypass login for now</Link> */}
       </div>
       <div className="aboutimage" />
       <div className="aboutdisplay">

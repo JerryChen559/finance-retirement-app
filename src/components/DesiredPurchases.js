@@ -52,12 +52,6 @@ class DesiredPurchases extends Component {
     console.log("cardstate", this.state);
     console.log("cardprops", this.props);
 
-    // sort and display all cards in order of importance.
-    // TODO: sort and map needs to be updated.
-    // Post CRUD: get cards to render in order with .sort
-    // let orderedCards = [...this.state.cards];
-    // orderedCards.sort((a, b) => a.importance - b.importance);
-
     let orderedCards = this.state.cards.map((card, i) => (
       <div className="card" key={i}>
         <span>
@@ -105,9 +99,10 @@ class DesiredPurchases extends Component {
           </span>
         </div>
         <div className="cardcontainer">{orderedCards}</div>
-        <h3>
+        {/* link to navigate home. comment out when dene */}
+        {/* <h3>
           <Link to="/incomestatement">home</Link>.
-        </h3>
+        </h3> */}
 
         <nav className="bottom-nav">
           <span>

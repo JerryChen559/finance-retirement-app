@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: space-between;
   /* remove when done */
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
 }
 
 .side-nav span {

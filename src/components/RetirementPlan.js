@@ -225,7 +225,7 @@ class RetirementPlan extends Component {
         <div className="retire-body">
           <div className="retire-left">
             <div className="fire">
-              <h3>
+              <h3 style={{ color: "khaki" }}>
                 Calculation for (FIRE) Financial Independence Retire Early
               </h3>
 
@@ -251,7 +251,7 @@ class RetirementPlan extends Component {
             </div>
 
             <div className="asset">
-              <h3>Current Assets</h3>
+              <h3 style={{ color: "khaki" }}>Current Assets</h3>
 
               <h4>
                 Please input your current total assets (cash, stocks, bank
@@ -289,7 +289,7 @@ class RetirementPlan extends Component {
             {/* <div className="chartjs"> */}
             <div className="bar-chart-container">
               {/* <h2>Bar Example (custom size)</h2> */}
-              <h4>Five Year Projection</h4>
+              <h4 style={{ color: "khaki" }}>Five Year Projection</h4>
 
               {/* --- <BarGraph /> --- */}
               <h6>*Financially free when the bar graphs equal</h6>
@@ -305,7 +305,7 @@ class RetirementPlan extends Component {
             </div>
             <br />
             <div className="range-field">
-              <span>
+              <span style={{ color: "khaki" }}>
                 <strong>Savings of Net Income:</strong>{" "}
               </span>
               <span>
@@ -334,16 +334,15 @@ class RetirementPlan extends Component {
 
             {/* --- <LineGraph /> --- */}
             <div className="line-graph-container">
-              <h4>Rate of savings to Time until retirement </h4>
+              <h4 style={{ color: "khaki" }}>
+                Rate of savings to Time until retirement{" "}
+              </h4>
               <Line data={data_line} />
             </div>
             <div className="step4">
               <h3>
                 Onto step 4, the bonus section: Plan your
-                <Link to="/desiredpurchases" style={{ color: "orange" }}>
-                  {" "}
-                  purchases!
-                </Link>
+                <Link to="/desiredpurchases"> purchases!</Link>
               </h3>
               {/* Post MVP
             <span>**add nodemailer**</span>

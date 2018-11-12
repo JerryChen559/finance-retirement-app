@@ -109,7 +109,7 @@ class IncomeStatement extends Component {
     console.log("IS state", this.state);
     console.log("IS props", this.props);
 
-    // data for Doughnut
+    // --- data for Doughnut ---
     const data = {
       labels: [
         "rent",
@@ -300,12 +300,8 @@ class IncomeStatement extends Component {
               <strong>{(this.state.monthlynetpercent * 100).toFixed(2)}</strong>
               % of your net income.
             </span>
-            <h3>
-              Next step: Set up your{" "}
-              <Link to="/nestegg" style={{ color: "orange" }}>
-                {" "}
-                nest egg.{" "}
-              </Link>
+            <h3 className="step2">
+              Next step: Set up your <Link to="/nestegg"> nest egg. </Link>
             </h3>
 
             <span>
@@ -316,7 +312,7 @@ class IncomeStatement extends Component {
           <div className="graph-body">
             <div>
               <h2>Breakdown of expenses</h2>
-              <Doughnut data={data} />
+              <Doughnut data={data} style={{ width: "auto" }} />
             </div>
           </div>
         </div>
