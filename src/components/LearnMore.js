@@ -40,47 +40,68 @@ class LearnMore extends Component {
             </span>
             <span>
               <p>Budgeting:</p>{" "}
-              <a href="https://www.everydollar.com/blog/budgeting">
+              <a
+                href="https://www.everydollar.com/blog/budgeting"
+                target="_blank"
+              >
                 everydollar
               </a>
             </span>
             <span>
-              <p>Eliminating Debt:</p> <a href="" />
+              <p>Eliminating Debt:</p>{" "}
+              <a href="https://www.google.com/" target="_blank">
+                google
+              </a>
             </span>
             <span>
-              <p>Investing:</p> <a href="" />
+              <p>Investing:</p>{" "}
+              <a href="https://www.google.com/" target="_blank">
+                google
+              </a>
             </span>
             <span>
               <p>4% Rule:</p>{" "}
-              <a href="https://money.cnn.com/2018/02/07/retirement/4-percent-rule/index.html">
+              <a
+                href="https://money.cnn.com/2018/02/07/retirement/4-percent-rule/index.html"
+                target="_blank"
+              >
                 Do it the right way
               </a>
             </span>
             <span>
-              <p>Inflation:</p> <a href="" />
+              <p>Inflation:</p>{" "}
+              <a href="https://www.google.com/" target="_blank">
+                google
+              </a>
             </span>
           </span>
 
           <span className="infosection">
             <h2>Community and Motivation</h2>
             <span>
-              <p>Podcast:</p> <a href="" />
+              <p>Podcast:</p>{" "}
+              <a href="https://www.google.com/" target="_blank">
+                google
+              </a>
             </span>
             <span>
-              <p>Blogs:</p> <a href="" />
+              <p>Blogs:</p>{" "}
+              <a href="https://www.google.com/" target="_blank">
+                google
+              </a>
             </span>
             <span>
-              <p>Reddit:</p> <a href="" />
+              <p>Reddit:</p> <a href="https://www.google.com/">google</a>
             </span>
             <span>
-              <p>Youtube:</p> <a href="" />
+              <p>Youtube:</p> <a href="https://www.google.com/">google</a>
             </span>
           </span>
 
           <span className="infosection">
             <h2>Related Topics</h2>
             <span>
-              <p>Extra Income:</p> <a href="" />
+              <p>Extra Income:</p> <a href="https://www.google.com/">google</a>
             </span>
             <span>
               <p>Zero Waste:</p>{" "}
@@ -92,13 +113,14 @@ class LearnMore extends Component {
               </a>
             </span>
             <span>
-              <p>Minimalism:</p> <a href="" />
+              <p>Minimalism:</p> <a href="https://www.google.com/">google</a>
             </span>
             <span>
-              <p>Concious Living:</p> <a href="" />
+              <p>Concious Living:</p>{" "}
+              <a href="https://www.google.com/">google</a>
             </span>
             <span>
-              <p>Tiny Homes:</p> <a href="" />
+              <p>Tiny Homes:</p> <a href="https://www.google.com/">google</a>
             </span>
           </span>
         </div>

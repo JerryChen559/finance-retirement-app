@@ -86,7 +86,7 @@ authCtrl(app);
 
 // get logged in user information, from auth controls, and authenticate.
 const authenticated = (req, res, next) => {
-  console.log("sp note", req.user, req.session, req.user);
+  // console.log("sp note", req.user, req.session, req.user);
   if (req.user) {
     next();
   } else {
@@ -95,7 +95,7 @@ const authenticated = (req, res, next) => {
 };
 
 app.get("/api/userprofile", authenticated, (req, res, next) => {
-  console.log("user", req.user);
+  // console.log("user", req.user);
   res.status(200).send(req.user);
 });
 

@@ -15,7 +15,10 @@ module.exports = app => {
         callbackURL: "/login",
         scope: "openid"
       },
-      (_, __, ___, profile, done) => done(null, profile)
+      (_, __, ___, profile, done) => {
+        console.log("passport.use", profile);
+        done(null, profile);
+      }
     )
   );
 
@@ -39,6 +42,7 @@ module.exports = app => {
             .catch(err => console.log(err));
         } else {
           console.log("user2 exists as:", user2[0].auth_id);
+          console.log("user2[0]:", user2[0]);
           return done(null, user2[0]);
         }
       })

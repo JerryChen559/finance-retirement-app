@@ -61,7 +61,7 @@ class NestEgg extends Component {
   componentDidMount() {
     this.getUserDeposits();
     // NoGo:
-    //this.garden();
+    // this.garden();
   }
 
   // componentDidUpdate(){
@@ -154,41 +154,30 @@ class NestEgg extends Component {
       .catch(error => console.log(error));
   }
 
-  // NoGo:
-  // Garden Flowers
-  //   garden(length) {
-  //     while (length > 0) {
-  //       console.log(length);
-  //       length--;
-  //       return (
-  //       <div>
-  //         <img
-  //           // random number from 0 through 12
-  //           src={this.state.flowers[Math.floor(Math.random() * 13)]}
-  //           width="100px"
-  //           height="100px"
-  //           alt=""
-  //         />
-  //       </div>
-  //       );
-  //     }
-  // }
-
-  // NoGo:
-  // for (let i = 0; i < length; i++) {
-  //   return (
-  //     <div>
-  //       <img
-  //         // random number from 0 through 12
-  //         src={this.state.flowers[Math.floor(Math.random() * 13)]}
-  //         width="100px"
-  //         height="100px"
-  //         alt=""
-  //       />
-  //       ;
-  //     </div>
-  //   );
-  // }
+  // NoGo: still updating on every key stroke
+  garden = length => {
+    console.log(length);
+    let images = [];
+    for (let i = 0; i < length; i++) {
+      console.log(length);
+      images.push(i);
+    }
+    // then map over images
+    return images.map((e, i) => {
+      console.log("hit");
+      return (
+        <div key={i}>
+          <img
+            // random number from 0 through 12
+            src={this.state.flowers[Math.floor(Math.random() * 13)]}
+            width="100px"
+            height="100px"
+            alt=""
+          />
+        </div>
+      );
+    });
+  };
 
   render() {
     console.log(this.state);
@@ -227,10 +216,6 @@ class NestEgg extends Component {
         );
       });
 
-    // TODO: Come back to this
-    // flowers should equal number of deposits.
-    // removing a deposit should remove a flower.
-
     // NoGo:
     // let garden = (length) => {
     //     for (let i = 0; i < length; i++){
@@ -249,19 +234,19 @@ class NestEgg extends Component {
     // }
 
     // NoGo: Flowers from map function changes on every key stroke
-    let garden = this.state.alldeposits.map((e, i) => {
-      return (
-        <div key={i}>
-          <img
-            // random number from 0 through 12
-            src={this.state.flowers[Math.floor(Math.random() * 13)]}
-            width="100px"
-            height="100px"
-            alt=""
-          />
-        </div>
-      );
-    });
+    // let garden = this.state.alldeposits.map((e, i) => {
+    //   return (
+    //     <div key={i}>
+    //       <img
+    //         // random number from 0 through 12
+    //         src={this.state.flowers[Math.floor(Math.random() * 13)]}
+    //         width="100px"
+    //         height="100px"
+    //         alt=""
+    //       />
+    //     </div>
+    //   );
+    // });
 
     return (
       <div className="nestegg">
@@ -285,14 +270,16 @@ class NestEgg extends Component {
                 <input
                   type="number"
                   placeholder="amount"
-                  value={this.state.depositemergency}
+                  defaultValue={this.state.depositemergency}
                   onChange={e =>
                     this.handleInput("depositemergency", e.target.value)
                   }
                 />
                 <button
                   className="nestegg-add"
-                  onClick={() => this.submitEmergencyDeposit()}
+                  onClick={() => {
+                    this.submitEmergencyDeposit();
+                  }}
                 >
                   Add on click
                 </button>
@@ -314,7 +301,9 @@ class NestEgg extends Component {
                 />
                 <button
                   className="nestegg-add"
-                  onClick={() => this.submitRetirementDeposit()}
+                  onClick={() => {
+                    this.submitRetirementDeposit();
+                  }}
                 >
                   Add on click
                 </button>
@@ -328,8 +317,8 @@ class NestEgg extends Component {
               <strong>Garden of Wealth</strong>
             </p>
             <div className="garden">
-              {garden}
-              {/*NoGo: {this.garden(this.state.alldeposits.length)} */}
+              {/* {garden} */}
+              {this.garden(this.state.alldeposits.length)}
             </div>
             <h3>
               Onto step 3: Plan your{" "}

@@ -70,7 +70,10 @@
   /* remove when done */
   /* border: skyblue 1px solid; */
   width: 70%;
-  height: 400px;
+  /* height: 400px; */
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin-top: 5vh;
   margin-right: 28vh;
   float: right;

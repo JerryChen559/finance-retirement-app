@@ -35,7 +35,8 @@ class IncomeStatement extends Component {
       monthlyincome: 0,
       monthlyexpenses: 0,
       monthlynetincome: 0,
-      monthlynetpercent: 0
+      monthlynetpercent: 0,
+      email: ""
     };
   }
 
@@ -76,10 +77,14 @@ class IncomeStatement extends Component {
       });
   }
 
+  handleInput(key, val) {
+    this.setState({ [key]: val });
+  }
+
   sendIncomeStatement() {
     axios
-      .post(`/api/incomestatement/${this.props.profile.user.auth_id}`, {
-        email: this.props.profile.user.email,
+      .post(`/api/sendIncomeStatement/${this.props.profile.user.auth_id}`, {
+        email: this.state.email,
         salary: this.state.salary,
         federaltax: this.state.federaltax,
         statetax: this.state.statetax,
@@ -300,18 +305,24 @@ class IncomeStatement extends Component {
               <strong>{(this.state.monthlynetpercent * 100).toFixed(2)}</strong>
               % of your net income.
             </span>
+
+            <span>
+              Send yourself a summary of your income statement:
+              <input
+                type="text"
+                placeholder="email"
+                onChange={e => this.handleInput("email", e.target.value)}
+              />
+              <button onClick={() => this.sendIncomeStatement()}>Email</button>
+            </span>
+
             <h3 className="step2">
               Next step: Set up your <Link to="/nestegg"> nest egg. </Link>
             </h3>
-
-            <span>
-              **Send yourself a summary of your income statement**{" "}
-              <button onClick={() => this.sendIncomeStatement()}>Email</button>
-            </span>
           </div>
           <div className="graph-body">
             <div>
-              <h2 style={{ color: "khaki" }}>Breakdown of expenses</h2>
+              <h2 style={{ color: "#333" }}>Breakdown of expenses</h2>
               <Doughnut data={data} style={{ width: "auto" }} />
             </div>
           </div>

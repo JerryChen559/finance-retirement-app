@@ -190,17 +190,17 @@ class RetirementPlan extends Component {
           label: "Savings Rate vs Time",
           fill: false,
           lineTension: 0.1,
-          backgroundColor: "rgba(75,192,192,0.4)",
-          borderColor: "rgba(75,192,192,1)",
+          backgroundColor: "rgba(123, 104, 238,0.4)",
+          borderColor: "rgba(123, 104, 238,1)",
           borderCapStyle: "butt",
           borderDash: [],
           borderDashOffset: 0.0,
           borderJoinStyle: "miter",
-          pointBorderColor: "rgba(75,192,192,1)",
+          pointBorderColor: "rgba(123, 104, 238,1)",
           pointBackgroundColor: "#fff",
           pointBorderWidth: 1,
           pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBackgroundColor: "rgba(123, 104, 238,1)",
           pointHoverBorderColor: "rgba(220,220,220,1)",
           pointHoverBorderWidth: 2,
           pointRadius: 1,
@@ -289,10 +289,12 @@ class RetirementPlan extends Component {
             {/* <div className="chartjs"> */}
             <div className="bar-chart-container">
               {/* <h2>Bar Example (custom size)</h2> */}
-              <h4 style={{ color: "khaki" }}>Five Year Projection</h4>
+              <h4 style={{ color: "#333" }}>Five Year Projection</h4>
 
               {/* --- <BarGraph /> --- */}
-              <h6>*Financially free when the bar graphs equal</h6>
+              <h6 style={{ color: "#333" }}>
+                *Financially free when the bar graphs equal
+              </h6>
               <Bar
                 style={{ display: "block" }}
                 data={data_bar}
@@ -334,7 +336,7 @@ class RetirementPlan extends Component {
 
             {/* --- <LineGraph /> --- */}
             <div className="line-graph-container">
-              <h4 style={{ color: "khaki" }}>
+              <h4 style={{ color: "#333" }}>
                 Rate of savings to Time until retirement{" "}
               </h4>
               <Line data={data_line} />
