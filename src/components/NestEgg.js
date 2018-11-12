@@ -60,7 +60,14 @@ class NestEgg extends Component {
 
   componentDidMount() {
     this.getUserDeposits();
+    // NoGo:
+    //this.garden();
   }
+
+  // componentDidUpdate(){
+  // NoGo:
+  //this.garden();
+  // }
 
   // get all deposits by user id
   // set state so that it can be displayed across the page
@@ -147,6 +154,42 @@ class NestEgg extends Component {
       .catch(error => console.log(error));
   }
 
+  // NoGo:
+  // Garden Flowers
+  //   garden(length) {
+  //     while (length > 0) {
+  //       console.log(length);
+  //       length--;
+  //       return (
+  //       <div>
+  //         <img
+  //           // random number from 0 through 12
+  //           src={this.state.flowers[Math.floor(Math.random() * 13)]}
+  //           width="100px"
+  //           height="100px"
+  //           alt=""
+  //         />
+  //       </div>
+  //       );
+  //     }
+  // }
+
+  // NoGo:
+  // for (let i = 0; i < length; i++) {
+  //   return (
+  //     <div>
+  //       <img
+  //         // random number from 0 through 12
+  //         src={this.state.flowers[Math.floor(Math.random() * 13)]}
+  //         width="100px"
+  //         height="100px"
+  //         alt=""
+  //       />
+  //       ;
+  //     </div>
+  //   );
+  // }
+
   render() {
     console.log(this.state);
 
@@ -188,6 +231,24 @@ class NestEgg extends Component {
     // flowers should equal number of deposits.
     // removing a deposit should remove a flower.
 
+    // NoGo:
+    // let garden = (length) => {
+    //     for (let i = 0; i < length; i++){
+    //       return (
+    //         <div key={i}>
+    //           <img
+    //             // random number from 0 through 12
+    //             src={this.state.flowers[Math.floor(Math.random() * 13)]}
+    //             width="100px"
+    //             height="100px"
+    //             alt=""
+    //           />
+    //         </div>
+    //       );
+    //     }
+    // }
+
+    // NoGo: Flowers from map function changes on every key stroke
     let garden = this.state.alldeposits.map((e, i) => {
       return (
         <div key={i}>
@@ -266,7 +327,10 @@ class NestEgg extends Component {
             <p style={{ color: "khaki" }}>
               <strong>Garden of Wealth</strong>
             </p>
-            <div className="garden">{garden}</div>
+            <div className="garden">
+              {garden}
+              {/*NoGo: {this.garden(this.state.alldeposits.length)} */}
+            </div>
             <h3>
               Onto step 3: Plan your{" "}
               <Link to="/retirementplan"> retirement!</Link>

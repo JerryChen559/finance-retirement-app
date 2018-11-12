@@ -218,7 +218,7 @@ class RetirementPlan extends Component {
 
         <Sidenav />
         <div className="retire-header">
-          <h1>Welcome to Step 3:</h1>
+          <h1>Step 3: Retirement Plan</h1>
           <h5>(Move the slider! Increase savings for early retirement)</h5>
         </div>
 

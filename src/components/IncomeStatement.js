@@ -192,7 +192,7 @@ class IncomeStatement extends Component {
           </div>
 
           <div className="statement-body">
-            <h3>
+            <h3 style={{ color: "khaki" }}>
               Monthly Income Statement
               <span className="update">
                 <Link to="/wizardone/1">Update Info</Link>
@@ -311,7 +311,7 @@ class IncomeStatement extends Component {
           </div>
           <div className="graph-body">
             <div>
-              <h2>Breakdown of expenses</h2>
+              <h2 style={{ color: "khaki" }}>Breakdown of expenses</h2>
               <Doughnut data={data} style={{ width: "auto" }} />
             </div>
           </div>
