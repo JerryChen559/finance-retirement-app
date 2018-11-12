@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Courgette");
 
+/* TODO fix on scrolllllll------
+.nav-colored {
+  background-color: #000;
+}
+.nav-transparent {
+  background-color: transparent;
+} */
+
 /*
 .bg-helper {
   position: absolute;
@@ -34,8 +42,14 @@
   background-color: #363f41; */
 }
 
-.nav-wrapper {
+/* two displays for navbar, depending on Scroll */
+.nav-wrapper-transparent {
   display: flex;
+  background-color: transparent;
+}
+.nav-wrapper-dark {
+  display: flex;
+  background-color: #333;
 }
 
 .nav-items {

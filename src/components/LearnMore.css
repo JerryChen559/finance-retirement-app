@@ -9,4 +9,6 @@
   background-repeat: no-repeat, no-repeat;
   background-position: center;
   background-size: cover;
+  /* border-top is needed to over-ride the extra white space on top */
+  border-top: lightseagreen 1px solid;
 }
