@@ -68,13 +68,21 @@ class Navbar extends Component {
     );
 
     let logtoggle = this.props.profile.loggedIn ? (
-      <div onClick={() => redirectLogout()} style={{ color: "white" }}>
+      <button
+        className="signup"
+        onClick={() => redirectLogout()}
+        // style={{ color: "white" }}
+      >
         Log Out
-      </div>
+      </button>
     ) : (
-      <div onClick={() => redirectLogin()} style={{ color: "white" }}>
+      <button
+        className="signup"
+        onClick={() => redirectLogin()}
+        // style={{ color: "white" }}
+      >
         Log In / Sign Up
-      </div>
+      </button>
     );
 
     // use this to conditionally render navbar
@@ -96,7 +104,7 @@ class Navbar extends Component {
               </Link>
             </li>
 
-            <li className="has-divider signup">{logtoggle}</li>
+            <li className="has-divider">{logtoggle}</li>
           </ul>
         </div>
       </div>

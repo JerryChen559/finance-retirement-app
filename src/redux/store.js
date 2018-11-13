@@ -3,12 +3,10 @@ import promiseMiddleware from "redux-promise-middleware";
 
 import profileReducer from "./reducers/profileReducer";
 import statementReducer from "./reducers/statementReducer";
-import purchaseReducer from "./reducers/purchaseReducer";
 
 const combinedReducers = combineReducers({
   profile: profileReducer,
-  statement: statementReducer,
-  purchase: purchaseReducer
+  statement: statementReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

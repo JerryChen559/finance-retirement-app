@@ -54,11 +54,13 @@ class DesiredPurchases extends Component {
 
     let orderedCards = this.state.cards.map((card, i) => (
       <div className="card" key={i}>
-        <span>
-          <span>item: {card.itemname}</span>
-          <span>price: {card.price}</span>
+        <span className="cardtitle">
+          <span>Item: {card.itemname}</span>
+          <span>Price: {card.price}</span>
           <span>
-            <strong style={{ float: "right" }}>#{card.importance}</strong>
+            <strong style={{ float: "right", color: "yellow" }}>
+              #{card.importance}
+            </strong>
           </span>
         </span>
         <span>
@@ -91,7 +93,10 @@ class DesiredPurchases extends Component {
         <h2 className="step4">Step 4: Desired Purchases</h2>
         <div className="instructions">
           <span className="leftside">
-            <p>Make a list of all the things you want to purchase.</p>
+            <p>
+              <strong style={{ color: "yellow" }}>Directions: </strong>Make a
+              list of all the things you want to purchase.
+            </p>
             <p>Managing your expenses can lead to conscious spending.</p>
           </span>
           <span className="rightside">
@@ -101,10 +106,11 @@ class DesiredPurchases extends Component {
           </span>
         </div>
         <div className="cardcontainer">{orderedCards}</div>
-        {/* link to navigate home. comment out when dene */}
-        {/* <h3>
-          <Link to="/incomestatement">home</Link>.
-        </h3> */}
+        <h3 className="ReturnToAppBtn">
+          <Link to="/incomestatement">
+            <button>Your done! Go home.</button>
+          </Link>
+        </h3>
 
         <nav className="bottom-nav">
           <span>

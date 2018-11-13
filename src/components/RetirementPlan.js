@@ -343,7 +343,7 @@ class RetirementPlan extends Component {
             </div>
             <div className="step4">
               <h3>
-                Onto step 4, the bonus section: Plan your
+                >>> Onto step 4, the bonus section: Plan your
                 <Link to="/desiredpurchases"> purchases!</Link>
               </h3>
               {/* Post MVP

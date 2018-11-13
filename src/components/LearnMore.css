@@ -39,14 +39,14 @@
   margin-left: 20px;
 }
 .infosection a {
-  color: orange;
+  color: yellow;
   font-size: 20px;
   /* bold is not necessary */
   /* font-weight: bold; */
   margin-left: 20px;
 }
 .infosection a:hover {
-  color: yellow;
+  color: orange;
 }
 
 .ReturnToAppBtn {

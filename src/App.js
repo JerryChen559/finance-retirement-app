@@ -3,6 +3,8 @@ import { BrowserRouter } from "react-router-dom";
 import routes from "./routes";
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
+import ScrollToTop from "react-router-scroll-top";
+//Note: ScrollToTop does not work for goBack history.goBack();
 
 import "./App.css";
 
@@ -12,12 +14,14 @@ class App extends Component {
       <div>
         <Provider store={store}>
           <BrowserRouter>
-            <div className="App">
-              {/* <div className="navbar">
+            <ScrollToTop>
+              <div className="App">
+                {/* <div className="navbar">
               <Navbar />
             </div> */}
-              {routes}
-            </div>
+                {routes}
+              </div>
+            </ScrollToTop>
           </BrowserRouter>
         </Provider>
       </div>

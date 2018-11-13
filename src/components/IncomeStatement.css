@@ -60,9 +60,12 @@
 
 .step2 a {
   color: orange;
+  /* border: 1px orange solid;
+  border-radius: 15px; */
 }
 .step2 a:hover {
-  color: yellow;
+  color: #413bf7;
+  /* border: 1px blue solid; */
 }
 
 /* graph */

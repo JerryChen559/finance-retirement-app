@@ -229,7 +229,11 @@ class IncomeStatement extends Component {
               <div>
                 <strong>
                   Net Income:
-                  <p>{this.state.monthlyincome.toLocaleString()}</p>
+                  <p>
+                    {/* note: toLocaleString cannot be applied to null */}
+                    {/* {this.state.monthlyincome.toLocaleString()} */}
+                    {this.state.monthlyincome}
+                  </p>
                 </strong>
               </div>
               <br />
@@ -290,24 +294,26 @@ class IncomeStatement extends Component {
               <div>
                 <strong>
                   Total Expenses:
-                  <p>{this.state.monthlyexpenses.toLocaleString()}</p>
+                  <p>{this.state.monthlyexpenses}</p>
                 </strong>
               </div>
               <br />
               <div style={{ fontSize: 18, marginLeft: 100 }}>
                 MONTHLY NET:
-                <p>{this.state.monthlynetincome.toLocaleString()}</p>
+                <p>{this.state.monthlynetincome}</p>
               </div>
             </div>
 
-            <span>
-              Summary: With all expenses paid, you are left with{" "}
+            <h3 style={{ marginTop: "10px" }}>
+              <strong style={{ color: "khaki" }}>Summary:</strong> With all
+              expenses paid, you are left with{" "}
               <strong>{(this.state.monthlynetpercent * 100).toFixed(2)}</strong>
               % of your net income.
-            </span>
+            </h3>
 
-            <span>
-              Send yourself a summary of your income statement:
+            <h3 style={{ marginTop: "10px" }}>
+              <strong style={{ color: "khaki" }}>Email:</strong> Send yourself a
+              summary of your income statement:
               <input
                 type="text"
                 placeholder="email"
@@ -316,10 +322,6 @@ class IncomeStatement extends Component {
               <button onClick={() => this.sendIncomeStatement()}>
                 <strong>Email</strong>
               </button>
-            </span>
-
-            <h3 className="step2">
-              Next step: Set up your <Link to="/nestegg"> nest egg. </Link>
             </h3>
           </div>
           <div className="graph-body">
@@ -330,6 +332,9 @@ class IncomeStatement extends Component {
                 style={{ width: "auto", fontSize: "2em" }}
               />
             </div>
+            <h2 className="step2" style={{ color: "#413bf7" }}>
+              >>> Next step: Set up your <Link to="/nestegg"> nest egg. </Link>
+            </h2>
           </div>
         </div>
       </div>

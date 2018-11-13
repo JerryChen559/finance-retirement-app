@@ -321,7 +321,7 @@ class NestEgg extends Component {
               {this.garden(this.state.alldeposits.length)}
             </div>
             <h3>
-              Onto step 3: Plan your{" "}
+              >>> Onto step 3: Plan your{" "}
               <Link to="/retirementplan"> retirement!</Link>
             </h3>
           </div>
