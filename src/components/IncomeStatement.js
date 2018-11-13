@@ -313,7 +313,9 @@ class IncomeStatement extends Component {
                 placeholder="email"
                 onChange={e => this.handleInput("email", e.target.value)}
               />
-              <button onClick={() => this.sendIncomeStatement()}>Email</button>
+              <button onClick={() => this.sendIncomeStatement()}>
+                <strong>Email</strong>
+              </button>
             </span>
 
             <h3 className="step2">
@@ -323,7 +325,10 @@ class IncomeStatement extends Component {
           <div className="graph-body">
             <div>
               <h2 style={{ color: "#333" }}>Breakdown of expenses</h2>
-              <Doughnut data={data} style={{ width: "auto" }} />
+              <Doughnut
+                data={data}
+                style={{ width: "auto", fontSize: "2em" }}
+              />
             </div>
           </div>
         </div>

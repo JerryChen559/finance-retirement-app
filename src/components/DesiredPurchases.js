@@ -71,13 +71,15 @@ class DesiredPurchases extends Component {
               // state: { purchasecardid: card.purchasecardid }
             }}
           >
-            <button className="updateButton">Update</button>
+            <button className="updateButton">
+              <strong>Update</strong>
+            </button>
           </Link>
           <button
-            className="delButton"
+            className="delCardBtn"
             onClick={() => this.delButton(card.purchasecardid)}
           >
-            Delete
+            <strong>Delete</strong>
           </button>
         </span>
       </div>
@@ -86,13 +88,13 @@ class DesiredPurchases extends Component {
 
     return (
       <div className="desiredpurchases">
-        <h2 className="step4">Step 4: Desired Purchanses</h2>
+        <h2 className="step4">Step 4: Desired Purchases</h2>
         <div className="instructions">
-          <span className="rightside">
+          <span className="leftside">
             <p>Make a list of all the things you want to purchase.</p>
             <p>Managing your expenses can lead to conscious spending.</p>
           </span>
-          <span className="leftside">
+          <span className="rightside">
             <button className="addcardbtn" onClick={() => this.addCard()}>
               add new card
             </button>

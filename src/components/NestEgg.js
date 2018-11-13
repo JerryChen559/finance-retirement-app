@@ -187,14 +187,14 @@ class NestEgg extends Component {
       .map((e, i) => {
         console.log(e);
         return (
-          <div key={i}>
+          <div key={i} className="depositlook">
             {moment(e.datecreated).format("LL")}{" "}
             <strong>{e.depositemergency}</strong>
             <button
               className="delButton"
               onClick={() => this.delButton(e.depositid)}
             >
-              Delete
+              <strong>Delete</strong>
             </button>
           </div>
         );
@@ -203,14 +203,14 @@ class NestEgg extends Component {
       .filter(e => e.depositretirement !== null)
       .map((e, i) => {
         return (
-          <div key={i}>
+          <div key={i} className="depositlook">
             {moment(e.datecreated).format("LL")}{" "}
             <strong>{e.depositretirement}</strong>
             <button
               className="delButton"
               onClick={() => this.delButton(e.depositid)}
             >
-              Delete
+              <strong>Delete</strong>
             </button>
           </div>
         );
@@ -270,7 +270,7 @@ class NestEgg extends Component {
                 <input
                   type="number"
                   placeholder="amount"
-                  defaultValue={this.state.depositemergency}
+                  value={this.state.depositemergency}
                   onChange={e =>
                     this.handleInput("depositemergency", e.target.value)
                   }
@@ -281,10 +281,10 @@ class NestEgg extends Component {
                     this.submitEmergencyDeposit();
                   }}
                 >
-                  Add on click
+                  <strong>Add on click</strong>
                 </button>
               </span>
-              <h4>deposit amounts</h4>
+              <h3>Deposit Amounts</h3>
               {efund}
             </div>
 
@@ -305,10 +305,10 @@ class NestEgg extends Component {
                     this.submitRetirementDeposit();
                   }}
                 >
-                  Add on click
+                  <strong>Add on click</strong>
                 </button>
               </span>
-              <h4>deposit amounts</h4>
+              <h3>Deposit Amounts</h3>
               {rfund}
             </div>
           </div>

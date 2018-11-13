@@ -55,16 +55,14 @@ font-family: "Courgette", cursive;
 
 .aboutdisplay {
   width: 100%;
-  height: 610px;
-  color: orange;
+  height: 120vh;
+  color: white;
   font-weight: 600;
-  text-shadow: 0 0 1em #363f41, 0 0 1em #363f41, 0 0 1em #363f41;
 
-  background-image: url(../Assets/OliveRidleyHatch.jpg);
+  background-image: url(https://sqy7rm.media.zestyio.com/branches.svg),
+    linear-gradient(65deg, rgb(241, 39, 17), rgb(245, 175, 25));
   background-repeat: no-repeat, no-repeat;
-  background-position: center;
-  background-size: cover;
-  opacity: 0.8;
+  background-position: left;
 }
 
 .aboutdisplay h1 {
@@ -73,4 +71,18 @@ font-family: "Courgette", cursive;
 
 .aboutdisplay a {
   color: #f9ff00;
+  text-align: center;
+}
+.aboutdisplay a:hover {
+  color: orange;
+}
+
+/* About section words */
+.aboutwords h1 {
+  text-align: center;
+}
+
+.aboutwords p {
+  margin-left: 10px;
+  /* text-align: center; */
 }

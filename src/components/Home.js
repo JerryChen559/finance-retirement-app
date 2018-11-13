@@ -26,7 +26,10 @@ function Home() {
       <div className="aboutdisplay">
         <span className="aboutwords">
           <h1>What Ridley is All About </h1>
-          <p>Early Retirement Made Easy</p>
+          <br />
+          <p>
+            <strong> - What: </strong>Early Retirement Made Easy
+          </p>
           <p>Promote FIRE (Financial Independence Retire Early</p>
           <p>
             Having the mindset of actually being able to retire makes you half
@@ -45,23 +48,28 @@ function Home() {
             lead to early retirement. make the user aware of where their income
             is going Fire approach. Making the process seem blah blah blah
           </p>
+          <br />
           <p>
             <strong> - Who: </strong>This application is for people with
             consistant expenses who are able to save a portion of their paycheck
             to retirement. If that sounds like you, then this app is for you!
           </p>
+          <br />
           <p>
             <strong> - How the App Works: </strong> The application will help
             you build an income statement. You will then be able to explore the
             results of different savings rates and plan an approapriate way to
             spend going forward.{" "}
           </p>
+          <br />
           <p>
             <strong> - Where:</strong> anywhere
           </p>
+          <br />
           <p>
             <strong> - When:</strong> now
           </p>
+          <br />
           <p>
             <strong> - Why:</strong> Budgeting is important and being
             financially capable is a win. This application should make you aware

@@ -76,6 +76,11 @@
   cursor: pointer;
 }
 
+.depositlook {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .delButton {
   width: 80px;
   background-color: red;
