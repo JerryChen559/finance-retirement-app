@@ -26,6 +26,12 @@ function Home() {
       <div className="aboutdisplay">
         <span className="aboutwords">
           <h1>What Ridley is All About </h1>
+          <p>Early Retirement Made Easy</p>
+          <p>Promote FIRE (Financial Independence Retire Early</p>
+          <p>
+            Having the mindset of actually being able to retire makes you half
+            way there.
+          </p>
           <p>
             - The goal of this application is to make personal financing fun and
             easy. We want let the user know what it will take for him/her to

@@ -49,14 +49,17 @@ class LearnMore extends Component {
             </span>
             <span>
               <p>Eliminating Debt:</p>{" "}
-              <a href="https://www.google.com/" target="_blank">
-                google
+              <a
+                href="https://financialmentor.com/calculator/debt-payoff-calculator"
+                target="_blank"
+              >
+                Calculator
               </a>
-            </span>
-            <span>
-              <p>Investing:</p>{" "}
-              <a href="https://www.google.com/" target="_blank">
-                google
+              <a
+                href="https://www.thebalance.com/debt-elimination-plan-2385990"
+                target="_blank"
+              >
+                Mindset
               </a>
             </span>
             <span>
@@ -70,8 +73,8 @@ class LearnMore extends Component {
             </span>
             <span>
               <p>Inflation:</p>{" "}
-              <a href="https://www.google.com/" target="_blank">
-                google
+              <a href="https://policonomics.com/is-lm/" target="_blank">
+                Keynesian macroeconomic model (IS-LM model)
               </a>
             </span>
           </span>
@@ -80,28 +83,40 @@ class LearnMore extends Component {
             <h2>Community and Motivation</h2>
             <span>
               <p>Podcast:</p>{" "}
-              <a href="https://www.google.com/" target="_blank">
-                google
+              <a href="https://www.madfientist.com/podcast" target="_blank">
+                madfientist
               </a>
             </span>
             <span>
               <p>Blogs:</p>{" "}
-              <a href="https://www.google.com/" target="_blank">
-                google
+              <a href="https://www.mrmoneymustache.com/" target="_blank">
+                Mr. Money Mustache
+              </a>
+              <a href="https://jlcollinsnh.com/" target="_blank">
+                Jim L Collins
               </a>
             </span>
             <span>
-              <p>Reddit:</p> <a href="https://www.google.com/">google</a>
+              <p>Reddit:</p>{" "}
+              <a href="https://www.reddit.com/r/financialindependence/">
+                r/financialindependence
+              </a>
             </span>
             <span>
-              <p>Youtube:</p> <a href="https://www.google.com/">google</a>
+              <p>Youtube:</p>{" "}
+              <a href="https://www.youtube.com/channel/UCcnyjTK4IheQN2ycsE7NZTQ">
+                BeatTheBush
+              </a>
             </span>
           </span>
 
           <span className="infosection">
             <h2>Related Topics</h2>
             <span>
-              <p>Extra Income:</p> <a href="https://www.google.com/">google</a>
+              <p>Extra Income:</p>{" "}
+              <a href="https://clark.com/personal-finance-credit/easy-ways-to-make-extra-cash/">
+                22 ideas
+              </a>
             </span>
             <span>
               <p>Zero Waste:</p>{" "}
@@ -113,14 +128,14 @@ class LearnMore extends Component {
               </a>
             </span>
             <span>
-              <p>Minimalism:</p> <a href="https://www.google.com/">google</a>
+              <p>Blog on Minimalism:</p>{" "}
+              <a href="https://www.theminimalists.com/">theminimalists</a>
             </span>
             <span>
               <p>Concious Living:</p>{" "}
-              <a href="https://www.google.com/">google</a>
-            </span>
-            <span>
-              <p>Tiny Homes:</p> <a href="https://www.google.com/">google</a>
+              <a href="https://www.youtube.com/user/phuckmediocrity/videos">
+                FightMediocrity
+              </a>
             </span>
           </span>
         </div>
