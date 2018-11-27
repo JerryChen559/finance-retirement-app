@@ -193,7 +193,7 @@ class IncomeStatement extends Component {
 
           <div className="statement-header">
             <h1>Welcome to Step 1!</h1>
-            <h5>(calculate net income by updating your info)</h5>
+            {/* <h5>(calculate net income by updating your info)</h5> */}
           </div>
 
           <div className="statement-body">
@@ -299,7 +299,7 @@ class IncomeStatement extends Component {
               </div>
               <br />
               <div style={{ fontSize: 18, marginLeft: 100 }}>
-                MONTHLY NET:
+                MONTHLY NET MARGIN:
                 <p>{this.state.monthlynetincome}</p>
               </div>
             </div>

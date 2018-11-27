@@ -55,7 +55,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7 * 9 // 9 weeks
+      maxAge: 1000 * 60 * 60 * 24 * 7 * 1 // 1 week
     }
   })
 );

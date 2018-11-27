@@ -256,10 +256,10 @@ class NestEgg extends Component {
         <Sidenav />
         <div className="nestegg-header">
           <h1>Step 2: Build a Nest Egg</h1>
-          <h5>
+          {/* <h5>
             (Take the net income amount and distribute it across emergency funds
             and retirement)
-          </h5>
+          </h5> */}
         </div>
 
         <div className="nestegg-body">

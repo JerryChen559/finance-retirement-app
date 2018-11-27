@@ -219,7 +219,7 @@ class RetirementPlan extends Component {
         <Sidenav />
         <div className="retire-header">
           <h1>Step 3: Retirement Plan</h1>
-          <h5>(Move the slider! Increase savings for early retirement)</h5>
+          {/* <h5>(Move the slider! Increase savings for early retirement)</h5> */}
         </div>
 
         <div className="retire-body">
@@ -241,10 +241,10 @@ class RetirementPlan extends Component {
                 Your number to be financially free is: ($
                 {fire.toLocaleString()})
               </h4>
-              <h6>
+              <h5>
                 * This number represents how much you need in the bank to go the
                 rest of your life without any additional income.{" "}
-              </h6>
+              </h5>
               {/* <h6>
                 *Math: (monthly expenses * 12 * (78 - age)) * (1.02**(78 - age))
               </h6> */}

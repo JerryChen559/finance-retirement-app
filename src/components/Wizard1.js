@@ -6,13 +6,16 @@ import {
   updateStateTax,
   updateSideIncome
 } from "../redux/reducers/statementReducer";
+import { getUser } from "../redux/reducers/profileReducer";
 import { Link } from "react-router-dom";
 import "./Wizard.css";
 
 class Wizard1 extends Component {
-  // componentDidMount() {
-  //   this.getIncomeStatement();
-  // }
+  componentDidMount() {
+    this.props.getUser().then(response => {
+      console.log(response);
+    });
+  }
 
   /*
   getIncomeStatement = () => {
@@ -61,6 +64,10 @@ class Wizard1 extends Component {
 
   render() {
     console.log(this.props);
+    console.log(this.props.state.profile.user.salary);
+    console.log(this.props.state.statement.salary);
+    console.log(this.state);
+
     const {
       updateSalary,
       updateFederalTax,
@@ -73,9 +80,15 @@ class Wizard1 extends Component {
         {/* salary, fed, state, FICA, secondary income */}
         <div className="vert-align">
           <p>Monthly salary before taxes.</p>
+          {console.log(this.props.state.statement.salary)}
           <input
             type="number"
-            placeholder="salary"
+            placeholder={"salary"}
+            // defaultValue={for update btn after having gone thru update once in current session || for update btn on initial log in}
+            defaultValue={
+              this.props.state.statement.salary ||
+              this.props.state.profile.user.salary
+            }
             onChange={e => updateSalary(e.target.value)}
           />
           <br />
@@ -86,6 +99,10 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="federal income tax (in %)"
+            defaultValue={
+              this.props.state.statement.federaltax ||
+              this.props.state.profile.user.federaltax
+            }
             onChange={e => updateFederalTax(e.target.value)}
           />
           <br />
@@ -95,7 +112,11 @@ class Wizard1 extends Component {
           </p>
           <input
             type="number"
-            placeholder="percentage as decimal {props.user.statetax}"
+            placeholder="percentage as decimal"
+            defaultValue={
+              this.props.state.statement.statetax ||
+              this.props.state.profile.user.statetax
+            }
             onChange={e => updateStateTax(e.target.value)}
           />
           <br />
@@ -112,6 +133,10 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="side income"
+            defaultValue={
+              this.props.state.statement.sideincome ||
+              this.props.state.profile.user.sideincome
+            }
             onChange={e => updateSideIncome(e.target.value)}
           />
           <div>
@@ -127,13 +152,15 @@ class Wizard1 extends Component {
 }
 
 const mapStateToProps = state => {
-  const { salary, federaltax, statetax, sideincome } = state;
+  console.log(state);
+  // const { salary, federaltax, statetax, sideincome } = state;
 
   return {
-    salary,
-    federaltax,
-    statetax,
-    sideincome
+    // salary,
+    // federaltax,
+    // statetax,
+    // sideincome
+    state
   };
 };
 
@@ -143,6 +170,7 @@ export default connect(
     updateSalary,
     updateFederalTax,
     updateStateTax,
-    updateSideIncome
+    updateSideIncome,
+    getUser
   }
 )(Wizard1);

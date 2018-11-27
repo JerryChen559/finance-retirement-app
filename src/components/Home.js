@@ -25,55 +25,51 @@ function Home() {
       <div className="aboutimage" />
       <div className="aboutdisplay">
         <span className="aboutwords">
-          <h1>What Ridley is All About </h1>
+          <h1>About Ridley</h1>
           <br />
           <p>
-            <strong> - What: </strong>Early Retirement Made Easy
+            <strong> - WHAT : </strong>Early Retirement Made Easy
           </p>
-          <p>Promote FIRE (Financial Independence Retire Early</p>
+          <p>- Promote FIRE (Financial Independence Retire Early)</p>
           <p>
-            Having the mindset of actually being able to retire makes you half
-            way there.
+            - This application calculates how much you will need to be
+            financially independent and provides you with the number of work
+            years you have left.
           </p>
           <p>
             - The goal of this application is to make personal financing fun and
-            easy. We want let the user know what it will take for him/her to
-            leave the 9 to 5 rat race and reach financial freedom.
-          </p>
-          <p>
-            - Successful projects consist of three main parts: knowledge,
-            planning and execution. The project we are trying to solve is
-            retirement. This application will provide a broad picture of your
-            net earnings and show how saving a large portion of your income can
-            lead to early retirement. make the user aware of where their income
-            is going Fire approach. Making the process seem blah blah blah
+            easy. Plan for success, execute accordingly.
           </p>
           <br />
           <p>
-            <strong> - Who: </strong>This application is for people with
+            <strong> - WHO : </strong>This application is for people with
             consistant expenses who are able to save a portion of their paycheck
             to retirement. If that sounds like you, then this app is for you!
           </p>
           <br />
           <p>
-            <strong> - How the App Works: </strong> The application will help
-            you build an income statement. You will then be able to explore the
-            results of different savings rates and plan an approapriate way to
-            spend going forward.{" "}
+            <strong> - HOW the App Works : </strong> The application will help
+            you build an income statement. A breakdown of your expenses will be
+            available via email. You will then be able to explore the results of
+            different savings rates and choose what percentage is right for you.
           </p>
           <br />
           <p>
-            <strong> - Where:</strong> anywhere
+            <strong> - WHERE :</strong> As long as you are spending less than
+            you are earning, you can save for retirement anywhere!
           </p>
           <br />
           <p>
-            <strong> - When:</strong> now
+            <strong> - WHEN :</strong> Anytime is a good time to use this app!
+            We recommend revisiting this application every month to refinance
+            your personal budget and set goals.
           </p>
           <br />
           <p>
-            <strong> - Why:</strong> Budgeting is important and being
+            <strong> - WHY :</strong> Budgeting is important and being
             financially capable is a win. This application should make you aware
-            of your spending habits which is a great start.
+            of your spending habits which is a great start towards financial
+            independence.
           </p>
 
           <h3>
