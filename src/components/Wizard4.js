@@ -168,7 +168,7 @@ class Wizard4 extends Component {
           <input
             type="number"
             placeholder="clothes"
-            defaultValue={this.props.statement.clothes}
+            // defaultValue={this.props.statement.clothes}
             onChange={e => updateClothes(e.target.value)}
           />
           <br />
@@ -176,7 +176,7 @@ class Wizard4 extends Component {
           <input
             type="number"
             placeholder="gym fee"
-            defaultValue={this.props.statement.gym}
+            // defaultValue={this.props.statement.gym}
             onChange={e => updateGym(e.target.value)}
           />
           <br />
@@ -184,7 +184,7 @@ class Wizard4 extends Component {
           <input
             type="number"
             placeholder="entertainment"
-            defaultValue={this.props.statement.entertainment}
+            // defaultValue={this.props.statement.entertainment}
             onChange={e => updateEntertainment(e.target.value)}
           />
           <br />
@@ -192,7 +192,7 @@ class Wizard4 extends Component {
           <input
             type="number"
             placeholder="travel"
-            defaultValue={this.props.statement.travel}
+            // defaultValue={this.props.statement.travel}
             onChange={e => updateTravel(e.target.value)}
           />
           <div>

@@ -47,3 +47,12 @@
 --   importance integer,
 --   note VARCHAR(255)
 -- );
+
+
+-------------
+--join to get all users and purchase card items
+
+-- SELECT * 
+-- FROM purchasecards p
+-- JOIN fire_app_user f
+-- ON p.itemname = f.user_id;

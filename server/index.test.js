@@ -151,10 +151,10 @@
 // ** test for Delete - Remove Card ** ------------------------------
 // const res = pm.response.json();
 
-// pm.test("Status code is 200", function() {
-//   pm.response.to.have.status(200);
-// });
+pm.test("Status code is 200", function() {
+  pm.response.to.have.status(200);
+});
 
-// pm.test("Card w/ ID 8 removed", function() {
-//   pm.expect(res.id).to.eql(8);
-// });
+pm.test("Card w/ ID 8 removed", function() {
+  pm.expect(res.id).to.eql(8);
+});

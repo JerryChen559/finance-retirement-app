@@ -34,9 +34,9 @@ class Wizard2 extends Component {
           <input
             type="number"
             placeholder="rent"
-            defaultValue={
-              this.props.statement.rent || this.props.profile.user.rent
-            }
+            // defaultValue={
+            //   this.props.statement.rent || this.props.profile.user.rent
+            // }
             onChange={e => updateRent(e.target.value)}
           />
           <br />
@@ -44,9 +44,9 @@ class Wizard2 extends Component {
           <input
             type="number"
             placeholder="mortgage"
-            defaultValue={
-              this.props.statement.mortgage || this.props.profile.user.mortgage
-            }
+            // defaultValue={
+            //   this.props.statement.mortgage || this.props.profile.user.mortgage
+            // }
             onChange={e => updateMortgage(e.target.value)}
           />
           <br />
@@ -54,9 +54,9 @@ class Wizard2 extends Component {
           <input
             type="number"
             placeholder="car payment"
-            defaultValue={
-              this.props.statement.car || this.props.profile.user.car
-            }
+            // defaultValue={
+            //   this.props.statement.car || this.props.profile.user.car
+            // }
             onChange={e => updateCar(e.target.value)}
           />
           <br />
@@ -64,9 +64,9 @@ class Wizard2 extends Component {
           <input
             type="number"
             placeholder="commute"
-            defaultValue={
-              this.props.statement.gas || this.props.profile.user.gas
-            }
+            // defaultValue={
+            //   this.props.statement.gas || this.props.profile.user.gas
+            // }
             onChange={e => updateGas(e.target.value)}
           />
           <br />
@@ -74,9 +74,9 @@ class Wizard2 extends Component {
           <input
             type="number"
             placeholder="bills"
-            defaultValue={
-              this.props.statement.water || this.props.profile.user.water
-            }
+            // defaultValue={
+            //   this.props.statement.water || this.props.profile.user.water
+            // }
             onChange={e => updateWater(e.target.value)}
           />
           <div>

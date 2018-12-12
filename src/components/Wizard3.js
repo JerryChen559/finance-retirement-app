@@ -31,10 +31,10 @@ class Wizard3 extends Component {
           <input
             type="number"
             placeholder="healthcare"
-            defaultValue={
-              this.props.state.statement.healthcare ||
-              this.props.state.profile.user.healthcare
-            }
+            // defaultValue={
+            //   this.props.state.statement.healthcare ||
+            //   this.props.state.profile.user.healthcare
+            // }
             onChange={e => updateHealthCare(e.target.value)}
           />
           <br />
@@ -42,10 +42,10 @@ class Wizard3 extends Component {
           <input
             type="number"
             placeholder="school fees"
-            defaultValue={
-              this.props.state.statement.school ||
-              this.props.state.profile.user.school
-            }
+            // defaultValue={
+            //   this.props.state.statement.school ||
+            //   this.props.state.profile.user.school
+            // }
             onChange={e => updateSchool(e.target.value)}
           />
           <br />
@@ -53,10 +53,10 @@ class Wizard3 extends Component {
           <input
             type="number"
             placeholder="groceries"
-            defaultValue={
-              this.props.state.statement.food ||
-              this.props.state.profile.user.food
-            }
+            // defaultValue={
+            //   this.props.state.statement.food ||
+            //   this.props.state.profile.user.food
+            // }
             onChange={e => updateFood(e.target.value)}
           />
           <br />
@@ -64,10 +64,10 @@ class Wizard3 extends Component {
           <input
             type="number"
             placeholder="restaurants"
-            defaultValue={
-              this.props.state.statement.restaurants ||
-              this.props.state.profile.user.restaurants
-            }
+            // defaultValue={
+            //   this.props.state.statement.restaurants ||
+            //   this.props.state.profile.user.restaurants
+            // }
             onChange={e => updateRestaurants(e.target.value)}
           />
           <br />

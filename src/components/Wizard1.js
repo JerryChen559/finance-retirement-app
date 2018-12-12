@@ -85,10 +85,10 @@ class Wizard1 extends Component {
             type="number"
             placeholder={"salary"}
             // defaultValue={for update btn after having gone thru update once in current session || for update btn on initial log in}
-            defaultValue={
-              this.props.state.statement.salary ||
-              this.props.state.profile.user.salary
-            }
+            // defaultValue={
+            //   this.props.state.statement.salary ||
+            //   this.props.state.profile.user.salary
+            // }
             onChange={e => updateSalary(e.target.value)}
           />
           <br />
@@ -99,10 +99,10 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="federal income tax (in %)"
-            defaultValue={
-              this.props.state.statement.federaltax ||
-              this.props.state.profile.user.federaltax
-            }
+            // defaultValue={
+            //   this.props.state.statement.federaltax ||
+            //   this.props.state.profile.user.federaltax
+            // }
             onChange={e => updateFederalTax(e.target.value)}
           />
           <br />
@@ -113,10 +113,10 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="percentage as decimal"
-            defaultValue={
-              this.props.state.statement.statetax ||
-              this.props.state.profile.user.statetax
-            }
+            // defaultValue={
+            //   this.props.state.statement.statetax ||
+            //   this.props.state.profile.user.statetax
+            // }
             onChange={e => updateStateTax(e.target.value)}
           />
           <br />
@@ -133,10 +133,10 @@ class Wizard1 extends Component {
           <input
             type="number"
             placeholder="side income"
-            defaultValue={
-              this.props.state.statement.sideincome ||
-              this.props.state.profile.user.sideincome
-            }
+            // defaultValue={
+            //   this.props.state.statement.sideincome ||
+            //   this.props.state.profile.user.sideincome
+            // }
             onChange={e => updateSideIncome(e.target.value)}
           />
           <div>
