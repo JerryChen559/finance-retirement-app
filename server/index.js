@@ -61,7 +61,7 @@ app.use(
 );
 
 // npm run build when done. uncomment after
-//app.use(express.static(`${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../build`));
 
 //app.use(express.static(`${__dirname}/public/build`));
 
