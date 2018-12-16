@@ -23,7 +23,7 @@ const {
 } = require("./controllers/NodeMailerCtrl");
 
 const { SESSION_SECRET, CONNECTION_STRING, PORT } = process.env;
-const port = PORT || 3001;
+const port = process.env.PORT || 3001;
 
 // const { getProfile } = require("./controllers/profileCtrl");
 const {
